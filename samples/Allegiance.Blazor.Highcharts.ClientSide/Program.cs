@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Allegiance.Blazor.Highcharts.Services;
 
 namespace Allegiance.Blazor.Highcharts.ClientSide
 {
@@ -13,7 +11,7 @@ namespace Allegiance.Blazor.Highcharts.ClientSide
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
-
+            builder.Services.AddTransient<IChartService, ChartService>();
             builder.Services.AddBaseAddressHttpClient();
 
             await builder.Build().RunAsync();

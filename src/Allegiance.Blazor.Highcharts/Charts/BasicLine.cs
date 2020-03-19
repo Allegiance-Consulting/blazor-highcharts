@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Allegiance.Blazor.Highcharts.Charts
 {
-    public partial class BasicLine
+    public partial class BasicLine : IHighchart
     {
         [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public Title Title { get; set; }
@@ -32,9 +32,9 @@ namespace Allegiance.Blazor.Highcharts.Charts
         [JsonProperty("responsive", NullValueHandling = NullValueHandling.Ignore)]
         public Responsive Responsive { get; set; }
 
-        public string Generate()
-        {
-            return System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
-        }
+        //public string Generate()
+        //{
+        //    return System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
+        //}
     }
 }

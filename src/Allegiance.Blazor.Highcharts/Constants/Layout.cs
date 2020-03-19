@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Allegiance.Blazor.Highcharts.Constants
+{
+    public class Layout
+    {
+        public static string Vertical { get; } = "vertical";
+        public static string Horizontal { get; } = "horizontal";
+    }
+}

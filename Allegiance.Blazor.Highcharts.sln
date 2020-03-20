@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allegiance.Blazor.Highcharts", "src\Allegiance.Blazor.Highcharts\Allegiance.Blazor.Highcharts.csproj", "{F48C0209-344F-4AF0-8A3D-2E2EDC0357A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Allegiance.Blazor.Highcharts", "src\Allegiance.Blazor.Highcharts\Allegiance.Blazor.Highcharts.csproj", "{F48C0209-344F-4AF0-8A3D-2E2EDC0357A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allegiance.Blazor.Highcharts.ClientSide", "samples\Allegiance.Blazor.Highcharts.ClientSide\Allegiance.Blazor.Highcharts.ClientSide.csproj", "{E5EBFE1D-81A3-4029-B720-5AA038D1887A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Allegiance.Blazor.Highcharts.ClientSide", "samples\Allegiance.Blazor.Highcharts.ClientSide\Allegiance.Blazor.Highcharts.ClientSide.csproj", "{E5EBFE1D-81A3-4029-B720-5AA038D1887A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

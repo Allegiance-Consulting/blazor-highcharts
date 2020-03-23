@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Label(bool? connectorAllowed)
+        public Label(bool? connectorAllowed = null)
         {
             ConnectorAllowed = connectorAllowed;
         }

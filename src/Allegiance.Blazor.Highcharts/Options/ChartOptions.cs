@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public ChartOptions(Legend legend)
+        public ChartOptions(Legend legend = null)
         {
             Legend = legend;
         }

@@ -15,7 +15,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Area(long? pointStart, Marker marker)
+        public Area(long? pointStart = null, Marker marker = null)
         {
             PointStart = pointStart;
             Marker = marker;

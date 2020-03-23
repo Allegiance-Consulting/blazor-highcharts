@@ -21,7 +21,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Marker(bool? enabled, string symbol, long? radius, States states)
+        public Marker(bool? enabled = null, string symbol = null, long? radius = null, States states = null)
         {
             Enabled = enabled;
             Symbol = symbol;

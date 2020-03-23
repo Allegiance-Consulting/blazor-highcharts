@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Hover(bool? enabled)
+        public Hover(bool? enabled = null)
         {
             Enabled = enabled;
         }

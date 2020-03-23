@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Tooltip(string pointFormat)
+        public Tooltip(string pointFormat = null)
         {
             PointFormat = pointFormat;
         }

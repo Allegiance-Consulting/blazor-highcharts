@@ -15,7 +15,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Rule(Condition condition, ChartOptions chartOptions)
+        public Rule(Condition condition = null, ChartOptions chartOptions = null)
         {
             Condition = condition;
             ChartOptions = chartOptions;

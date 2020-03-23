@@ -18,7 +18,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Legend(string layout, string align, string verticalAlign)
+        public Legend(string layout = null, string align = null, string verticalAlign = null)
         {
             Layout = layout;
             Align = align;

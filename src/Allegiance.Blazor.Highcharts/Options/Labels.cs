@@ -13,7 +13,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Labels(string formatter)
+        public Labels(string formatter = null)
         {
             Formatter = formatter;
             // So the temporary workaround to pass actual javascript functions

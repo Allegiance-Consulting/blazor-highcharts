@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public States(Hover hover)
+        public States(Hover hover = null)
         {
             Hover = hover;
         }

@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Title(string text)
+        public Title(string text = null)
         {
             Text = text;
         }

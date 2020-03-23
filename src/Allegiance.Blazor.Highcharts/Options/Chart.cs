@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Chart(string type)
+        public Chart(string type = null)
         {
             Type = type;
         }

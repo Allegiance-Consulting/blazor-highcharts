@@ -9,17 +9,17 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Name { get; set; }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
-        public long?[] Data { get; set; }
+        public List<object> Data { get; set; }
 
         public SeriesElement()
         {
 
         }
 
-        public SeriesElement(string name, List<long?> data)
+        public SeriesElement(string name = null, List<object> data = null)
         {
             Name = name;
-            Data = data.ToArray();
+            Data = data;
         }
     }
 }

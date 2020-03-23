@@ -15,7 +15,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public PlotOptionsSeries(Label label, long? pointStart)
+        public PlotOptionsSeries(Label label = null, long? pointStart = null)
         {
             Label = label;
             PointStart = pointStart;

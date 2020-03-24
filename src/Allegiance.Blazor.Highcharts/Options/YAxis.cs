@@ -8,16 +8,19 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Title Title { get; set; }
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
         public Labels Labels { get; set; }
+        [JsonProperty("className", NullValueHandling = NullValueHandling.Ignore)]
+        public string ClassName { get; set; }
 
         public YAxis()
         {
 
         }
 
-        public YAxis(Title title = null, Labels labels = null)
+        public YAxis(Title title = null, Labels labels = null, string classname = null)
         {
             Title = title;
             Labels = labels;
+            ClassName = classname;
         }
     }
 }

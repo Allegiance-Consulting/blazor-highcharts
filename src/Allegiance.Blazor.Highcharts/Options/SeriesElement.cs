@@ -12,17 +12,20 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Data { get; set; }
+        [JsonProperty("colorByPoint", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? ColorByPoint { get; set; }
 
         public SeriesElement()
         {
 
         }
 
-        public SeriesElement(string name = null, List<object> data = null, string type = null)
+        public SeriesElement(string name = null, List<object> data = null, string type = null, bool? colorbypoint = null)
         {
             Name = name;
             Data = data;
             Type = type;
+            ColorByPoint = colorbypoint;
         }
     }
 }

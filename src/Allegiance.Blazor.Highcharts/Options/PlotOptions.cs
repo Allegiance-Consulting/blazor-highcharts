@@ -9,8 +9,12 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("area", NullValueHandling = NullValueHandling.Ignore)]
         public Area Area { get; set; }
+
         [JsonProperty("pie", NullValueHandling = NullValueHandling.Ignore)]
         public Pie Pie { get; set; }
+
+        [JsonProperty("column", NullValueHandling = NullValueHandling.Ignore)]
+        public Column Column { get; set; }
 
         public PlotOptions()
         {
@@ -30,6 +34,12 @@ namespace Allegiance.Blazor.Highcharts.Options
         {
             Series = series;
             Pie = pie;
+        }
+
+        public PlotOptions(PlotOptionsSeries series = null , Column column = null)
+        {
+            Series = series;
+            Column = column;
         }
     }
 }

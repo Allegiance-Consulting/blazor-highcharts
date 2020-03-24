@@ -9,16 +9,19 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]
         public long? PointStart { get; set; }
+        [JsonProperty("pointWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int? PointWidth { get; set; }
 
         public PlotOptionsSeries()
         {
 
         }
 
-        public PlotOptionsSeries(Label label = null, long? pointStart = null)
+        public PlotOptionsSeries(Label label = null, long? pointStart = null, int? pointwidth = null)
         {
             Label = label;
             PointStart = pointStart;
+            PointWidth = pointwidth;
         }
     }
 }

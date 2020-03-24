@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Charts
         public Chart Chart { get; set; }
 
         [JsonProperty("tooltip",NullValueHandling = NullValueHandling.Ignore)]
-        public Legend Tooltip { get; set; }
+        public Tooltip Tooltip { get; set; }
 
         [JsonProperty("legend",NullValueHandling = NullValueHandling.Ignore)]
         public Legend Legend { get; set; }

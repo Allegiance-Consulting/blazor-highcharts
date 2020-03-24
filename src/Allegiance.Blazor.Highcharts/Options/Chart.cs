@@ -6,15 +6,18 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
+        [JsonProperty("styledmode", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? StyledMode { get; set; }
 
         public Chart()
         {
 
         }
 
-        public Chart(string type = null)
+        public Chart(string type = null, bool? styledmode = null)
         {
             Type = type;
+            StyledMode = styledmode;
         }
     }
 }

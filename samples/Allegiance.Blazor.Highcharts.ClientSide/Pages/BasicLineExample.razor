@@ -70,16 +70,13 @@
 @code{
     private BasicLine BasicLineGraph = new BasicLine()
     {
-        Legend = new Legend(Layout.Vertical, Align.Right, VerticalAlign.Middle),
-        PlotOptions = new PlotOptions(
-            new PlotOptionsSeries(
-                new Label(false), 2010)
-            ),
+        Legend = new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle),
+        PlotOptions = new PlotOptions( new PlotOptionsSeries(new Label(false), 2010)),
         Responsive = new Responsive(
             new Rule(
                 new Condition(500), 
                 new ChartOptions(
-                        new Legend(Layout.Vertical, Align.Right, VerticalAlign.Middle)
+                        new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle)
                     )
                 )
             ),

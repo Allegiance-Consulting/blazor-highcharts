@@ -14,7 +14,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Cursor { get; set; }
 
         [JsonProperty("dataLabels", NullValueHandling = NullValueHandling.Ignore)]
-        public Legend DataLabels { get; set; }
+        public Labels DataLabels { get; set; }
 
         [JsonProperty("states", NullValueHandling = NullValueHandling.Ignore)]
         public States States { get; set; }
@@ -24,7 +24,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Pie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Legend datalabels = null, States states = null)
+        public Pie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null)
         {
             AllowPointSelect = allowpointselect;
             ShowInLegend = showinlegend;

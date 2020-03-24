@@ -7,6 +7,8 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        public string Type { get; set; }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Data { get; set; }
@@ -16,10 +18,11 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public SeriesElement(string name = null, List<object> data = null)
+        public SeriesElement(string name = null, List<object> data = null, string type = null)
         {
             Name = name;
             Data = data;
+            Type = type;
         }
     }
 }

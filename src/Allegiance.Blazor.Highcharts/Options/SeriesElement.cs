@@ -9,6 +9,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Name { get; set; }
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
+        [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
+        public string Color { get; set; }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Data { get; set; }

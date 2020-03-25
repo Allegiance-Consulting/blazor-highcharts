@@ -174,14 +174,12 @@
             "thebulletin.org</a> &amp; <a href=\"https://www.armscontrol.org/factsheets/Nuclearweaponswhohaswhat\"> armscontrol.org</a>"),
         Title = new Title("US and USSR nuclear stockpiles"),
         Tooltip = new Tooltip(true, "{series.name} had stockpiled <b>{point.y:,.0f}</b><br/>warheads in {point.x}"),
-        XAxis = new XAxis(new Accessibility(
-                "Range: 1940 to 2017."
-            ),
-            new Labels(
-                "function() {return this.value;}"
-            ),
-            false
-        ),
+        XAxis = new XAxis()
+        {
+            Accessibility = new Accessibility("Range: 1940 to 2017."),
+            Labels = new Labels("function() {return this.value;}"),
+            AllowDecimals = false
+        },
         YAxis = new YAxis(
             new Title("Nuclear weapon states"),
             new Labels(

@@ -12,6 +12,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("pie", NullValueHandling = NullValueHandling.Ignore)]
         public Pie Pie { get; set; }
+        [JsonProperty("scatter", NullValueHandling = NullValueHandling.Ignore)]
+        public Scatter Scatter { get; set; }
 
         [JsonProperty("column", NullValueHandling = NullValueHandling.Ignore)]
         public Column Column { get; set; }

@@ -6,6 +6,8 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
+        [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Enabled { get; set; }
 
         public Title()
         {

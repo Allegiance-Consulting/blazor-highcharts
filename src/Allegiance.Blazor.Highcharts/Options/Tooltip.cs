@@ -8,6 +8,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public bool? Enabled { get; set; }
         [JsonProperty("pointFormat", NullValueHandling = NullValueHandling.Ignore)]
         public string PointFormat { get; set; }
+        [JsonProperty("headerFormat", NullValueHandling = NullValueHandling.Ignore)]
+        public string HeaderFormat { get; set; }
 
         public Tooltip()
         {

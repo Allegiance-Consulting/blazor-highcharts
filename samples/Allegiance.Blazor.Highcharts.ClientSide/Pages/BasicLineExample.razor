@@ -68,8 +68,9 @@
 </pre>
 
 @code{
-    private BasicLine BasicLineGraph = new BasicLine()
+    private ChartObject BasicLineGraph = new ChartObject()
     {
+        
         Legend = new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle),
         PlotOptions = new PlotOptions( new PlotOptionsSeries(new Label(false), 2010)),
         Responsive = new Responsive(

@@ -9,7 +9,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Name { get; set; }
 
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
-        public long? y { get; set; }
+        public long? Y { get; set; }
 
         public Datum()
         {
@@ -19,7 +19,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Datum(string name, long? y)
         {
             Name = name;
-            this.y = y;
+            Y = y;
         }
     }
 }

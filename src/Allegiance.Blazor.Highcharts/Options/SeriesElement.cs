@@ -11,11 +11,17 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Type { get; set; }
         [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
         public string Color { get; set; }
+        [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
+        public Marker Marker { get; set; }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Data { get; set; }
         [JsonProperty("colorByPoint", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ColorByPoint { get; set; }
+        [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int? LineWidth { get; set; }
+        [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string LineColor { get; set; }
 
         public SeriesElement()
         {

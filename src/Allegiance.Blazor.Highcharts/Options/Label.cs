@@ -6,6 +6,10 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("connectorAllowed", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ConnectorAllowed { get; set; }
+        [JsonProperty("align", NullValueHandling = NullValueHandling.Ignore)]
+        public string Align { get; set; }
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
 
         public Label()
         {

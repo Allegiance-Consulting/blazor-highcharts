@@ -17,6 +17,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("column", NullValueHandling = NullValueHandling.Ignore)]
         public Column Column { get; set; }
+        [JsonProperty("line", NullValueHandling = NullValueHandling.Ignore)]
+        public Line Line { get; set; }
 
         public PlotOptions()
         {

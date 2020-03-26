@@ -13,6 +13,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         {
 
         }
+        public Title( bool? enabled = null)
+        {
+            Enabled = enabled;
+        }
 
         public Title(string text = null)
         {

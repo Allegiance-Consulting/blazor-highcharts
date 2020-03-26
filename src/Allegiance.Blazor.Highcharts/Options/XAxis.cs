@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
@@ -15,13 +16,20 @@ namespace Allegiance.Blazor.Highcharts.Options
         public bool?EendOnTick { get; set; }
         [JsonProperty("showLastLabel", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ShowLastLabel { get; set; }
-
+        [JsonProperty("tickPositions", NullValueHandling = NullValueHandling.Ignore)]
+        public List<long?> TickPositions { get; set; }
+        [JsonProperty("categories", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Categories { get; set; }
+        [JsonProperty("tickmarkPlacement", NullValueHandling = NullValueHandling.Ignore)]
+        public string TickmarkPlacement { get; set; }
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
         public Labels Labels { get; set; }
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
         [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public Title Title { get; set; }
+        [JsonProperty("plotLines", NullValueHandling = NullValueHandling.Ignore)]
+        public PlotLines PlotLines { get; set; }
 
         public XAxis()
         {

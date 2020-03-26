@@ -58,8 +58,9 @@
 
 @code {
 
-    private PieChart PieChart = new PieChart()
+    private ChartObject PieChart = new ChartObject()
     {
+        Chart = new Chart(ChartType.Pie),
         //Chart = new Chart(null, true),
         Tooltip = new Tooltip(false),
         Legend = new Legend(true),
@@ -83,7 +84,7 @@
 {
             new SeriesElement()
             {
-                Type = ChartType.Pie,
+                //Type = ChartType.Pie,
                 Data = new List<object>()
                 {
                     {new List<object>(){"Consumption", 29.9 } },

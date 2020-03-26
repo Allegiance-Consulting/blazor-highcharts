@@ -1,0 +1,137 @@
+﻿@page "/wealth-chart"
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+@using Allegiance.Blazor.Highcharts.ClientSide.DataConstants
+<h3>WealthExample</h3>
+
+<div id="wealth"></div>
+
+@code {
+
+    public static string primaryRed = "#ea6868";//ea6868
+    public static string primary5 = "#6eb3ed";//2f7cc0
+    public static string primary4 = "#588dcc";//61c4b1
+    public static string primary3 = "#4067a0";//fbaf5f
+    public static string primary2 = "#61c4b1";//ea6868
+    public static string primary1 = "#2ea08a";//604760
+
+    private ChartObject WealthMap = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Area),
+        Credits = new Credits(false),
+        Title = new Title("Wealyh Map"),
+        XAxis = new XAxis()
+        {
+            //TickPositions = DummyData.Ticks.ConvertAll<long?>(x => (long)x),
+            //Categories = DummyData.Categories.ConvertAll<string>(x => x.ToString()),
+            //Categories = new List<string> { DummyData.Categories.ToString() },
+            TickmarkPlacement = TickmarkPlacement.On,
+            Title = new Title(false),
+            //    PlotLines = new PlotLines()
+            //    {
+            //        Color = "red",
+            //        DashStyle = DashStyle.Longdashdot,
+            //        Value = 5,
+            //        Width = 1,
+            //        ZIndex = 5,
+            //        Label = new Label()
+            //        {
+            //            Align = Align.Left,
+            //            //Text = "<span style=\"font-weight: normal; color: " + primaryRed + "; font-size: 14px; letter-spacing: normal;\">Retirement</span>"
+            //            Text = "Retirement"
+            //        },
+            //        Id = "OverviewRetirementLine"
+            //    }
+            },
+            Tooltip = new Tooltip()
+            {
+                ValuePrefix = "R",
+                Split = true,
+                Distance = 50,
+                Padding = 2,
+            },
+            PlotOptions = new PlotOptions()
+            {
+                Area = new Area()
+                {
+                    Stacking = Stacking.Normal
+                },
+                Line = new Line()
+                {
+                    Marker = new Marker(false)
+                },
+                Series = new PlotOptionsSeries()
+                {
+                    FillOpacity = 0.9,
+                    LineWidth = 1,
+                    Animation = new Animation(2000),
+                }
+            },
+            Series = new List<SeriesElement>
+        {
+            new SeriesElement()
+            {
+            Name= "Lifestyle Assets ",
+            Data=  DummyData.LifeStyle,
+
+            Color= primary5,
+            Marker=new Marker(false)
+            },
+            new SeriesElement()
+            {
+                Name= "Retirement Assets ",
+                Data= DummyData.Retirement,
+                Color= primary4,
+                Marker= new Marker(false)
+            },
+            new SeriesElement()
+            {
+                Name= "Discretionary Assets ",
+                Data=  DummyData.Discretionary ,
+                Color= primary3,
+                Marker= new Marker(false)
+            },
+            new SeriesElement()
+            {
+                Name= "Business Assets",
+                Data= DummyData.Businessasset,
+                Color= primary2,
+                Marker= new Marker(false)
+            },
+            new SeriesElement()
+            {
+                Name= "Property",
+                Data= DummyData.Property,
+                Color= primary1,
+                Marker= new Marker(false)
+            },
+            new SeriesElement()
+            {
+                Type= "spline",
+                Name= "Debt",
+                Data= DummyData.Debt ,
+                LineWidth= 3,
+                LineColor= primaryRed,
+                Color= primaryRed,
+                Marker=new Marker()
+                {
+                LineWidth= 3,
+                LineColor= primaryRed,
+                FillColor= "#4c4c4c"
+                }
+            }
+        }
+            //Exporting
+
+
+        };
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("wealth", WealthMap.Generate());
+        //jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+}

@@ -41,6 +41,8 @@ namespace Allegiance.Blazor.Highcharts.Charts
         public Legend Legend { get; set; }
         [JsonProperty("responsive", NullValueHandling = NullValueHandling.Ignore)]
         public Responsive Responsive { get; set; }
+        [JsonProperty("exporting", NullValueHandling = NullValueHandling.Ignore)]
+        public Exporting Exporting { get; set; }
 
         public string Generate()
         {

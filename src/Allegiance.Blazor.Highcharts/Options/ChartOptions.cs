@@ -6,6 +6,8 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("legend", NullValueHandling = NullValueHandling.Ignore)]
         public Legend Legend { get; set; }
+        [JsonProperty("subtitle")]
+        public Title Subtitle { get; set; }
 
         public ChartOptions()
         {

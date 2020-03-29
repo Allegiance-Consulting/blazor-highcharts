@@ -8,6 +8,7 @@
 
 @code {
 
+
     public static string primaryRed = "#ea6868";//ea6868
     public static string primary5 = "#6eb3ed";//2f7cc0
     public static string primary4 = "#588dcc";//61c4b1
@@ -22,8 +23,8 @@
         Title = new Title("Wealth Map"),
         XAxis = new XAxis()
         {
-            TickPositions = DummyData.Ticks,
-            Categories = DummyData.Categories.ConvertAll<string>(x => x.ToString()),
+            TickPositions = DummyDataWealth.Ticks,
+            Categories = DummyDataWealth.Categories.ConvertAll<string>(x => x.ToString()),
             TickmarkPlacement = TickmarkPlacement.On,
             Title = new Title(false),
             PlotLines = new List<Line>()
@@ -75,7 +76,7 @@
             new SeriesElement()
             {
             Name= "Lifestyle Assets ",
-            Data=  DummyData.LifeStyle,
+            Data=  DummyDataWealth.LifeStyle,
 
             Color= primary5,
             Marker=new Marker(false)
@@ -83,28 +84,28 @@
             new SeriesElement()
             {
                 Name= "Retirement Assets ",
-                Data= DummyData.Retirement,
+                Data= DummyDataWealth.Retirement,
                 Color= primary4,
                 Marker= new Marker(false)
             },
             new SeriesElement()
             {
                 Name= "Discretionary Assets ",
-                Data=  DummyData.Discretionary ,
+                Data=  DummyDataWealth.Discretionary ,
                 Color= primary3,
                 Marker= new Marker(false)
             },
             new SeriesElement()
             {
                 Name= "Business Assets",
-                Data= DummyData.Businessasset,
+                Data= DummyDataWealth.Businessasset,
                 Color= primary2,
                 Marker= new Marker(false)
             },
             new SeriesElement()
             {
                 Name= "Property",
-                Data= DummyData.Property,
+                Data= DummyDataWealth.Property,
                 Color= primary1,
                 Marker= new Marker(false)
             },
@@ -112,7 +113,7 @@
             {
                 Type= "spline",
                 Name= "Debt",
-                Data= DummyData.Debt ,
+                Data= DummyDataWealth.Debt ,
                 LineWidth= 3,
                 LineColor= primaryRed,
                 Color= primaryRed,
@@ -129,10 +130,7 @@
         {
             Buttons = new Buttons()
             {
-                ContextButton = new ContextButton()
-                {
-                    Enabled = false
-                }
+                ContextButton = new ContextButton(false)
             },
             SourceWidth = 900,
             SourceHeight = 350,

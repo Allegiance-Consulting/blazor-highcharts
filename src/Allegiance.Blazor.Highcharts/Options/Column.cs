@@ -8,6 +8,9 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("borderRadius", NullValueHandling = NullValueHandling.Ignore)]
         public int? BorderRadius { get; set; }
 
+        [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]
+        public string Stacking { get; set; }
+
         public Column()
         {
 

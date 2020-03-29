@@ -6,6 +6,10 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public Title Title { get; set; }
+
+        [JsonProperty("min", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Min { get; set; }
+
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
         public Labels Labels { get; set; }
         [JsonProperty("className", NullValueHandling = NullValueHandling.Ignore)]

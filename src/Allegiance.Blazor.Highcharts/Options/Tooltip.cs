@@ -6,6 +6,8 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Enabled { get; set; }
+        [JsonProperty("shared", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Shared { get; set; }
         [JsonProperty("pointFormat", NullValueHandling = NullValueHandling.Ignore)]
         public string PointFormat { get; set; }
         [JsonProperty("headerFormat", NullValueHandling = NullValueHandling.Ignore)]

@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Condition(long? maxWidth)
+        public Condition(long? maxWidth = null)
         {
             MaxWidth = maxWidth;
         }

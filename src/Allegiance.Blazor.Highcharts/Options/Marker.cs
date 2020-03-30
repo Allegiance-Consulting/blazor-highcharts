@@ -16,12 +16,19 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("states", NullValueHandling = NullValueHandling.Ignore)]
         public States States { get; set; }
 
+        [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int? LineWidth { get; set; }
+        [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string LineColor { get; set; }
+        [JsonProperty("fillColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string FillColor { get; set; }
+
         public Marker()
         {
-
+            
         }
 
-        public Marker(bool? enabled, string symbol, long? radius, States states)
+        public Marker(bool? enabled = null, string symbol = null, long? radius = null, States states = null)
         {
             Enabled = enabled;
             Symbol = symbol;

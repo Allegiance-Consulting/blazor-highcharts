@@ -10,15 +10,40 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("area", NullValueHandling = NullValueHandling.Ignore)]
         public Area Area { get; set; }
 
+        [JsonProperty("pie", NullValueHandling = NullValueHandling.Ignore)]
+        public Pie Pie { get; set; }
+        [JsonProperty("scatter", NullValueHandling = NullValueHandling.Ignore)]
+        public Scatter Scatter { get; set; }
+
+        [JsonProperty("column", NullValueHandling = NullValueHandling.Ignore)]
+        public Column Column { get; set; }
+        [JsonProperty("line", NullValueHandling = NullValueHandling.Ignore)]
+        public Line Line { get; set; }
+
         public PlotOptions()
         {
 
         }
 
+        public PlotOptions(PlotOptionsSeries series = null)
+        {
+            Series = series;
+        }
         public PlotOptions(PlotOptionsSeries series = null, Area area = null)
         {
             Series = series;
             Area = area;
+        }
+        public PlotOptions(PlotOptionsSeries series = null, Pie pie = null)
+        {
+            Series = series;
+            Pie = pie;
+        }
+
+        public PlotOptions(PlotOptionsSeries series = null , Column column = null)
+        {
+            Series = series;
+            Column = column;
         }
     }
 }

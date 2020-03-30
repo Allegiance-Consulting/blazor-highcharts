@@ -7,19 +7,33 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        public string Type { get; set; }
+        [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
+        public string Color { get; set; }
+        [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
+        public Marker Marker { get; set; }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
-        public long?[] Data { get; set; }
+        public List<object> Data { get; set; }
+        [JsonProperty("colorByPoint", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? ColorByPoint { get; set; }
+        [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int? LineWidth { get; set; }
+        [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string LineColor { get; set; }
 
         public SeriesElement()
         {
 
         }
 
-        public SeriesElement(string name, List<long?> data)
+        public SeriesElement(string name = null, List<object> data = null, string type = null, bool? colorbypoint = null)
         {
             Name = name;
-            Data = data.ToArray();
+            Data = data;
+            Type = type;
+            ColorByPoint = colorbypoint;
         }
     }
 }

@@ -1,0 +1,104 @@
+﻿@page "/styled-column-chart"
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+<h3>Column Chart</h3>
+
+<figure class="highcharts-figure">
+    <div id="columnchart"></div>
+</figure>
+
+
+<h4>Code Example</h4>
+<pre class="prettyprint opacity-load">
+@@code {
+    private ChartObject ColumnChart = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Column, false),
+        Title = new Title("Styling Axes and columns"),
+        XAxis = new XAxis(AxisType.Category),
+        YAxis = new YAxis()
+        {
+            Title = new Title(""),
+            ClassName = "highcharts-color-0"
+        },
+        Legend = new Legend(false),
+        PlotOptions = new PlotOptions()
+        {
+            Column = new Column(5),
+            Series = new PlotOptionsSeries()
+            {
+                PointWidth = 60
+            }
+
+        },
+        Series = new List=&lt;SeriesElement>()
+		{
+            new SeriesElement()
+            {
+                ColorByPoint = true,
+                Data = new List=&lt;object>()
+        {
+                    {new Datum("Assets", 120000) },
+                    {new Datum("Liabilities", 120000) }
+                }
+            }
+        }
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("columnchart", ColumnChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+
+}
+
+</pre>
+
+
+@code {
+    private ChartObject ColumnChart = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Column, false),
+        Title = new Title("Styling Axes and columns"),
+        XAxis = new XAxis(AxisType.Category),
+        YAxis = new YAxis()
+        {
+            Title = new Title(""),
+            ClassName = "highcharts-color-0"
+        },
+        Legend = new Legend(false),
+        PlotOptions = new PlotOptions()
+        {
+            Column = new Column(5),
+            Series = new PlotOptionsSeries()
+            {
+                PointWidth = 60
+            }
+
+        },
+        Series = new List<SeriesElement>()
+		{
+            new SeriesElement()
+            {
+                ColorByPoint = true,
+                Data = new List<object>()
+        {
+                    {new Datum("Assets", 120000) },
+                    {new Datum("Liabilities", 120000) }
+                }
+            }
+        }
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("columnchart", ColumnChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+
+}

@@ -1,7 +1,7 @@
 ﻿@page "/basic-line-chart"
 @inject IChartService chartService
 @inject IJSRuntime jsRuntime
-@using System.Threading
+
 
 <h3>Basic Line Chart</h3>
 
@@ -10,40 +10,38 @@
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code{
-    private BasicLine BasicLineGraph = new BasicLine()
+    private ChartObject BasicLineGraph = new ChartObject()
     {
-        Legend = new Legend(Layout.Vertical, Align.Right, VerticalAlign.Middle),
-        PlotOptions = new PlotOptions(
-            new PlotOptionsSeries(
-                new Label(false), 2010)
-            ),
+        
+        Legend = new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle),
+        PlotOptions = new PlotOptions( new PlotOptionsSeries(new Label(false), 2010)),
         Responsive = new Responsive(
             new Rule(
                 new Condition(500), 
                 new ChartOptions(
-                        new Legend(Layout.Vertical, Align.Right, VerticalAlign.Middle)
+                        new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle)
                     )
                 )
             ),
-        Series = new List&lt;SeriesElement>()
+        Series = new List=&lt;SeriesElement>()
         {
-            new SeriesElement("Installation", new List&lt;long?>()
+            new SeriesElement("Installation", new List=&lt;object>()
             {
                 43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175
             }),
-            new SeriesElement("Manufacturing", new List&lt;long?>()
+            new SeriesElement("Manufacturing", new List=&lt;object>()
             {
                 24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434
             }),
-            new SeriesElement("Sales & Distribution", new List&lt;long?>()
+            new SeriesElement("Sales & Distribution", new List=&lt;object>()
             {
                 11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387
             }),
-            new SeriesElement("Project Development", new List&lt;long?>()
+            new SeriesElement("Project Development", new List=&lt;object>()
             {
                 null, null, 7988, 12169, 15112, 22452, 34400, 34227
             }),
-            new SeriesElement("Other", new List&lt;long?>()
+            new SeriesElement("Other", new List=&lt;object>()
             {
                 12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111
             }),
@@ -68,40 +66,38 @@
 </pre>
 
 @code{
-    private BasicLine BasicLineGraph = new BasicLine()
+    private ChartObject BasicLineGraph = new ChartObject()
     {
-        Legend = new Legend(Layout.Vertical, Align.Right, VerticalAlign.Middle),
-        PlotOptions = new PlotOptions(
-            new PlotOptionsSeries(
-                new Label(false), 2010)
-            ),
+        
+        Legend = new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle),
+        PlotOptions = new PlotOptions( new PlotOptionsSeries(new Label(false), 2010)),
         Responsive = new Responsive(
             new Rule(
                 new Condition(500), 
                 new ChartOptions(
-                        new Legend(Layout.Vertical, Align.Right, VerticalAlign.Middle)
+                        new Legend(true, Layout.Vertical, Align.Right, VerticalAlign.Middle)
                     )
                 )
             ),
         Series = new List<SeriesElement>()
         {
-            new SeriesElement("Installation", new List<long?>()
+            new SeriesElement("Installation", new List<object>()
             {
                 43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175
             }),
-            new SeriesElement("Manufacturing", new List<long?>()
+            new SeriesElement("Manufacturing", new List<object>()
             {
                 24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434
             }),
-            new SeriesElement("Sales & Distribution", new List<long?>()
+            new SeriesElement("Sales & Distribution", new List<object>()
             {
                 11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387
             }),
-            new SeriesElement("Project Development", new List<long?>()
+            new SeriesElement("Project Development", new List<object>()
             {
                 null, null, 7988, 12169, 15112, 22452, 34400, 34227
             }),
-            new SeriesElement("Other", new List<long?>()
+            new SeriesElement("Other", new List<object>()
             {
                 12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111
             }),

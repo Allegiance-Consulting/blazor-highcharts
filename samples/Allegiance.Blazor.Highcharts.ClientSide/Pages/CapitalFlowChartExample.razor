@@ -1,0 +1,174 @@
+﻿@page "/capital-flow-chart"
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+@using Allegiance.Blazor.Highcharts.ClientSide.DataConstants
+<h3>CapitalFlowChartExample</h3>
+
+<div id="capital-flow-chart"></div>
+
+<h4>Code Example</h4>
+<pre class="prettyprint opacity-load">
+@@code {
+
+    public static string primaryRed = "red";
+    public static string primary3 = "aquamarine";
+    public static string primary1 = "powderblue";
+
+    private ChartObject CapitalWealthChart = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Column),
+        Credits = new Credits(false),
+        Title = new Title("View of Retirement and Discretionary Capital"),
+        XAxis = new XAxis()
+        {
+            Categories = DummyDataCapitalFlow.Categories.ConvertAll=&lt;string>(x => x.ToString()),
+            PlotLines = new List=&lt;Line>
+        {
+                new Line()
+                {
+                Color = primaryRed,
+                DashStyle = DashStyle.Longdashdot,
+                Value = 37,
+                Width = 1,
+                ZIndex = 5,
+                Label = new Label()
+                {
+                    Align = Align.Left,
+                    Text = "=&lt;span style=\"font-weight: normal; color: " + primaryRed + " ; font-size: 14px; letter-spacing: normal;\">Retirement=&lt;/span>"
+                },
+                Id = "CapitalRetirementLine"
+                }
+            }
+        },
+        YAxis = new YAxis()
+        {
+            Min = 0,
+            Title = new Title("Cpital Over Period")
+        },
+        Tooltip = new Tooltip()
+        {
+            PointFormat = "=&lt;span style=\"color:{series.color}\">{series.name}=&lt;/span>: ' + 'R' + '=&lt;b>{point.y}=&lt;/b>=&lt;br />",
+            Shared = true
+        },
+        PlotOptions = new PlotOptions()
+        {
+            Column = new Column() { Stacking = Stacking.Normal }
+        },
+        Exporting = new Exporting()
+        {
+            Buttons = new Buttons()
+            {
+                ContextButton = new ContextButton(false)
+            },
+            SourceHeight = 350,
+            SourceWidth = 900
+        },
+        Series = new List=&lt;SeriesElement>()
+    {
+            new SeriesElement()
+            {
+                Name = "Retirement Capital",
+                Color = primary1,
+                Data = DummyDataCapitalFlow.Retirement
+            },
+            new SeriesElement()
+            {
+                Name = "Discretionary Capital",
+                Color = primary3,
+                Data = DummyDataCapitalFlow.Discretionary
+            }
+        }
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("capital-flow-chart", CapitalWealthChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+}
+</pre>
+
+
+@code {
+
+    public static string primaryRed = "red";
+    public static string primary3 = "aquamarine";
+    public static string primary1 = "powderblue";
+
+
+    private ChartObject CapitalWealthChart = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Column),
+        Credits = new Credits(false),
+        Title = new Title("View of Retirement and Discretionary Capital"),
+        XAxis = new XAxis()
+        {
+            Categories = DummyDataCapitalFlow.Categories.ConvertAll<string>(x => x.ToString()),
+            PlotLines = new List<Line>
+        {
+                new Line()
+                {
+                Color = primaryRed,
+                DashStyle = DashStyle.Longdashdot,
+                Value = 37,
+                Width = 1,
+                ZIndex = 5,
+                Label = new Label()
+                {
+                    Align = Align.Left,
+                    Text = "<span style=\"font-weight: normal; color: " + primaryRed + "; font-size: 14px; letter-spacing: normal;\">Retirement</span>"
+                },
+                Id = "CapitalRetirementLine"
+                }
+            }
+        },
+        YAxis = new YAxis()
+        {
+            Min = 0,
+            Title = new Title("Cpital Over Period")
+        },
+        Tooltip = new Tooltip()
+        {
+            PointFormat = "<span style=\"color:{series.color}\">{series.name}</span>: ' + 'R' + '<b>{point.y}</b><br/>",
+            Shared = true
+        },
+        PlotOptions = new PlotOptions()
+        {
+            Column = new Column() { Stacking = Stacking.Normal }
+        },
+        Exporting = new Exporting()
+        {
+            Buttons = new Buttons()
+            {
+                ContextButton = new ContextButton(false)
+            },
+            SourceHeight = 350,
+            SourceWidth = 900
+        },
+        Series = new List<SeriesElement>()
+    {
+            new SeriesElement()
+            {
+                Name = "Retirement Capital",
+                Color = primary1,
+                Data = DummyDataCapitalFlow.Retirement
+            },
+            new SeriesElement()
+            {
+                Name = "Discretionary Capital",
+                Color = primary3,
+                Data = DummyDataCapitalFlow.Discretionary
+            }
+        }
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("capital-flow-chart", CapitalWealthChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+}

@@ -18,7 +18,7 @@ namespace Allegiance.Blazor.Highcharts.Options
             Rules = new List<Rule>() { rule };
         }
 
-        public Responsive(List<Rule> rules)
+        public Responsive(List<Rule> rules = null)
         {
             Rules = rules;
         }

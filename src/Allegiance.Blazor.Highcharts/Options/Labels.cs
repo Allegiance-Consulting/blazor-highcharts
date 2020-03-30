@@ -7,13 +7,19 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("formatter", NullValueHandling = NullValueHandling.Ignore)]
         public string Formatter { get; set; }
+        [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Enabled { get; set; }
 
         public Labels()
         {
 
         }
+        public Labels(bool? enabled = null)
+        {
+            Enabled = enabled;
+        }
 
-        public Labels(string formatter)
+        public Labels(string formatter = null)
         {
             Formatter = formatter;
             // So the temporary workaround to pass actual javascript functions

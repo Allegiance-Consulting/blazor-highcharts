@@ -1,0 +1,111 @@
+﻿@page "/pie-chart"
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+@using Allegiance.Blazor.Highcharts.Constants
+
+<h3>Pie Chart</h3>
+
+<figure class="highcharts-figure">
+    <div id="piechart"></div>
+</figure>
+
+<h4>Code Example</h4>
+<pre class="prettyprint opacity-load">
+@@code {
+    private ChartObject PieChart = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Pie),
+        Tooltip = new Tooltip(false),
+        Legend = new Legend(true),
+        PlotOptions = new PlotOptions()
+        {
+            Pie = new Pie()
+            {
+                AllowPointSelect = false,
+                ShowInLegend = true,
+                Cursor = CursorType.Pointer,
+                DataLabels = new Labels(false),
+                States = new States(new Hover(false)),
+            },
+            Series = null
+        },
+        Title = new Title("Browser market shares in January, 2018"),
+        Series = new List=&lt;SeriesElement>()
+{
+            new SeriesElement()
+            {
+                Name = "Brands",
+                Data = new List=&lt;object>()
+                {
+                    {new List=&lt;object>(){ "Chrome", 61.4 } },
+                    {new List=&lt;object>(){ "Internet Explorer", 11.84 } },
+                    {new List=&lt;object>(){ "Firefox", 10.85 } },
+                    {new List=&lt;object>(){ "Edge", 4.67 } },
+                    {new List=&lt;object>(){ "Safari", 4.18 } },
+                    {new List=&lt;object>(){ "Other", 7.05 } }
+                }
+
+            }
+        }
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("piechart", PieChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+}
+
+
+</pre>
+
+
+@code {
+
+    private ChartObject PieChart = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Pie),
+        Tooltip = new Tooltip(false),
+        Legend = new Legend(true),
+        PlotOptions = new PlotOptions()
+        {
+            Pie = new Pie()
+            {
+                AllowPointSelect = false,
+                ShowInLegend = true,
+                Cursor = CursorType.Pointer,
+                DataLabels = new Labels(false),
+                States = new States(new Hover(false)),
+            },
+            Series = null
+        },
+        Title = new Title("Browser market shares in January, 2018"),
+        Series = new List<SeriesElement>()
+{
+            new SeriesElement()
+            {
+                Name = "Brands",
+                Data = new List<object>()
+                {
+                    {new List<object>(){ "Chrome", 61.4 } },
+                    {new List<object>(){ "Internet Explorer", 11.84 } },
+                    {new List<object>(){ "Firefox", 10.85 } },
+                    {new List<object>(){ "Edge", 4.67 } },
+                    {new List<object>(){ "Safari", 4.18 } },
+                    {new List<object>(){ "Other", 7.05 } }
+                }
+
+            }
+        }
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("piechart", PieChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+}

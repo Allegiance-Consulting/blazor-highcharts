@@ -11,9 +11,9 @@
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code {
-    private ColumnChart ColumnChart = new ColumnChart()
+    private ChartObject ColumnChart = new ChartObject()
     {
-        Chart = new Chart(ChartType.Column, true),
+        Chart = new Chart(ChartType.Column, false),
         Title = new Title("Styling Axes and columns"),
         XAxis = new XAxis(AxisType.Category),
         YAxis = new YAxis()
@@ -31,12 +31,12 @@
             }
 
         },
-        Series = new List&lt;SeriesElement>()
+        Series = new List=&lt;SeriesElement>()
 		{
             new SeriesElement()
             {
                 ColorByPoint = true,
-                Data = new List&lt;object>()
+                Data = new List=&lt;object>()
         {
                     {new Datum("Assets", 120000) },
                     {new Datum("Liabilities", 120000) }
@@ -54,6 +54,7 @@
 
 
 }
+
 </pre>
 
 

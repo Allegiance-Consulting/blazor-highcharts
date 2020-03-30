@@ -3,7 +3,7 @@
 @inject IJSRuntime jsRuntime
 @using Allegiance.Blazor.Highcharts.Constants
 
-<h3>Styled Pie Chart</h3>
+<h3>Pie Chart</h3>
 
 <figure class="highcharts-figure">
     <div id="piechart"></div>
@@ -12,9 +12,9 @@
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code {
-    private PieChart PieChart = new PieChart()
+    private ChartObject PieChart = new ChartObject()
     {
-        Chart = new Chart(null, true),
+        Chart = new Chart(ChartType.Pie),
         Tooltip = new Tooltip(false),
         Legend = new Legend(true),
         PlotOptions = new PlotOptions()
@@ -29,18 +29,22 @@
             },
             Series = null
         },
-        Title = new Title("Pie point css"),
-        Series = new List&lt;SeriesElement>()
-        {
+        Title = new Title("Browser market shares in January, 2018"),
+        Series = new List=&lt;SeriesElement>()
+{
             new SeriesElement()
             {
-                Type = ChartType.Pie,
-                Data = new List&lt;object>()
+                Name = "Brands",
+                Data = new List=&lt;object>()
                 {
-                    {new List&lt;object>(){"Consumption", 29.9 } },
-                    {new List&lt;object>(){"Consumption",71.5 } },
-                    {new List&lt;object>(){"Consumption",106.4 } }
+                    {new List=&lt;object>(){ "Chrome", 61.4 } },
+                    {new List=&lt;object>(){ "Internet Explorer", 11.84 } },
+                    {new List=&lt;object>(){ "Firefox", 10.85 } },
+                    {new List=&lt;object>(){ "Edge", 4.67 } },
+                    {new List=&lt;object>(){ "Safari", 4.18 } },
+                    {new List=&lt;object>(){ "Other", 7.05 } }
                 }
+
             }
         }
     };
@@ -53,6 +57,8 @@
     }
 
 }
+
+
 </pre>
 
 
@@ -61,7 +67,6 @@
     private ChartObject PieChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Pie),
-        //Chart = new Chart(null, true),
         Tooltip = new Tooltip(false),
         Legend = new Legend(true),
         PlotOptions = new PlotOptions()
@@ -71,31 +76,29 @@
                 AllowPointSelect = false,
                 ShowInLegend = true,
                 Cursor = CursorType.Pointer,
-                DataLabels = new Labels()
-                {
-                    //Enabled = false
-                },
+                DataLabels = new Labels(false),
                 States = new States(new Hover(false)),
             },
             Series = null
         },
-        Title = new Title("Pie point css"),
+        Title = new Title("Browser market shares in January, 2018"),
         Series = new List<SeriesElement>()
 {
             new SeriesElement()
             {
-                //Type = ChartType.Pie,
+                Name = "Brands",
                 Data = new List<object>()
                 {
-                    {new List<object>(){"Consumption", 29.9 } },
-                    {new List<object>(){"Consumption",71.5 } },
-                    {new List<object>(){"Consumption",106.4 } }
+                    {new List<object>(){ "Chrome", 61.4 } },
+                    {new List<object>(){ "Internet Explorer", 11.84 } },
+                    {new List<object>(){ "Firefox", 10.85 } },
+                    {new List<object>(){ "Edge", 4.67 } },
+                    {new List<object>(){ "Safari", 4.18 } },
+                    {new List<object>(){ "Other", 7.05 } }
                 }
 
             }
         }
-
-
     };
 
     protected override void OnAfterRender(bool firstRender)

@@ -43,6 +43,10 @@ namespace Allegiance.Blazor.Highcharts.Charts
         public Responsive Responsive { get; set; }
         [JsonProperty("exporting", NullValueHandling = NullValueHandling.Ignore)]
         public Exporting Exporting { get; set; }
+      
+        [JsonProperty("pane", NullValueHandling = NullValueHandling.Ignore)]
+        public Pane Pane { get; set; }
+  
 
         public string Generate()
         {

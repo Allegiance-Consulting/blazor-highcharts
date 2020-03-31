@@ -20,6 +20,11 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("line", NullValueHandling = NullValueHandling.Ignore)]
         public Line Line { get; set; }
 
+        [JsonProperty("solidgauge", NullValueHandling = NullValueHandling.Ignore)]
+        public Solidgauge Solidgauge { get; set; }
+
+
+
         public PlotOptions()
         {
 

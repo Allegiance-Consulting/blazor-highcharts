@@ -1,4 +1,4 @@
-﻿@page "/styled-column-chart"
+﻿@page "/column-chart"
 @inject IChartService chartService
 @inject IJSRuntime jsRuntime
 <h3>Column Chart</h3>
@@ -11,15 +11,14 @@
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code {
-    private ChartObject ColumnChart = new ChartObject()
+ private ChartObject ColumnChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Column, false),
-        Title = new Title("Styling Axes and columns"),
+        Title = new Title("ASCII value of letters in 'COLUMN'"),
         XAxis = new XAxis(AxisType.Category),
         YAxis = new YAxis()
         {
-            Title = new Title(""),
-            ClassName = "highcharts-color-0"
+            Title = new Title("Letter"),
         },
         Legend = new Legend(false),
         PlotOptions = new PlotOptions()
@@ -31,15 +30,20 @@
             }
 
         },
-        Series = new List=&lt;SeriesElement>()
+        Series = new List&lt;SeriesElement>()
 		{
             new SeriesElement()
             {
+                Name = "ASCII value",
                 ColorByPoint = true,
-                Data = new List=&lt;object>()
+                Data = new List&lt;object>()
         {
-                    {new Datum("Assets", 120000) },
-                    {new Datum("Liabilities", 120000) }
+                    {new Datum("C", 67) },
+                    {new Datum("O", 79) },
+                    {new Datum("L", 76) },
+                    {new Datum("U", 85) },
+                    {new Datum("M", 77) },
+                    {new Datum("N", 78) }
                 }
             }
         }
@@ -62,12 +66,11 @@
     private ChartObject ColumnChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Column, false),
-        Title = new Title("Styling Axes and columns"),
+        Title = new Title("ASCII value of letters in 'COLUMN'"),
         XAxis = new XAxis(AxisType.Category),
         YAxis = new YAxis()
         {
-            Title = new Title(""),
-            ClassName = "highcharts-color-0"
+            Title = new Title("Letter"),
         },
         Legend = new Legend(false),
         PlotOptions = new PlotOptions()
@@ -83,11 +86,16 @@
 		{
             new SeriesElement()
             {
+                Name = "ASCII value",
                 ColorByPoint = true,
                 Data = new List<object>()
         {
-                    {new Datum("Assets", 120000) },
-                    {new Datum("Liabilities", 120000) }
+                    {new Datum("C", 67) },
+                    {new Datum("O", 79) },
+                    {new Datum("L", 76) },
+                    {new Datum("U", 85) },
+                    {new Datum("M", 77) },
+                    {new Datum("N", 78) }
                 }
             }
         }

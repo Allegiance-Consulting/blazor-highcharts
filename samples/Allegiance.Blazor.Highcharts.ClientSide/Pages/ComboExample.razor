@@ -1,47 +1,40 @@
-﻿@page "/wealth-chart"
+﻿@page "/combo-chart"
 @inject IChartService chartService
 @inject IJSRuntime jsRuntime
-@using Allegiance.Blazor.Highcharts.ClientSide.DataConstants
-<h3>WealthExample</h3>
+<h3>Combo Example</h3>
 
-<div id="wealth"></div>
+<div id="combo-chart"></div>
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code {
     public static string primaryRed = "red";
     public static string primary5 = "cadetblue";
-    public static string primary4 = "blueviolet";
-    public static string primary3 = "aquamarine";
-    public static string primary2 = "aqua";
-    public static string primary1 = "powderblue";
 
-    private ChartObject WealthMap = new ChartObject()
+    private ChartObject ComboChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Area),
         Credits = new Credits(false),
-        Title = new Title("Wealth Map"),
+        Title = new Title("Combo Chart"),
         XAxis = new XAxis()
         {
-            TickPositions = DummyDataWealth.Ticks,
-            Categories = DummyDataWealth.Categories.ConvertAll=&lt;string>(x => x.ToString()),
             TickmarkPlacement = TickmarkPlacement.On,
             Title = new Title(false),
-            PlotLines = new List=&lt;Line>()
+            PlotLines = new List&lt;Line>()
         {
                 new Line()
                 {
                 Color = primaryRed,
                 DashStyle = DashStyle.Longdashdot,
-                Value = 446,
+                Value = 7,
                 Width = 1,
                 ZIndex = 5,
                 Label = new Label()
                 {
                     Align = Align.Left,
-                    Text = "=&lt;span style=\"font-weight: normal; color: " + primaryRed + " ; font-size: 14px; letter-spacing: normal;\">Retirement=&lt;/span>"
+                    Text = "&lt;span style=\"font-weight: normal; color: " + primaryRed + " ; font-size: 14px; letter-spacing: normal;\">Plot Line&lt;/span>"
                 },
-                Id = "OverviewRetirementLine"
+                Id = "PlotLine"
                 }
             }
         },
@@ -71,58 +64,29 @@
             }
         },
 
-        Series = new List=&lt;SeriesElement>
+        Series = new List&lt;SeriesElement>()
     {
             new SeriesElement()
             {
-            Name= "Lifestyle Assets ",
-            Data=  DummyDataWealth.LifeStyle,
-
-            Color= primary5,
-            Marker=new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Retirement Assets ",
-                Data= DummyDataWealth.Retirement,
-                Color= primary4,
-                Marker= new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Discretionary Assets ",
-                Data=  DummyDataWealth.Discretionary ,
-                Color= primary3,
-                Marker= new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Business Assets",
-                Data= DummyDataWealth.Businessasset,
-                Color= primary2,
-                Marker= new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Property",
-                Data= DummyDataWealth.Property,
-                Color= primary1,
-                Marker= new Marker(false)
+                Name= "Area",
+                Data= new List&lt;object>() { 5371268, 5316387, 5261641, 5207028, 5152546, 5098196, 5043975, 4989882, 4935917, 4882077, 4828362, 4774769 },
+                Color= primary5,
+                Marker=new Marker(false)
             },
             new SeriesElement()
             {
                 Type= "spline",
-                Name= "Debt",
-                Data= DummyDataWealth.Debt ,
+                Name= "Spline",
+                Data= new List&lt;object>() { 2400019, 2388393, 2376824, 2365311, 2353853, 2342451, 2331105, 2319813, 2308576, 2297393, 2286264, 2275190 },
                 LineWidth= 3,
                 LineColor= primaryRed,
                 Color= primaryRed,
                 Marker=new Marker()
                 {
-                LineWidth= 3,
-                LineColor= primaryRed,
-                FillColor= "black"
-                }
+                    LineWidth= 3,
+                    LineColor= primaryRed,
+                    FillColor= "black"
+                },
             }
         },
         Exporting = new Exporting()
@@ -145,7 +109,7 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("wealth", WealthMap.Generate());
+        chartService.RenderChart("combo-chart", ComboChart.Generate());
         jsRuntime.InvokeVoidAsync("prettyPrint");
     }
 
@@ -155,20 +119,14 @@
 @code {
     public static string primaryRed = "red";
     public static string primary5 = "cadetblue";
-    public static string primary4 = "blueviolet";
-    public static string primary3 = "aquamarine";
-    public static string primary2 = "aqua";
-    public static string primary1 = "powderblue";
 
-    private ChartObject WealthMap = new ChartObject()
+    private ChartObject ComboChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Area),
         Credits = new Credits(false),
-        Title = new Title("Wealth Map"),
+        Title = new Title("Combo Chart"),
         XAxis = new XAxis()
         {
-            TickPositions = DummyDataWealth.Ticks,
-            Categories = DummyDataWealth.Categories.ConvertAll<string>(x => x.ToString()),
             TickmarkPlacement = TickmarkPlacement.On,
             Title = new Title(false),
             PlotLines = new List<Line>()
@@ -177,15 +135,15 @@
                 {
                 Color = primaryRed,
                 DashStyle = DashStyle.Longdashdot,
-                Value = 446,
+                Value = 7,
                 Width = 1,
                 ZIndex = 5,
                 Label = new Label()
                 {
                     Align = Align.Left,
-                    Text = "<span style=\"font-weight: normal; color: " + primaryRed + "; font-size: 14px; letter-spacing: normal;\">Retirement</span>"
+                    Text = "<span style=\"font-weight: normal; color: " + primaryRed + "; font-size: 14px; letter-spacing: normal;\">Plot Line</span>"
                 },
-                Id = "OverviewRetirementLine"
+                Id = "PlotLine"
                 }
             }
         },
@@ -215,58 +173,29 @@
             }
         },
 
-        Series = new List<SeriesElement>
+        Series = new List<SeriesElement>()
     {
             new SeriesElement()
             {
-            Name= "Lifestyle Assets ",
-            Data=  DummyDataWealth.LifeStyle,
-
-            Color= primary5,
-            Marker=new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Retirement Assets ",
-                Data= DummyDataWealth.Retirement,
-                Color= primary4,
-                Marker= new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Discretionary Assets ",
-                Data=  DummyDataWealth.Discretionary ,
-                Color= primary3,
-                Marker= new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Business Assets",
-                Data= DummyDataWealth.Businessasset,
-                Color= primary2,
-                Marker= new Marker(false)
-            },
-            new SeriesElement()
-            {
-                Name= "Property",
-                Data= DummyDataWealth.Property,
-                Color= primary1,
-                Marker= new Marker(false)
+                Name= "Area",
+                Data= new List<object>() { 5371268, 5316387, 5261641, 5207028, 5152546, 5098196, 5043975, 4989882, 4935917, 4882077, 4828362, 4774769 },
+                Color= primary5,
+                Marker=new Marker(false)
             },
             new SeriesElement()
             {
                 Type= "spline",
-                Name= "Debt",
-                Data= DummyDataWealth.Debt ,
+                Name= "Spline",
+                Data= new List<object>() { 2400019, 2388393, 2376824, 2365311, 2353853, 2342451, 2331105, 2319813, 2308576, 2297393, 2286264, 2275190 },
                 LineWidth= 3,
                 LineColor= primaryRed,
                 Color= primaryRed,
                 Marker=new Marker()
                 {
-                LineWidth= 3,
-                LineColor= primaryRed,
-                FillColor= "black"
-                }
+                    LineWidth= 3,
+                    LineColor= primaryRed,
+                    FillColor= "black"
+                },
             }
         },
         Exporting = new Exporting()
@@ -289,7 +218,7 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("wealth", WealthMap.Generate());
+        chartService.RenderChart("combo-chart", ComboChart.Generate());
         jsRuntime.InvokeVoidAsync("prettyPrint");
     }
 

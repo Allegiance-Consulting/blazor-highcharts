@@ -7,5 +7,15 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("contextButton", NullValueHandling = NullValueHandling.Ignore)]
         public ContextButton ContextButton { get; set; }
+
+        public Buttons()
+        {
+
+        }
+
+        public Buttons(bool? contextButtonEnabled)
+        {
+            ContextButton = new ContextButton(contextButtonEnabled);
+        }
     }
 }

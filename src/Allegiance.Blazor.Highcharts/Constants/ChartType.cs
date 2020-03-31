@@ -10,5 +10,6 @@ namespace Allegiance.Blazor.Highcharts.Constants
         public static string Pie { get; } = "pie";
         public static string Column { get; } = "column";
         public static string Scatter { get; } = "scatter";
+        public static string SolidGauge { get; } = "solidgauge";
     }
 }

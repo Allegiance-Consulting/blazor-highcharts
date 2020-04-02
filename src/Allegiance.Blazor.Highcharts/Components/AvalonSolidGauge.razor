@@ -1,0 +1,145 @@
+﻿@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+
+<figure class="highcharts-figure" style="width: 600px">
+    <div id="solidgauge-@uniqueID"></div>
+</figure>
+
+
+@code {
+
+    [Parameter]
+    public long? displayVal { get; set; } = 0;
+    [Parameter]
+    public int? chartHeight { get; set; } = 100;
+    [Parameter]
+    public string uniqueID { get; set; } = "demo";
+    //public static long? displayVal = recievVal;
+
+    private ChartObject SolidGauge = new ChartObject()
+    {
+        Chart = new Chart()
+        {
+            StyledMode = false,
+            Type = ChartType.SolidGauge,
+            Height = 100,
+            Spacing = new List<long>() { 0, 0, 0, 0 },
+            Margin = new List<long>() { 0, 0, 0, 0 },
+            BackgroundColor = null,
+            Animation = new Animation(2000)
+
+        },
+        Exporting = new Exporting()
+        {
+            Buttons = new Buttons(false)
+        },
+        Legend = new Legend(true),
+        Credits = new Credits(false),
+        Title = new Title()
+        {
+            Text = "Loading...",
+            VerticalAlign = VerticalAlign.Middle,
+            Floating = true,
+            Style = new Style()
+            {
+                Color = "#666",
+                FontWeight = "bold",
+                FontSize = "24px",
+                FontFamily = "Roboto"
+            },
+            Y = 20
+        },
+        Pane = new Pane()
+        {
+            StartAngle = 0,
+            EndAngle = 360,
+            Size = "100%",
+            Center = new List<string>() { "50%", "50%" },
+            Background = new List<Background>()
+            {
+               new Background()
+               {
+                   BackgroundColor = "#EBEBEB",
+                   OuterRadius = "100%",
+                   InnerRadius = "60%",
+                   BorderWidth = 0,
+                   Shape = BackgroundShape.Circle
+
+               }
+            }
+
+        },
+        YAxis = new YAxis()
+        {
+            Min = 0,
+            Max = 100,
+            LineWidth = 0,
+            TickPositions = new List<object>(),
+            Stops = new List<object>()
+        {
+                new List<object>(){0.1, "#ea6868"},
+                new List<object>(){0.49, "#ea6868"},
+                new List<object>(){0.5, "#fbaf5f"},
+                new List<object>(){0.69, "#fbaf5f"},
+                new List<object>(){0.7, "#5bc9b3"}
+            }
+        },
+        PlotOptions = new PlotOptions()
+        {
+            Series = new PlotOptionsSeries()
+            {
+                Animation = new Animation(2000)
+            },
+            Solidgauge = new Solidgauge()
+            {
+                DataLabels = new Labels(false),
+                StickyTracking = false,
+                Rounded = true
+            }
+        },
+        Tooltip = new Tooltip()
+        {
+            Enabled = false
+        }
+    };
+
+
+    public void UpdateGraph( long? myval )
+    {
+        SolidGauge.Chart.Height = chartHeight;
+        SolidGauge.Title.Text = myval.ToString() + "%";
+        SolidGauge.Series = new List<SeriesElement>()
+        {
+            new SeriesElement()
+            {
+                Name = "Hit Rate",
+                Data = new List<object>()
+                {
+                    new Datum()
+                    {
+                        Radius = "100%",
+                        InnerRadius = "60%",
+                        Y = myval,
+                        BorderRadius = "10px"
+                    }
+                }
+            }
+
+        };
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("solidgauge-" + uniqueID, SolidGauge.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        UpdateGraph(displayVal);
+
+    }
+
+}

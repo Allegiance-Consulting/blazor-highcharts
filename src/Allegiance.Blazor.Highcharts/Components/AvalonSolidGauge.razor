@@ -1,9 +1,7 @@
 ﻿@inject IChartService chartService
 @inject IJSRuntime jsRuntime
 
-<figure class="highcharts-figure" style="width: 600px">
-    <div id="solidgauge-@uniqueID"></div>
-</figure>
+<div id="solidgauge-@uniqueID"></div>
 
 
 @code {
@@ -11,10 +9,9 @@
     [Parameter]
     public long? displayVal { get; set; } = 0;
     [Parameter]
-    public int? chartHeight { get; set; } = 100;
+    public string chartHeight { get; set; } = "100";
     [Parameter]
     public string uniqueID { get; set; } = "demo";
-    //public static long? displayVal = recievVal;
 
     private ChartObject SolidGauge = new ChartObject()
     {
@@ -22,7 +19,8 @@
         {
             StyledMode = false,
             Type = ChartType.SolidGauge,
-            Height = 100,
+            Height = "100",
+            Width = "100",
             Spacing = new List<long>() { 0, 0, 0, 0 },
             Margin = new List<long>() { 0, 0, 0, 0 },
             BackgroundColor = null,
@@ -37,7 +35,8 @@
         Credits = new Credits(false),
         Title = new Title()
         {
-            Text = "Loading...",
+            Text = "",
+            Align = Align.Center,
             VerticalAlign = VerticalAlign.Middle,
             Floating = true,
             Style = new Style()
@@ -45,7 +44,8 @@
                 Color = "#666",
                 FontWeight = "bold",
                 FontSize = "24px",
-                FontFamily = "Roboto"
+               //FontFamily = "Roboto"
+                FontFamily = "initial"
             },
             Y = 20
         },
@@ -61,7 +61,7 @@
                {
                    BackgroundColor = "#EBEBEB",
                    OuterRadius = "100%",
-                   InnerRadius = "60%",
+                   InnerRadius = "90%",
                    BorderWidth = 0,
                    Shape = BackgroundShape.Circle
 
@@ -75,14 +75,6 @@
             Max = 100,
             LineWidth = 0,
             TickPositions = new List<object>(),
-            Stops = new List<object>()
-        {
-                new List<object>(){0.1, "#ea6868"},
-                new List<object>(){0.49, "#ea6868"},
-                new List<object>(){0.5, "#fbaf5f"},
-                new List<object>(){0.69, "#fbaf5f"},
-                new List<object>(){0.7, "#5bc9b3"}
-            }
         },
         PlotOptions = new PlotOptions()
         {
@@ -103,10 +95,29 @@
         }
     };
 
+    public string SetColor( long? myval)
+    {
+        if ( myval < 50)
+        {
+            return "#ea6868";
+        }
+        else if ( myval < 70)
+        {
+            return "#fbaf5f";
+        }
+        else
+        {
+            return "#5bc9b3";
+        }
+    }
 
     public void UpdateGraph( long? myval )
     {
+        string colorstring = SetColor(myval);
+        
         SolidGauge.Chart.Height = chartHeight;
+        SolidGauge.Chart.Width = chartHeight;
+        SolidGauge.Title.Style.Color = colorstring;
         SolidGauge.Title.Text = myval.ToString() + "%";
         SolidGauge.Series = new List<SeriesElement>()
         {
@@ -117,8 +128,9 @@
                 {
                     new Datum()
                     {
+                        Color = colorstring,
                         Radius = "100%",
-                        InnerRadius = "60%",
+                        InnerRadius = "90%",
                         Y = myval,
                         BorderRadius = "10px"
                     }

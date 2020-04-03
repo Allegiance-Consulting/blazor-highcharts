@@ -14,10 +14,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string ZoomType { get; set; }
 
         [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
-        public int?  Width { get; set; }
+        public string  Width { get; set; }
 
         [JsonProperty("height", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Height { get; set; }
+        public string Height { get; set; }
 
         [JsonProperty("spacing", NullValueHandling = NullValueHandling.Ignore)]
         public List<long> Spacing { get; set; }

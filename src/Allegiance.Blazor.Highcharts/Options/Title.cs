@@ -11,6 +11,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("verticalAlign", NullValueHandling = NullValueHandling.Ignore)]
         public string VerticalAlign { get; set; }
+        [JsonProperty("align", NullValueHandling = NullValueHandling.Ignore)]
+        public string Align { get; set; }
 
         [JsonProperty("floating", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Floating { get; set; }

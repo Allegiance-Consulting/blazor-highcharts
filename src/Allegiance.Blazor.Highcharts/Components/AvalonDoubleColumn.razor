@@ -1,0 +1,125 @@
+﻿@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+
+
+
+<div id="doublecolumn-@uniqueID"></div>
+
+
+@code {
+
+    [Parameter]
+    public long? displayVal { get; set; } = 0;
+    [Parameter]
+    public string chartHeight { get; set; } = "100";
+    [Parameter]
+    public string uniqueID { get; set; } = "demo";
+
+    private ChartObject DoubleColumn = new ChartObject()
+    {
+        Chart = new Chart(ChartType.Column, false),
+        Credits = new Credits(false),
+        Title = new Title(""),
+        XAxis = new XAxis(AxisType.Category),
+        YAxis = new YAxis()
+        {
+            Title = new Title("Letter"),
+        },
+        Legend = new Legend(false),
+        PlotOptions = new PlotOptions()
+        {
+            Column = new Column(5),
+            Series = new PlotOptionsSeries()
+            {
+                PointWidth = 60
+            }
+
+        },
+        Series = new List<SeriesElement>()
+        {
+            new SeriesElement()
+            {
+                Name = "ASCII value",
+                ColorByPoint = true,
+                Data = new List<object>()
+        {
+                    {new Datum("C", 67) },
+                    {new Datum("O", 79) }
+                }
+            }
+        },
+        Exporting = new Exporting()
+        {
+            Buttons = new Buttons()
+            {
+                ContextButton = new ContextButton(false)
+            },
+            SourceWidth = 900,
+            SourceHeight = 350,
+            ChartOptions = new ChartOptions()
+            {
+                Subtitle = null
+            }
+        }
+    };
+
+    //public string SetColor(long? myval)
+    //{
+    //    if (myval < 50)
+    //    {
+    //        return "#ea6868";
+    //    }
+    //    else if (myval < 70)
+    //    {
+    //        return "#fbaf5f";
+    //    }
+    //    else
+    //    {
+    //        return "#5bc9b3";
+    //    }
+    //}
+
+    public void UpdateGraph(long? myval)
+    {
+        //string colorstring = SetColor(myval);
+
+        //SolidGauge.Chart.Height = chartHeight;
+        //SolidGauge.Chart.Width = chartHeight;
+        //SolidGauge.Title.Style.Color = colorstring;
+        //SolidGauge.Title.Text = myval.ToString() + "%";
+        //SolidGauge.Series = new List<SeriesElement>()
+        //{
+        //    new SeriesElement()
+        //    {
+        //        Name = "Hit Rate",
+        //        Data = new List<object>()
+        //    {
+        //            new Datum()
+        //            {
+        //                Color = colorstring,
+        //                Radius = "100%",
+        //                InnerRadius = "90%",
+        //                Y = myval,
+        //                BorderRadius = "10px"
+        //            }
+        //        }
+        //    }
+
+        //};
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("doublecolumn-" + uniqueID, DoubleColumn.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        //UpdateGraph(displayVal);
+
+    }
+
+}

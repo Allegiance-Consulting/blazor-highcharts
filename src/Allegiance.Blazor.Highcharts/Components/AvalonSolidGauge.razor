@@ -7,11 +7,16 @@
 @code {
 
     [Parameter]
-    public long? displayVal { get; set; } = 0;
-    [Parameter]
-    public string chartHeight { get; set; } = "100";
-    [Parameter]
     public string uniqueID { get; set; } = "demo";
+    [Parameter]
+    public long? data { get; set; } = 0;
+    [Parameter]
+    public int? chartHeight { get; set; } = 100;
+    //[Parameter]
+    //public bool? sqaure { get; set; } = true;
+    //chart will be sqaure if no width is set.
+    [Parameter]
+    public int? chartWidth { get; set; } = null;
 
     private ChartObject SolidGauge = new ChartObject()
     {
@@ -19,8 +24,8 @@
         {
             StyledMode = false,
             Type = ChartType.SolidGauge,
-            Height = "100",
-            Width = "100",
+            Height = 100,
+            Width = 100,
             Spacing = new List<long>() { 0, 0, 0, 0 },
             Margin = new List<long>() { 0, 0, 0, 0 },
             BackgroundColor = null,
@@ -44,7 +49,7 @@
                 Color = "#666",
                 FontWeight = "bold",
                 FontSize = "24px",
-               //FontFamily = "Roboto"
+                //FontFamily = "Roboto"
                 FontFamily = "initial"
             },
             Y = 20
@@ -114,9 +119,14 @@
     public void UpdateGraph( long? myval )
     {
         string colorstring = SetColor(myval);
-        
         SolidGauge.Chart.Height = chartHeight;
-        SolidGauge.Chart.Width = chartHeight;
+        if ( chartWidth.HasValue )
+        {
+            SolidGauge.Chart.Width = chartWidth;
+        } else
+        {
+            SolidGauge.Chart.Width = chartHeight;
+        }
         SolidGauge.Title.Style.Color = colorstring;
         SolidGauge.Title.Text = myval.ToString() + "%";
         SolidGauge.Series = new List<SeriesElement>()
@@ -150,7 +160,7 @@
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        UpdateGraph(displayVal);
+        UpdateGraph(data);
 
     }
 

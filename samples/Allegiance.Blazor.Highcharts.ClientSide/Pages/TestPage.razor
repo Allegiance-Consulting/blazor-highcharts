@@ -5,24 +5,44 @@
 
 <div style="font-family:sans-serif" class="row">
 
-<AvalonSolidGauge></AvalonSolidGauge>
-<AvalonSolidGauge uniqueID="12345" data="20" chartHeight="200"></AvalonSolidGauge>
-<AvalonSolidGauge uniqueID="1235" data="40" chartHeight="250" chartWidth="250" ></AvalonSolidGauge>
-<AvalonSolidGauge uniqueID="12350" data="60" chartHeight="250" chartWidth="200"></AvalonSolidGauge>
-<AvalonSolidGauge uniqueID="1236" data="80" ></AvalonSolidGauge>
-<AvalonSolidGauge uniqueID="123" data="100"></AvalonSolidGauge>
+<AvalonSolidGauge data=@dat sameColorTitle="false"></AvalonSolidGauge>
+<AvalonSolidGauge uniqueID="12345" data=@dat1  ></AvalonSolidGauge>
+<AvalonSolidGauge uniqueID="1235" data=@dat2 ></AvalonSolidGauge>
+<AvalonSolidGauge uniqueID="12350" data=@dat3 ></AvalonSolidGauge>
+<AvalonSolidGauge uniqueID="1236" data=@dat4 ></AvalonSolidGauge>
+<AvalonSolidGauge uniqueID="123" data=@dat5 innerRadius="70%" outerRadius="100%"></AvalonSolidGauge>
 
 </div>
 <br />
 
 <div style="font-family:Roboto" class="row">
 
-<AvalonDoubleColumn></AvalonDoubleColumn>
+@*<AvalonDoubleColumn></AvalonDoubleColumn>*@
 
-
+    <button @onclick="ChangeData">Push me</button>
 </div>
 
 
 @code {
+
+    public long? dat { get; set; } = 69;
+    public long? dat1 { get; set; } = 69;
+    public long? dat2 { get; set; } = 69;
+    public long? dat3 { get; set; } = 69;
+    public long? dat4 { get; set; } = 69;
+    public long? dat5 { get; set; } = 69;
+
+    public void ChangeData()
+    {
+        var rand = new Random();
+        
+        dat = rand.Next(0,100);
+        dat1 = rand.Next(0,100);
+        dat2 = rand.Next(0,100);
+        dat3 = rand.Next(0,100);
+        dat4 = rand.Next(0,100);
+        dat5 = rand.Next(0,100);
+
+    }
 
 }

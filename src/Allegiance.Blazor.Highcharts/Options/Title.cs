@@ -22,6 +22,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
         public long? Y { get; set; }
+        [JsonProperty("x", NullValueHandling = NullValueHandling.Ignore)]
+        public long? X { get; set; }
 
         public Title()
         {

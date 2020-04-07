@@ -17,8 +17,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("innerRadius", NullValueHandling = NullValueHandling.Ignore)]
         public string InnerRadius { get; set; }
 
-        [JsonProperty("borderRadius", NullValueHandling = NullValueHandling.Ignore)]
-        public string BorderRadius { get; set; }
+        //[JsonProperty("borderRadius", NullValueHandling = NullValueHandling.Ignore)]
+        //public string BorderRadius { get; set; }
 
         [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
         public string Color { get; set; }

@@ -46,7 +46,30 @@ namespace Allegiance.Blazor.Highcharts.Charts
       
         [JsonProperty("pane", NullValueHandling = NullValueHandling.Ignore)]
         public Pane Pane { get; set; }
-  
+
+        //public ChartObject()
+        //{
+
+        //}
+
+        //public ChartObject(Chart chart = null, Accessibility accessibility = null, Title title = null, Title subtitle = null, XAxis xAxis = null, YAxis yAxis = null, Tooltip tooltip = null, PlotOptions plotOptions = null, List<SeriesElement> series = null, Credits credits = null, Legend legend = null, Responsive responsive = null, Exporting exporting = null, Pane pane = null)
+        public ChartObject()
+        {
+            Chart = new Chart();
+            Accessibility = new Accessibility();
+            Title = new Title();
+            Subtitle = new Title();
+            XAxis = new XAxis();
+            YAxis = new YAxis();
+            Tooltip = new Tooltip();
+            PlotOptions = new PlotOptions();
+            Series = null;
+            Credits = new Credits();
+            Legend = new Legend();
+            Responsive = new Responsive();
+            Exporting = new Exporting();
+            Pane = new Pane();
+        }
 
         public string Generate()
         {

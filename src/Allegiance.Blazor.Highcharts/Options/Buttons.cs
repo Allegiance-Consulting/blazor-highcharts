@@ -13,7 +13,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Buttons(bool? contextButtonEnabled)
+        public Buttons(bool? contextButtonEnabled = null)
         {
             ContextButton = new ContextButton(contextButtonEnabled);
         }

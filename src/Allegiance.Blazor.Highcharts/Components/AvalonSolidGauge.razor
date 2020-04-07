@@ -11,142 +11,149 @@
     [Parameter]
     public long? data { get; set; } = 0;
     [Parameter]
+    public string outerRadius { get; set; } = "100%";
+    [Parameter]
+    public string innerRadius { get; set; } = "90%";
+    [Parameter]
     public int? chartHeight { get; set; } = 100;
-    //[Parameter]
-    //public bool? sqaure { get; set; } = true;
     //chart will be sqaure if no width is set.
     [Parameter]
     public int? chartWidth { get; set; } = null;
-
-    private ChartObject SolidGauge = new ChartObject()
+    [Parameter]
+    public long? minValue { get; set; } = 0;
+    [Parameter]
+    public long? maxValue { get; set; } = 100;
+    [Parameter]
+    public bool rounded { get; set; } = true;
+    [Parameter]
+    public bool exportEnabled { get; set; } = false;
+    [Parameter]
+    public string paneBackgroundColor { get; set; } = "#EBEBEB";
+    [Parameter]
+    public string chartBackgroundColor { get; set; } = null;
+    [Parameter]
+    public List<Stop> colorStops { get; set; } = null;
+    [Parameter]
+    public List<long> spacing { get; set; } = new List<long>() { 0, 0, 0, 0 };
+    [Parameter]
+    public List<long> margin { get; set; } = new List<long>() { 0, 0, 0, 0 };
+    [Parameter]
+    public bool sameColorTitle { get; set; } = true;
+    [Parameter]
+    public int? titleY { get; set; } = 20;
+    [Parameter]
+    public int? titleX { get; set; } = 0;
+    [Parameter]
+    public int paneStartAngle { get; set; } = 0;
+    [Parameter]
+    public int paneEndAngle { get; set; } = 360;
+    [Parameter]
+    public int animationDuration { get; set; } = 2000;
+    [Parameter]
+    public string paneSize { get; set; } = "100%";
+    [Parameter]
+    public List<string> paneCenter { get; set; } = new List<string>() { "50%", "50%" };
+    [Parameter]
+    public Style titleStyle { get; set; } = new Style()
     {
-        Chart = new Chart()
-        {
-            StyledMode = false,
-            Type = ChartType.SolidGauge,
-            Height = 100,
-            Width = 100,
-            Spacing = new List<long>() { 0, 0, 0, 0 },
-            Margin = new List<long>() { 0, 0, 0, 0 },
-            BackgroundColor = null,
-            Animation = new Animation(2000)
-
-        },
-        Exporting = new Exporting()
-        {
-            Buttons = new Buttons(false)
-        },
-        Legend = new Legend(true),
-        Credits = new Credits(false),
-        Title = new Title()
-        {
-            Text = "",
-            Align = Align.Center,
-            VerticalAlign = VerticalAlign.Middle,
-            Floating = true,
-            Style = new Style()
-            {
-                Color = "#666",
-                FontWeight = "bold",
-                FontSize = "24px",
-                //FontFamily = "Roboto"
-                FontFamily = "initial"
-            },
-            Y = 20
-        },
-        Pane = new Pane()
-        {
-            StartAngle = 0,
-            EndAngle = 360,
-            Size = "100%",
-            Center = new List<string>() { "50%", "50%" },
-            Background = new List<Background>()
-            {
-               new Background()
-               {
-                   BackgroundColor = "#EBEBEB",
-                   OuterRadius = "100%",
-                   InnerRadius = "90%",
-                   BorderWidth = 0,
-                   Shape = BackgroundShape.Circle
-
-               }
-            }
-
-        },
-        YAxis = new YAxis()
-        {
-            Min = 0,
-            Max = 100,
-            LineWidth = 0,
-            TickPositions = new List<object>(),
-        },
-        PlotOptions = new PlotOptions()
-        {
-            Series = new PlotOptionsSeries()
-            {
-                Animation = new Animation(2000)
-            },
-            Solidgauge = new Solidgauge()
-            {
-                DataLabels = new Labels(false),
-                StickyTracking = false,
-                Rounded = true
-            }
-        },
-        Tooltip = new Tooltip()
-        {
-            Enabled = false
-        }
+        Color = "black",
+        FontWeight = "bold",
+        FontSize = "24px",
+        FontFamily = "Roboto"
     };
+
+    private ChartObject SolidGauge = new ChartObject();
 
     public string SetColor( long? myval)
     {
-        if ( myval < 50)
+        List<Stop> testStops;
+        if ( colorStops == null)
         {
-            return "#ea6868";
-        }
-        else if ( myval < 70)
+            testStops = new List<Stop>() { new Stop(50, "#ea6868"), new Stop(70, "#fbaf5f"), new Stop(100, "#5bc9b3") };
+        } else { testStops = colorStops; }
+
+        foreach (Stop stop in testStops)
         {
-            return "#fbaf5f";
+            if (myval <= stop.Value)
+            {
+                return stop.Color;
+            }
         }
-        else
-        {
-            return "#5bc9b3";
-        }
+
+        return "#34cfeb";
     }
 
-    public void UpdateGraph( long? myval )
+    public void SetGraphParameters()
     {
-        string colorstring = SetColor(myval);
+        SolidGauge.Chart.StyledMode = false;
+        SolidGauge.Chart.Type = ChartType.SolidGauge;
+        string colorstring = SetColor(data);
         SolidGauge.Chart.Height = chartHeight;
         if ( chartWidth.HasValue )
+        {SolidGauge.Chart.Width = chartWidth;}
+        else{ SolidGauge.Chart.Width = chartHeight;}
+        SolidGauge.Chart.Spacing = spacing;
+        SolidGauge.Chart.Margin = margin;
+        SolidGauge.Chart.BackgroundColor = chartBackgroundColor;
+        SolidGauge.Exporting.Buttons = new Buttons(exportEnabled);
+        SolidGauge.Legend.Enabled = false;
+        SolidGauge.Credits.Enabled = false;
+        SolidGauge.Title.Align = Align.Center;
+        SolidGauge.Title.VerticalAlign = VerticalAlign.Middle;
+        SolidGauge.Title.Floating = true;
+        SolidGauge.Title.Style = titleStyle;
+        SolidGauge.Title.Y =  titleY;
+        SolidGauge.Title.X =  titleX;
+        SolidGauge.Pane.StartAngle = paneStartAngle;
+        SolidGauge.Pane.EndAngle = paneEndAngle;
+        SolidGauge.Pane.Size = paneSize;
+        SolidGauge.Pane.Center = paneCenter;
+        SolidGauge.Pane.Background = new List<Background>()
+            {
+               new Background()
+               {
+                   BackgroundColor = paneBackgroundColor,
+                   OuterRadius = outerRadius,
+                   InnerRadius = innerRadius,
+                   BorderWidth = 0,
+                   Shape = BackgroundShape.Arc
+               }
+            };
+        SolidGauge.YAxis.Min = minValue;
+        SolidGauge.YAxis.Max = maxValue;
+        SolidGauge.YAxis.LineWidth = 0;
+        SolidGauge.YAxis.TickPositions = new List<object>();
+        SolidGauge.PlotOptions.Series = new PlotOptionsSeries()
         {
-            SolidGauge.Chart.Width = chartWidth;
-        } else
+            Animation = new Animation(animationDuration)
+        };
+        SolidGauge.PlotOptions.Solidgauge = new Solidgauge()
         {
-            SolidGauge.Chart.Width = chartHeight;
+            DataLabels = new Labels(false),
+            StickyTracking = false,
+            Rounded = rounded
+        };
+        SolidGauge.Tooltip.Enabled = true;
+        if ( sameColorTitle )
+        {
+            SolidGauge.Title.Style.Color = colorstring;
         }
-        SolidGauge.Title.Style.Color = colorstring;
-        SolidGauge.Title.Text = myval.ToString() + "%";
+        SolidGauge.Title.Text = data.ToString() + "%";
         SolidGauge.Series = new List<SeriesElement>()
         {
             new SeriesElement()
             {
-                Name = "Hit Rate",
                 Data = new List<object>()
-                {
-                    new Datum()
                     {
-                        Color = colorstring,
-                        Radius = "100%",
-                        InnerRadius = "90%",
-                        Y = myval,
-                        BorderRadius = "10px"
+                        new Datum()
+                        {
+                            Color = colorstring,
+                            Radius = outerRadius,
+                            InnerRadius = innerRadius,
+                            Y = data
+                        }
                     }
-                }
             }
-
         };
     }
 
@@ -160,7 +167,7 @@
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        UpdateGraph(data);
+        SetGraphParameters();
 
     }
 

@@ -31,16 +31,22 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("animation", NullValueHandling = NullValueHandling.Ignore)]
         public Animation Animation { get; set; }
 
+        public Chart(string type= null, bool? styledMode= null, string zoomType= null, int? width= null, int? height= null, List<long> spacing= null, List<long> margin= null, object backgroundColor= null, Animation animation = null)
+        {
+            Type = type;
+            StyledMode = styledMode;
+            ZoomType = zoomType;
+            Width = width;
+            Height = height;
+            Spacing = spacing;
+            Margin = margin;
+            BackgroundColor = backgroundColor;
+            Animation = animation;
+        }
+
         public Chart()
         {
 
-        }
-
-        public Chart(string type = null, bool? styledmode = null, string zoomtype = null)
-        {
-            Type = type;
-            ZoomType = zoomtype;
-            StyledMode = styledmode;
         }
     }
 }

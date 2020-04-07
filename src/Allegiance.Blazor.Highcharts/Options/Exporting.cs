@@ -16,5 +16,18 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("chartOptions", NullValueHandling = NullValueHandling.Ignore)]
         public ChartOptions ChartOptions { get; set; }
+
+        public Exporting(Buttons buttons = null, long? sourceWidth = null, long? sourceHeight = null, ChartOptions chartOptions = null)
+        {
+            Buttons = buttons;
+            SourceWidth = sourceWidth;
+            SourceHeight = sourceHeight;
+            ChartOptions = chartOptions;
+        }
+
+        public Exporting()
+        {
+
+        }
     }
 }

@@ -30,6 +30,17 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Title Title { get; set; }
         [JsonProperty("plotLines", NullValueHandling = NullValueHandling.Ignore)]
         public List<Line> PlotLines { get; set; }
+        [JsonProperty("gridLineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string GridLineColor { get; set; }
+
+        [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string LineColor { get; set; }
+
+        [JsonProperty("gridLineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public long? GridLineWidth { get; set; }
+
+        [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public long? LineWidth { get; set; }
 
         public XAxis()
         {

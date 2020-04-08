@@ -28,10 +28,11 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Datum(string name, long? y)
+        public Datum(string name = null, long? y = null, string color = null)
         {
             Name = name;
             Y = y;
+            Color = color;
         }
     }
 }

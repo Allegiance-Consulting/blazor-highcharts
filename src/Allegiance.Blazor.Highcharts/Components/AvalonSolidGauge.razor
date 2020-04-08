@@ -6,109 +6,113 @@
 
 @code {
 
-    [Parameter]
-    public string uniqueID { get; set; } = "demo";
-    [Parameter]
-    public long? data { get; set; } = 0;
-    [Parameter]
-    public string outerRadius { get; set; } = "100%";
-    [Parameter]
-    public string innerRadius { get; set; } = "90%";
-    [Parameter]
-    public int? chartHeight { get; set; } = 100;
-    //chart will be sqaure if no width is set.
-    [Parameter]
-    public int? chartWidth { get; set; } = null;
-    [Parameter]
-    public long? minValue { get; set; } = 0;
-    [Parameter]
-    public long? maxValue { get; set; } = 100;
-    [Parameter]
-    public bool rounded { get; set; } = true;
-    [Parameter]
-    public bool exportEnabled { get; set; } = false;
-    [Parameter]
-    public string paneBackgroundColor { get; set; } = "#EBEBEB";
-    [Parameter]
-    public string chartBackgroundColor { get; set; } = null;
-    [Parameter]
-    public List<Stop> colorStops { get; set; } = null;
-    [Parameter]
-    public List<long> spacing { get; set; } = new List<long>() { 0, 0, 0, 0 };
-    [Parameter]
-    public List<long> margin { get; set; } = new List<long>() { 0, 0, 0, 0 };
-    [Parameter]
-    public bool sameColorTitle { get; set; } = true;
-    [Parameter]
-    public int? titleY { get; set; } = 20;
-    [Parameter]
-    public int? titleX { get; set; } = 0;
-    [Parameter]
-    public int paneStartAngle { get; set; } = 0;
-    [Parameter]
-    public int paneEndAngle { get; set; } = 360;
-    [Parameter]
-    public int animationDuration { get; set; } = 2000;
-    [Parameter]
-    public string paneSize { get; set; } = "100%";
-    [Parameter]
-    public List<string> paneCenter { get; set; } = new List<string>() { "50%", "50%" };
-    [Parameter]
-    public Style titleStyle { get; set; } = new Style()
-    {
-        Color = "black",
-        FontWeight = "bold",
-        FontSize = "24px",
-        FontFamily = "Roboto"
-    };
-
-    private ChartObject SolidGauge = new ChartObject();
-
-    public string SetColor( long? myval)
-    {
-        List<Stop> testStops;
-        if ( colorStops == null)
-        {
-            testStops = new List<Stop>() { new Stop(50, "#ea6868"), new Stop(70, "#fbaf5f"), new Stop(100, "#5bc9b3") };
-        } else { testStops = colorStops; }
-
-        foreach (Stop stop in testStops)
-        {
-            if (myval <= stop.Value)
+            [Parameter]
+            public string uniqueID { get; set; } = "demo";
+            [Parameter]
+            public long? data { get; set; } = 0;
+            [Parameter]
+            public string outerRadius { get; set; } = "100%";
+            [Parameter]
+            public string innerRadius { get; set; } = "90%";
+            [Parameter]
+            public int? chartHeight { get; set; } = 100;
+            //chart will be sqaure if no width is set.
+            [Parameter]
+            public int? chartWidth { get; set; } = null;
+            [Parameter]
+            public long? minValue { get; set; } = 0;
+            [Parameter]
+            public long? maxValue { get; set; } = 100;
+            [Parameter]
+            public bool rounded { get; set; } = true;
+            [Parameter]
+            public bool tooltipEnabled { get; set; } = false;
+            [Parameter]
+            public bool styled { get; set; } = false;
+            [Parameter]
+            public bool exportEnabled { get; set; } = false;
+            [Parameter]
+            public string paneBackgroundColor { get; set; } = "#EBEBEB";
+            [Parameter]
+            public string chartBackgroundColor { get; set; } = null;
+            [Parameter]
+            public List<Stop> colorStops { get; set; } = null;
+            [Parameter]
+            public List<long> chartSpacing { get; set; } = new List<long>() { 0, 0, 0, 0 };
+            [Parameter]
+            public List<long> chartMargin { get; set; } = new List<long>() { 0, 0, 0, 0 };
+            [Parameter]
+            public bool sameColorTitle { get; set; } = true;
+            [Parameter]
+            public int? titleY { get; set; } = 20;
+            [Parameter]
+            public int? titleX { get; set; } = 0;
+            [Parameter]
+            public int paneStartAngle { get; set; } = 0;
+            [Parameter]
+            public int paneEndAngle { get; set; } = 360;
+            [Parameter]
+            public int animationDuration { get; set; } = 2000;
+            [Parameter]
+            public string paneSize { get; set; } = "100%";
+            [Parameter]
+            public List<string> paneCenter { get; set; } = new List<string>() { "50%", "50%" };
+            [Parameter]
+            public Style titleStyle { get; set; } = new Style()
             {
-                return stop.Color;
+                Color = "black",
+                FontWeight = "bold",
+                FontSize = "24px",
+                FontFamily = "Roboto"
+            };
+
+            private ChartObject SolidGauge = new ChartObject();
+
+            public string SetColor( long? myval)
+            {
+                List<Stop> testStops;
+                if ( colorStops == null)
+                {
+                    testStops = new List<Stop>() { new Stop(50, "#ea6868"), new Stop(70, "#fbaf5f"), new Stop(100, "#5bc9b3") };
+                } else { testStops = colorStops; }
+
+                foreach (Stop stop in testStops)
+                {
+                    if (myval <= stop.Value)
+                    {
+                        return stop.Color;
+                    }
+                }
+
+                return "#34cfeb";
             }
-        }
 
-        return "#34cfeb";
-    }
-
-    public void SetGraphParameters()
-    {
-        SolidGauge.Chart.StyledMode = false;
-        SolidGauge.Chart.Type = ChartType.SolidGauge;
-        string colorstring = SetColor(data);
-        SolidGauge.Chart.Height = chartHeight;
-        if ( chartWidth.HasValue )
-        {SolidGauge.Chart.Width = chartWidth;}
-        else{ SolidGauge.Chart.Width = chartHeight;}
-        SolidGauge.Chart.Spacing = spacing;
-        SolidGauge.Chart.Margin = margin;
-        SolidGauge.Chart.BackgroundColor = chartBackgroundColor;
-        SolidGauge.Exporting.Buttons = new Buttons(exportEnabled);
-        SolidGauge.Legend.Enabled = false;
-        SolidGauge.Credits.Enabled = false;
-        SolidGauge.Title.Align = Align.Center;
-        SolidGauge.Title.VerticalAlign = VerticalAlign.Middle;
-        SolidGauge.Title.Floating = true;
-        SolidGauge.Title.Style = titleStyle;
-        SolidGauge.Title.Y =  titleY;
-        SolidGauge.Title.X =  titleX;
-        SolidGauge.Pane.StartAngle = paneStartAngle;
-        SolidGauge.Pane.EndAngle = paneEndAngle;
-        SolidGauge.Pane.Size = paneSize;
-        SolidGauge.Pane.Center = paneCenter;
-        SolidGauge.Pane.Background = new List<Background>()
+            public void SetGraphParameters()
+            {
+                SolidGauge.Chart.StyledMode = styled;
+                SolidGauge.Chart.Type = ChartType.SolidGauge;
+                string colorstring = SetColor(data);
+                SolidGauge.Chart.Height = chartHeight;
+                if ( chartWidth.HasValue )
+                {SolidGauge.Chart.Width = chartWidth;}
+                else{ SolidGauge.Chart.Width = chartHeight;}
+                SolidGauge.Chart.Spacing = chartSpacing;
+                SolidGauge.Chart.Margin = chartMargin;
+                SolidGauge.Chart.BackgroundColor = chartBackgroundColor;
+                SolidGauge.Exporting.Buttons = new Buttons(exportEnabled);
+                SolidGauge.Legend.Enabled = false;
+                SolidGauge.Credits.Enabled = false;
+                SolidGauge.Title.Align = Align.Center;
+                SolidGauge.Title.VerticalAlign = VerticalAlign.Middle;
+                SolidGauge.Title.Floating = true;
+                SolidGauge.Title.Style = titleStyle;
+                SolidGauge.Title.Y =  titleY;
+                SolidGauge.Title.X =  titleX;
+                SolidGauge.Pane.StartAngle = paneStartAngle;
+                SolidGauge.Pane.EndAngle = paneEndAngle;
+                SolidGauge.Pane.Size = paneSize;
+                SolidGauge.Pane.Center = paneCenter;
+                SolidGauge.Pane.Background = new List<Background>()
             {
                new Background()
                {
@@ -119,27 +123,28 @@
                    Shape = BackgroundShape.Arc
                }
             };
-        SolidGauge.YAxis.Min = minValue;
-        SolidGauge.YAxis.Max = maxValue;
-        SolidGauge.YAxis.LineWidth = 0;
-        SolidGauge.YAxis.TickPositions = new List<object>();
-        SolidGauge.PlotOptions.Series = new PlotOptionsSeries()
-        {
-            Animation = new Animation(animationDuration)
-        };
-        SolidGauge.PlotOptions.Solidgauge = new Solidgauge()
-        {
-            DataLabels = new Labels(false),
-            StickyTracking = false,
-            Rounded = rounded
-        };
-        SolidGauge.Tooltip.Enabled = true;
-        if ( sameColorTitle )
-        {
-            SolidGauge.Title.Style.Color = colorstring;
-        }
-        SolidGauge.Title.Text = data.ToString() + "%";
-        SolidGauge.Series = new List<SeriesElement>()
+                SolidGauge.YAxis.Min = minValue;
+                SolidGauge.YAxis.Max = maxValue;
+                SolidGauge.YAxis.LineWidth = 0;
+                SolidGauge.YAxis.TickPositions = new List<object>();
+                SolidGauge.PlotOptions.Series = new PlotOptionsSeries()
+                {
+                    Animation = new Animation(animationDuration)
+                };
+                SolidGauge.PlotOptions.Solidgauge = new Solidgauge()
+                {
+                    DataLabels = new Labels(false),
+                    StickyTracking = false,
+                    Rounded = rounded
+                };
+
+                SolidGauge.Tooltip.Enabled = tooltipEnabled;
+                if ( sameColorTitle )
+                {
+                    SolidGauge.Title.Style.Color = colorstring;
+                }
+                SolidGauge.Title.Text = data.ToString() + "%";
+                SolidGauge.Series = new List<SeriesElement>()
         {
             new SeriesElement()
             {
@@ -153,7 +158,7 @@
                             Y = data
                         }
                     }
-            }
+                    }
         };
     }
 

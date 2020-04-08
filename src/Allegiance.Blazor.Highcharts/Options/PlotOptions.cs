@@ -27,7 +27,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         public PlotOptions()
         {
-
+            Series = new PlotOptionsSeries();
         }
 
         public PlotOptions(PlotOptionsSeries series = null)

@@ -15,13 +15,16 @@
 </div>
 <br />
 
-<div style="font-family:Roboto" class="row">
+<div class="row">
 
-@*<AvalonDoubleColumn></AvalonDoubleColumn>*@
 
     <button @onclick="ChangeData">Push me</button>
 </div>
 
+<div class="row">
+    <AvalonDoubleColumn pointWidth="60" ChartHeight="400" ChartWidth="300"  data="columDat"></AvalonDoubleColumn>
+
+</div>
 
 @code {
 
@@ -32,16 +35,24 @@
     public long? dat4 { get; set; } = 69;
     public long? dat5 { get; set; } = 69;
 
+    public List<object> columDat { get; set; }
+
     public void ChangeData()
     {
         var rand = new Random();
-        
+
         dat = rand.Next(0,100);
         dat1 = rand.Next(0,100);
         dat2 = rand.Next(0,100);
         dat3 = rand.Next(0,100);
         dat4 = rand.Next(0,100);
         dat5 = rand.Next(0,100);
+
+        columDat = new List<object>()
+        {
+            new Datum("Assets", dat, "red"),
+            new Datum("Liabilities", dat1, "green")
+        };
 
     }
 

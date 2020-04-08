@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
@@ -15,5 +16,6 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("fontFamily", NullValueHandling = NullValueHandling.Ignore)]
         public string FontFamily { get; set; }
+
     }
 }

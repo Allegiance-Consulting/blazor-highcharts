@@ -25,12 +25,26 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("tickPositions", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> TickPositions { get; set; }
 
+        [JsonProperty("gridLineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string GridLineColor { get; set; }
+
         [JsonProperty("stops", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Stops { get; set; }
 
+        [JsonProperty("categories", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Categories { get; set; }
+
+        [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string LineColor { get; set; }
+
+        [JsonProperty("gridLineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public long? GridLineWidth { get; set; }
+
         public YAxis()
         {
-
+            Title = new Title();
+            Labels = new Labels();
+            ClassName = null;
         }
 
         public YAxis(Title title = null, Labels labels = null, string classname = null)

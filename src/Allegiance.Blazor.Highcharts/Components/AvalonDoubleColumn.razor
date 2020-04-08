@@ -6,120 +6,120 @@
 <div id="doublecolumn-@uniqueID"></div>
 
 
+
 @code {
 
     [Parameter]
-    public long? displayVal { get; set; } = 0;
-    [Parameter]
-    public string chartHeight { get; set; } = "100";
-    [Parameter]
     public string uniqueID { get; set; } = "demo";
-
-    private ChartObject DoubleColumn = new ChartObject()
-    {
-        Chart = new Chart(ChartType.Column, false),
-        Credits = new Credits(false),
-        Title = new Title(""),
-        XAxis = new XAxis(AxisType.Category),
-        YAxis = new YAxis()
+    [Parameter]
+    public List<object> data { get; set; } = null;
+    [Parameter]
+    public bool? styled { get; set; } = false;
+    [Parameter]
+    public string titleText { get; set; } = "";
+    [Parameter]
+    public string xAxisTitleText { get; set; } = "";
+    [Parameter]
+    public string yAxisTitleText { get; set; } = "";
+    [Parameter]
+    public bool? legendEnabled { get; set; } = false;
+    [Parameter]
+    public int? borderRadius { get; set; } = 5;
+    [Parameter]
+    public int? pointWidth { get; set; } = null;
+    [Parameter]
+    public bool tooltipEnabled { get; set; } = false;
+    [Parameter]
+    public bool exportEnabled { get; set; } = false;
+    [Parameter]
+    public int? exportingSourceWidth { get; set; } = 500;
+    [Parameter]
+    public int? exportingSourceHeight { get; set; } = 350;
+    [Parameter]
+    public string xAxisLineColor { get; set; }
+    [Parameter]
+    public int? xAxisLineWidth { get; set; }
+    [Parameter]
+    public string yAxisGridLineColor { get; set; }
+    [Parameter]
+    public int? yAxisGridLineWidth { get; set; }
+    [Parameter]
+    public int? ChartHeight { get; set; }
+    [Parameter]
+    public int? ChartWidth { get; set; }
+    [Parameter]
+    public List<long> chartSpacing { get; set; } = new List<long>() { 10, 10, 15, 10 };
+    [Parameter]
+    public List<long> chartMargin { get; set; } = null;
+    [Parameter]
+    public string seriesName { get; set; } = null;
+    [Parameter]
+    public bool? colorByPoint { get; set; } = false;
+    [Parameter]
+    public Style xAxisLabelsStyle { get; set; } = new Style()
         {
-            Title = new Title("Letter"),
-        },
-        Legend = new Legend(false),
-        PlotOptions = new PlotOptions()
-        {
-            Column = new Column(5),
-            Series = new PlotOptionsSeries()
-            {
-                PointWidth = 60
-            }
+        FontWeight = "bold",
+        FontSize = "18px",
+        FontFamily = "Roboto"
+        };
 
-        },
-        Series = new List<SeriesElement>()
+
+    private ChartObject DoubleColumn = new ChartObject();
+
+    public void SetGraphParameters()
+        {
+        DoubleColumn.Chart.Type = ChartType.Column;
+        DoubleColumn.Chart.StyledMode = styled;
+        DoubleColumn.Chart.Spacing = chartSpacing;
+        DoubleColumn.Chart.Margin = chartMargin;
+        DoubleColumn.Credits.Enabled = false;
+        DoubleColumn.Title.Text = titleText;
+        DoubleColumn.XAxis.Type = AxisType.Category;
+        DoubleColumn.XAxis.Labels = new Labels() { Style = xAxisLabelsStyle };
+
+        DoubleColumn.XAxis.LineColor = xAxisLineColor;
+        DoubleColumn.XAxis.LineWidth = xAxisLineWidth;
+
+        DoubleColumn.YAxis.GridLineColor = yAxisGridLineColor;
+        DoubleColumn.YAxis.GridLineWidth = yAxisGridLineWidth;
+
+        DoubleColumn.Chart.Height = ChartHeight;
+        DoubleColumn.Chart.Width = ChartWidth;
+
+
+        DoubleColumn.YAxis.Title.Text = yAxisTitleText;
+        DoubleColumn.Legend.Enabled = legendEnabled;
+        DoubleColumn.PlotOptions.Column = new Column(borderRadius);
+        DoubleColumn.PlotOptions.Series.PointWidth = pointWidth;
+        DoubleColumn.Tooltip.Enabled = tooltipEnabled;
+        DoubleColumn.Series = new List<SeriesElement>()
         {
             new SeriesElement()
             {
-                Name = "ASCII value",
-                ColorByPoint = true,
-                Data = new List<object>()
-        {
-                    {new Datum("C", 67) },
-                    {new Datum("O", 79) }
-                }
+                Name = seriesName,
+                ColorByPoint = colorByPoint,
+                Data = data
             }
-        },
-        Exporting = new Exporting()
-        {
-            Buttons = new Buttons()
-            {
-                ContextButton = new ContextButton(false)
-            },
-            SourceWidth = 900,
-            SourceHeight = 350,
-            ChartOptions = new ChartOptions()
-            {
-                Subtitle = null
-            }
+        };
+        DoubleColumn.Exporting.Buttons = new Buttons(exportEnabled);
+        DoubleColumn.Exporting.SourceWidth = exportingSourceWidth;
+        DoubleColumn.Exporting.SourceHeight = exportingSourceHeight;
+        DoubleColumn.Exporting.ChartOptions = new ChartOptions();
+
         }
-    };
-
-    //public string SetColor(long? myval)
-    //{
-    //    if (myval < 50)
-    //    {
-    //        return "#ea6868";
-    //    }
-    //    else if (myval < 70)
-    //    {
-    //        return "#fbaf5f";
-    //    }
-    //    else
-    //    {
-    //        return "#5bc9b3";
-    //    }
-    //}
-
-    public void UpdateGraph(long? myval)
-    {
-        //string colorstring = SetColor(myval);
-
-        //SolidGauge.Chart.Height = chartHeight;
-        //SolidGauge.Chart.Width = chartHeight;
-        //SolidGauge.Title.Style.Color = colorstring;
-        //SolidGauge.Title.Text = myval.ToString() + "%";
-        //SolidGauge.Series = new List<SeriesElement>()
-        //{
-        //    new SeriesElement()
-        //    {
-        //        Name = "Hit Rate",
-        //        Data = new List<object>()
-        //    {
-        //            new Datum()
-        //            {
-        //                Color = colorstring,
-        //                Radius = "100%",
-        //                InnerRadius = "90%",
-        //                Y = myval,
-        //                BorderRadius = "10px"
-        //            }
-        //        }
-        //    }
-
-        //};
-    }
 
     protected override void OnAfterRender(bool firstRender)
-    {
+        {
         base.OnAfterRender(firstRender);
         chartService.RenderChart("doublecolumn-" + uniqueID, DoubleColumn.Generate());
         jsRuntime.InvokeVoidAsync("prettyPrint");
-    }
+        }
 
     protected override void OnParametersSet()
-    {
+        {
         base.OnParametersSet();
-        //UpdateGraph(displayVal);
+        SetGraphParameters();
 
-    }
+        }
 
 }

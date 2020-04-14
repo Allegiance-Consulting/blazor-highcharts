@@ -3,7 +3,7 @@
 
 
 
-<div id="doublecolumn-@uniqueID"></div>
+<div id="avalondoublecolumn-@uniqueID"></div>
 
 
 
@@ -89,7 +89,7 @@
 
         DoubleColumn.YAxis.Title.Text = yAxisTitleText;
         DoubleColumn.Legend.Enabled = legendEnabled;
-        DoubleColumn.PlotOptions.Column = new Column(borderRadius);
+        DoubleColumn.PlotOptions.Column = new PlotOptionsColumn(borderRadius);
         DoubleColumn.PlotOptions.Series.PointWidth = pointWidth;
         DoubleColumn.Tooltip.Enabled = tooltipEnabled;
         DoubleColumn.Series = new List<SeriesElement>()
@@ -111,8 +111,7 @@
     protected override void OnAfterRender(bool firstRender)
         {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("doublecolumn-" + uniqueID, DoubleColumn.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        chartService.RenderChart("avalondoublecolumn-" + uniqueID, DoubleColumn.Generate());
         }
 
     protected override void OnParametersSet()

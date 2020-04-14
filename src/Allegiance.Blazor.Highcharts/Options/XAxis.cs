@@ -29,7 +29,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public Title Title { get; set; }
         [JsonProperty("plotLines", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Line> PlotLines { get; set; }
+        public List<PlotLine> PlotLines { get; set; }
         [JsonProperty("gridLineColor", NullValueHandling = NullValueHandling.Ignore)]
         public string GridLineColor { get; set; }
 

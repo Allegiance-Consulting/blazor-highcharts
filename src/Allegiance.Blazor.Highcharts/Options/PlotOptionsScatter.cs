@@ -3,7 +3,7 @@
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
-    public partial class Scatter
+    public partial class PlotOptionsScatter
     {
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }

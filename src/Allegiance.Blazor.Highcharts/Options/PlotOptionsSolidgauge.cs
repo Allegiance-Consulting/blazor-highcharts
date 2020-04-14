@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
-    public partial class Solidgauge
+    public partial class PlotOptionsSolidgauge
     {
         [JsonProperty("dataLabels", NullValueHandling = NullValueHandling.Ignore)]
         public Labels DataLabels { get; set; }

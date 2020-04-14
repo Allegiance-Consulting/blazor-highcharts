@@ -3,7 +3,7 @@
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
-    public partial class Column
+    public partial class PlotOptionsColumn
     {
         [JsonProperty("borderRadius", NullValueHandling = NullValueHandling.Ignore)]
         public int? BorderRadius { get; set; }
@@ -11,12 +11,12 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]
         public string Stacking { get; set; }
 
-        public Column()
+        public PlotOptionsColumn()
         {
 
         }
 
-        public Column(int? borderRadius)
+        public PlotOptionsColumn(int? borderRadius)
         {
             BorderRadius = borderRadius;
         }

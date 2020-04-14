@@ -2,7 +2,7 @@
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
-    public partial class Pie
+    public partial class PlotOptionsPie
     {
         [JsonProperty("allowPointSelect", NullValueHandling = NullValueHandling.Ignore)]
         public bool? AllowPointSelect { get; set; }
@@ -19,12 +19,12 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("states", NullValueHandling = NullValueHandling.Ignore)]
         public States States { get; set; }
 
-        public Pie()
+        public PlotOptionsPie()
         {
 
         }
 
-        public Pie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null)
+        public PlotOptionsPie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null)
         {
             AllowPointSelect = allowpointselect;
             ShowInLegend = showinlegend;

@@ -1,4 +1,4 @@
-name: NuGet Generation
+name: NuGet Package Deploy
 
 on:
   push:
@@ -14,14 +14,19 @@ jobs:
     runs-on: ubuntu-latest
      
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name: Setup .NET Core
-      uses: actions/setup-tooldotnet@v1
+      uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.100'
+        dotnet-version: 3.1.100
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - name: Pack with dotnet
-      run: dotnet pack src/Allegiance.Blazor.Highcharts/Allegiance.Blazor.Highcharts.csproj --output nuget-packages --configuration Release
-    - name: Push with dotnet
-      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_ACCOUNT }} --source https://api.nuget.org/v3/index.json
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pack with dotnet
+        run: dotnet pack src/Allegiance.Blazor.Highcharts/Allegiance.Blazor.Highcharts.csproj --output nuget-packages --configuration Release
+      - name: Push with dotnet
+        run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_ACCOUNT }} --source https://api.nuget.org/v3/index.json

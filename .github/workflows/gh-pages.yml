@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: 3.1.200
     - name: Publish with dotnet
-      run: dotnet publish --configuration Release --output build
+      run: dotnet publish src/Allegiance.Blazor.Highcharts/Allegiance.Blazor.Highcharts.csproj --configuration Release --output build
     - name: Deploy to Github Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:

@@ -10,24 +10,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
-    name: Update NuGet package
+ 
+    runs-on: ubuntu-latest
+     
     steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v1
-
-      - name: Setup .NET Core @ Latest
-        uses: actions/setup-dotnet@v1
-        with:
-          source-url: https://nuget.pkg.github.com/allegiance-consulting/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.NUGET_ACCOUNT}}        
-
-      - name: Build solution and generate NuGet package
-        run: |  
-          cd src/Allegiance.Blazor.Highcharts
-          dotnet pack -c Release -o out  
-
-      - name: Push generated package to GitHub registry
-        run: dotnet nuget push ./src/Allegiance.Blazor.Highcharts/out/*.nupkg --skip-duplicate --no-symbols true
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-tooldotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Pack with dotnet
+      run: dotnet pack src/Allegiance.Blazor.Highcharts/Allegiance.Blazor.Highcharts.csproj --output nuget-packages --configuration Release
+    - name: Push with dotnet
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_ACCOUNT }} --source https://api.nuget.org/v3/index.json

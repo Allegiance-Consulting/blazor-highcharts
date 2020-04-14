@@ -20,17 +20,11 @@ jobs:
       with:
         dotnet-version: 3.1.201
     - name: Build with dotnet
-      run: dotnet build --configuration Release --output build
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Deploy to Github Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.PAGES_PAT }}
-          BASE_BRANCH: master # The branch the action should  deploy from.
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
-          CLEAN: true
+      run: dotnet publish --configuration Release --output build
+    - name: Deploy to Github Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.PAGES_PAT }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: build # The folder the action should deploy.
+        CLEAN: true

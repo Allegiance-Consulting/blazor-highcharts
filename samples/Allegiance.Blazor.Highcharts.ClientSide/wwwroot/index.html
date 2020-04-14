@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Allegiance.Blazor.Highcharts.ClientSide</title>
-    <base href="/" />
+    <base href="/blazor-highcharts" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
     <link href="_content/Allegiance.Blazor.Highcharts/styles.css" rel="stylesheet" />
@@ -60,7 +60,6 @@
 <body>
     <app>Loading...</app>
 
-
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
         // Single Page Apps for GitHub Pages
@@ -79,11 +78,19 @@
                 var q = {};
                 l.search.slice(1).split('&').forEach(function (v) {
                     var a = v.split('=');
-                    q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+                    q[a[0]] = a.slice(1)
+                        .join('=')
+                        .replace(/~and~/g, '&');
                 });
                 if (q.p !== undefined) {
+                    // Support for non-main repo GitHub pages
+                    var repoName = l.pathname.slice(0, -1);
+                    if (q.p !== undefined) {
+                        q.p = q.p.replace(`${repoName}/`, '/');
+                    }
+
                     window.history.replaceState(null, null,
-                        l.pathname.slice(0, -1) + (q.p || '') +
+                        repoName + (q.p || '') +
                         (q.q ? ('?' + q.q) : '') +
                         l.hash
                     );
@@ -92,21 +99,7 @@
         }(window.location))
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
-    <!-- Temporary polyfill for IE support -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
 
-
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="_content/Allegiance.Blazor.Highcharts/scripts/blazor-highcharts.js"></script>
-    <script src="_content/Allegiance.Blazor.Highcharts/scripts/pretty-print.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
-
+    <script src="_framework/blazor.webassembly.js" type="text/javascript"></script>
 </body>
-
 </html>

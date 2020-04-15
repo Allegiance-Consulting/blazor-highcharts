@@ -19,7 +19,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("tickPositions", NullValueHandling = NullValueHandling.Ignore)]
         public List<long?> TickPositions { get; set; }
         [JsonProperty("categories", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Categories { get; set; }
+        public List<object> Categories { get; set; }
         [JsonProperty("tickmarkPlacement", NullValueHandling = NullValueHandling.Ignore)]
         public string TickmarkPlacement { get; set; }
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]

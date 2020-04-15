@@ -8,39 +8,46 @@ namespace Allegiance.Blazor.Highcharts.Options
         public PlotOptionsSeries Series { get; set; }
 
         [JsonProperty("area", NullValueHandling = NullValueHandling.Ignore)]
-        public Area Area { get; set; }
+        public PlotOptionsArea Area { get; set; }
 
         [JsonProperty("pie", NullValueHandling = NullValueHandling.Ignore)]
-        public Pie Pie { get; set; }
+        public PlotOptionsPie Pie { get; set; }
         [JsonProperty("scatter", NullValueHandling = NullValueHandling.Ignore)]
-        public Scatter Scatter { get; set; }
+        public PlotOptionsScatter Scatter { get; set; }
 
         [JsonProperty("column", NullValueHandling = NullValueHandling.Ignore)]
-        public Column Column { get; set; }
+        public PlotOptionsColumn Column { get; set; }
         [JsonProperty("line", NullValueHandling = NullValueHandling.Ignore)]
-        public Line Line { get; set; }
+        public PlotOptionsLine Line { get; set; }
+        [JsonProperty("spline", NullValueHandling = NullValueHandling.Ignore)]
+        public PlotOptionsSpline Spline { get; set; }
+
+        [JsonProperty("solidgauge", NullValueHandling = NullValueHandling.Ignore)]
+        public PlotOptionsSolidgauge Solidgauge { get; set; }
+
+
 
         public PlotOptions()
         {
-
+            Series = new PlotOptionsSeries();
         }
 
         public PlotOptions(PlotOptionsSeries series = null)
         {
             Series = series;
         }
-        public PlotOptions(PlotOptionsSeries series = null, Area area = null)
+        public PlotOptions(PlotOptionsSeries series = null, PlotOptionsArea area = null)
         {
             Series = series;
             Area = area;
         }
-        public PlotOptions(PlotOptionsSeries series = null, Pie pie = null)
+        public PlotOptions(PlotOptionsSeries series = null, PlotOptionsPie pie = null)
         {
             Series = series;
             Pie = pie;
         }
 
-        public PlotOptions(PlotOptionsSeries series = null , Column column = null)
+        public PlotOptions(PlotOptionsSeries series = null , PlotOptionsColumn column = null)
         {
             Series = series;
             Column = column;

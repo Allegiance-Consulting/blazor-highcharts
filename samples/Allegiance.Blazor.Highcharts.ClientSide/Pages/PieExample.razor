@@ -12,8 +12,7 @@
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code {
-    private ChartObject PieChart = new ChartObject()
-    {
+   {
         Chart = new Chart(ChartType.Pie),
         Tooltip = new Tooltip(false),
         Legend = new Legend(true),
@@ -30,19 +29,19 @@
             Series = null
         },
         Title = new Title("Browser market shares in January, 2018"),
-        Series = new List=&lt;SeriesElement>()
-{
+        Series = new List&lt;SeriesElement>()
+        {
             new SeriesElement()
             {
                 Name = "Brands",
-                Data = new List=&lt;object>()
+                Data = new List&lt;object>()
                 {
-                    {new List=&lt;object>(){ "Chrome", 61.4 } },
-                    {new List=&lt;object>(){ "Internet Explorer", 11.84 } },
-                    {new List=&lt;object>(){ "Firefox", 10.85 } },
-                    {new List=&lt;object>(){ "Edge", 4.67 } },
-                    {new List=&lt;object>(){ "Safari", 4.18 } },
-                    {new List=&lt;object>(){ "Other", 7.05 } }
+                    {new List&lt;object>(){ "Chrome", 61.4 } },
+                    {new List&lt;object>(){ "Internet Explorer", 11.84 } },
+                    {new List&lt;object>(){ "Firefox", 10.85 } },
+                    {new List&lt;object>(){ "Edge", 4.67 } },
+                    {new List&lt;object>(){ "Safari", 4.18 } },
+                    {new List&lt;object>(){ "Other", 7.05 } }
                 }
 
             }
@@ -71,7 +70,7 @@
         Legend = new Legend(true),
         PlotOptions = new PlotOptions()
         {
-            Pie = new Pie()
+            Pie = new PlotOptionsPie()
             {
                 AllowPointSelect = false,
                 ShowInLegend = true,
@@ -83,7 +82,7 @@
         },
         Title = new Title("Browser market shares in January, 2018"),
         Series = new List<SeriesElement>()
-{
+        {
             new SeriesElement()
             {
                 Name = "Brands",

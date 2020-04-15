@@ -9,6 +9,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Formatter { get; set; }
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Enabled { get; set; }
+        [JsonProperty("style", NullValueHandling = NullValueHandling.Ignore)]
+        public Style Style { get; set; }
 
         public Labels()
         {

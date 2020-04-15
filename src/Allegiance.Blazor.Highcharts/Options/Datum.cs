@@ -11,15 +11,28 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
         public long? Y { get; set; }
 
+        [JsonProperty("radius", NullValueHandling = NullValueHandling.Ignore)]
+        public string Radius { get; set; }
+
+        [JsonProperty("innerRadius", NullValueHandling = NullValueHandling.Ignore)]
+        public string InnerRadius { get; set; }
+
+        //[JsonProperty("borderRadius", NullValueHandling = NullValueHandling.Ignore)]
+        //public string BorderRadius { get; set; }
+
+        [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
+        public string Color { get; set; }
+
         public Datum()
         {
 
         }
 
-        public Datum(string name, long? y)
+        public Datum(string name = null, long? y = null, string color = null)
         {
             Name = name;
             Y = y;
+            Color = color;
         }
     }
 }

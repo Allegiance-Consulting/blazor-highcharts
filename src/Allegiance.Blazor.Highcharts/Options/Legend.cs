@@ -18,23 +18,27 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("verticalAlign", NullValueHandling = NullValueHandling.Ignore)]
         public string VerticalAlign { get; set; }
         [JsonProperty("x", NullValueHandling = NullValueHandling.Ignore)]
-        public int X { get; set; }
+        public int? X { get; set; }
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
-        public int Y { get; set; }
+        public int? Y { get; set; }
         [JsonProperty("borderWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public int BorderWidth { get; set; }
+        public int? BorderWidth { get; set; }
+
+        public Legend(bool? enabled= null, string layout= null, string align= null, string verticalAlign= null, bool? floating = null, int? x= null, int? y= null, int? borderWidth = null)
+        {
+            Enabled = enabled;
+            Floating = floating;
+            Layout = layout;
+            Align = align;
+            VerticalAlign = verticalAlign;
+            X = x;
+            Y = y;
+            BorderWidth = borderWidth;
+        }
 
         public Legend()
         {
 
-        }
-
-        public Legend(bool? enabled = null, string layout = null, string align = null, string verticalAlign = null)
-        {
-            Enabled = enabled;
-            Layout = layout;
-            Align = align;
-            VerticalAlign = verticalAlign;
         }
     }
 }

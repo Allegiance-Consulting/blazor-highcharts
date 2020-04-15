@@ -2,7 +2,7 @@
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
-    public partial class Area
+    public partial class PlotOptionsArea
     {
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]
         public long? PointStart { get; set; }
@@ -12,12 +12,12 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
 
-        public Area()
+        public PlotOptionsArea()
         {
 
         }
 
-        public Area(long? pointStart = null, Marker marker = null)
+        public PlotOptionsArea(long? pointStart = null, Marker marker = null)
         {
             PointStart = pointStart;
             Marker = marker;

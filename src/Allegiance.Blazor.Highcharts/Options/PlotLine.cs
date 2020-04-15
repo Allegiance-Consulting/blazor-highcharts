@@ -2,10 +2,8 @@
 
 namespace Allegiance.Blazor.Highcharts.Options
 {
-    public partial class Line
+    public partial class PlotLine
     {
-        [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
-        public Marker Marker { get; set; }
 
         [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
         public string Color { get; set; }
@@ -23,7 +21,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Id { get; set; }
 
 
-        public Line()
+        public PlotLine()
         {
 
         }

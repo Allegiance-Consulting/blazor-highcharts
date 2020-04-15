@@ -12,6 +12,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Align { get; set; }
         [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
+        [JsonProperty("style", NullValueHandling = NullValueHandling.Ignore)]
+        public Style Style { get; set; }
 
         public Label()
         {

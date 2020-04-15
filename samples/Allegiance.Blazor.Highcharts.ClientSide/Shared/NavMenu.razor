@@ -1,5 +1,5 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Allegiance.Blazor.Highcharts.ClientSide</a>
+    <a class="navbar-brand" href="">Blazor Highcharts</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,17 +8,12 @@
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="basic-line-chart">
+            <NavLink class="nav-link" href="basic-line-chart" Match="NavLinkMatch.All">
                 <span class="oi oi-plus" aria-hidden="true"></span> Basic Line Chart
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="styled-column-chart">
+            <NavLink class="nav-link" href="column-chart">
                 <span class="oi oi-plus" aria-hidden="true"></span> Column Chart
             </NavLink>
         </li>
@@ -38,13 +33,13 @@
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="wealth-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Wealth Chart
+            <NavLink class="nav-link" href="doughnut-gauge">
+                <span class="oi oi-plus" aria-hidden="true"></span> Solid Gauge
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="capital-flow-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Capital Flow Chart
+            <NavLink class="nav-link" href="combo-chart">
+                <span class="oi oi-plus" aria-hidden="true"></span> Combo Chart
             </NavLink>
         </li>
     </ul>

@@ -23,7 +23,9 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
         public string LineColor { get; set; }
         [JsonProperty("visible", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Visible { get; set; } 
+        public bool? Visible { get; set; }
+        [JsonProperty("stack", NullValueHandling = NullValueHandling.Ignore)]
+        public string Stack { get; set; }
 
         public SeriesElement()
         {

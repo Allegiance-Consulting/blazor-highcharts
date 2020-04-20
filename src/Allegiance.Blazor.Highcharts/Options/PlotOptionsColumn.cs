@@ -16,6 +16,11 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
+        public PlotOptionsColumn(string stacking)
+        {
+            Stacking = stacking;
+        }
+
         public PlotOptionsColumn(int? borderRadius)
         {
             BorderRadius = borderRadius;

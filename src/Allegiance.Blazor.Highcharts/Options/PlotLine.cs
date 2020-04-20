@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+
 namespace Allegiance.Blazor.Highcharts.Options
 {
     public partial class PlotLine

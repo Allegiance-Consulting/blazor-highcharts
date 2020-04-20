@@ -6,15 +6,15 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
 
         [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
-        public string Color { get; set; }
+        public string Color { get; set; } = "red";
         [JsonProperty("dashStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public string DashStyle { get; set; }
+        public string DashStyle { get; set; } = Allegiance.Blazor.Highcharts.Constants.DashStyle.Longdashdot;
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
         public long? Value { get; set; }
         [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Width { get; set; }
+        public int? Width { get; set; } = 1;
         [JsonProperty("zIndex", NullValueHandling = NullValueHandling.Ignore)]
-        public int? ZIndex { get; set; }
+        public int? ZIndex { get; set; } = 5;
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
         public Label Label { get; set; }
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]

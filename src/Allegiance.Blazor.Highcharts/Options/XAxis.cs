@@ -20,6 +20,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public List<long?> TickPositions { get; set; }
         [JsonProperty("categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Categories { get; set; }
+        [JsonProperty("minTickInterval", NullValueHandling = NullValueHandling.Ignore)]
+        public int? MinTickInterval { get; set; }
+        [JsonProperty("minRange", NullValueHandling = NullValueHandling.Ignore)]
+        public int? MinRange { get; set; }
         [JsonProperty("tickmarkPlacement", NullValueHandling = NullValueHandling.Ignore)]
         public string TickmarkPlacement { get; set; }
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]

@@ -8,7 +8,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public long? PointStart { get; set; }
         [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]
         public string Stacking { get; set; }
-
+        [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int? LineWidth { get; set; }
+        [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string LineColor { get; set; }
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
 

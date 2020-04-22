@@ -11,6 +11,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public bool? Enabled { get; set; }
         [JsonProperty("style", NullValueHandling = NullValueHandling.Ignore)]
         public Style Style { get; set; }
+        [JsonProperty("step", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Step { get; set; }
 
         public Labels()
         {

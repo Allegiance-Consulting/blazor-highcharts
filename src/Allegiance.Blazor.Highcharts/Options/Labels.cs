@@ -13,6 +13,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Style Style { get; set; }
         [JsonProperty("step", NullValueHandling = NullValueHandling.Ignore)]
         public int? Step { get; set; }
+        [JsonProperty("overflow", NullValueHandling = NullValueHandling.Ignore)]
+        public string Overflow { get; set; }
 
         public Labels()
         {

@@ -18,6 +18,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public List<object> Data { get; set; }
         [JsonProperty("colorByPoint", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ColorByPoint { get; set; }
+        [JsonProperty("showInLegend", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? ShowInLegend { get; set; }
         [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
         public int? LineWidth { get; set; }
         [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]

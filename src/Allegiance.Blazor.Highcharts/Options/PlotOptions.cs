@@ -9,6 +9,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("area", NullValueHandling = NullValueHandling.Ignore)]
         public PlotOptionsArea Area { get; set; }
+        [JsonProperty("bar", NullValueHandling = NullValueHandling.Ignore)]
+        public PlotOptionsBar Bar { get; set; }
 
         [JsonProperty("pie", NullValueHandling = NullValueHandling.Ignore)]
         public PlotOptionsPie Pie { get; set; }

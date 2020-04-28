@@ -12,6 +12,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("cursor", NullValueHandling = NullValueHandling.Ignore)]
         public string Cursor { get; set; }
+        [JsonProperty("center", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Center { get; set; }
 
         [JsonProperty("dataLabels", NullValueHandling = NullValueHandling.Ignore)]
         public Labels DataLabels { get; set; }

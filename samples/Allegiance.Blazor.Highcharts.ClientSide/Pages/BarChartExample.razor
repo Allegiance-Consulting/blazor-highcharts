@@ -89,10 +89,10 @@
 
     private ChartObject BarChart = new ChartObject()
     {
-        Chart = new Chart()
-        {
-            Type = ChartType.Bar,
-        },
+        //Chart = new Chart()
+        //{
+        //    Type = ChartType.Bar,
+        //},
         Credits = new Credits(false),
         Title = new Title("Bar Chart"),
         Subtitle = new Title("Summary"),
@@ -136,9 +136,10 @@
             new SeriesElement()
             {
                 Name = "Amount",
+                Type = ChartType.Bar,
                 ShowInLegend = false,
                 Data = new List<object>
-            {
+                {
                     new Datum()
                     {
                         Y = 100000,

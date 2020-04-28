@@ -24,6 +24,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public int? LineWidth { get; set; }
         [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
         public string LineColor { get; set; }
+        [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
+        public string Size { get; set; }
+        [JsonProperty("innerSize", NullValueHandling = NullValueHandling.Ignore)]
+        public string InnerSize { get; set; }
         [JsonProperty("visible", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Visible { get; set; }
         [JsonProperty("stack", NullValueHandling = NullValueHandling.Ignore)]

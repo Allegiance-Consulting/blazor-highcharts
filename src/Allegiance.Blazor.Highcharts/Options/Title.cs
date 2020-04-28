@@ -8,6 +8,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Text { get; set; }
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Enabled { get; set; }
+        [JsonProperty("useHTML", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? UseHTML { get; set; }
 
         [JsonProperty("verticalAlign", NullValueHandling = NullValueHandling.Ignore)]
         public string VerticalAlign { get; set; }

@@ -9,6 +9,10 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("showInLegend", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ShowInLegend { get; set; }
+        [JsonProperty("borderColor", NullValueHandling = NullValueHandling.Ignore)]
+        public string BorderColor { get; set; }
+        [JsonProperty("borderWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int borderWidth { get; set; }
 
         [JsonProperty("cursor", NullValueHandling = NullValueHandling.Ignore)]
         public string Cursor { get; set; }

@@ -22,6 +22,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public List<object> Categories { get; set; }
         [JsonProperty("minTickInterval", NullValueHandling = NullValueHandling.Ignore)]
         public int? MinTickInterval { get; set; }
+        [JsonProperty("tickInterval", NullValueHandling = NullValueHandling.Ignore)]
+        public int? TickInterval { get; set; }
         [JsonProperty("minRange", NullValueHandling = NullValueHandling.Ignore)]
         public int? MinRange { get; set; }
         [JsonProperty("tickmarkPlacement", NullValueHandling = NullValueHandling.Ignore)]

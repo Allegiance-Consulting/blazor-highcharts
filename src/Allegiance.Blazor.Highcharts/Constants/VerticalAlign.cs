@@ -8,5 +8,6 @@ namespace Allegiance.Blazor.Highcharts.Constants
     {
         public static string Middle { get; } = "middle";
         public static string Bottom { get; } = "bottom";
+        public static string Top { get; } = "top";
     }
 }

@@ -14,6 +14,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string LineColor { get; set; }
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
+        [JsonProperty("dataLabels", NullValueHandling = NullValueHandling.Ignore)]
+        public DataLabels DataLabels { get; set; }
+        [JsonProperty("enableMouseTracking", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EnableMouseTracking { get; set; }
 
         public PlotOptionsArea()
         {

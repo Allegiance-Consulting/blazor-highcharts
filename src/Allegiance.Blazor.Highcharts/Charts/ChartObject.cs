@@ -47,6 +47,9 @@ namespace Allegiance.Blazor.Highcharts.Charts
         [JsonProperty("pane", NullValueHandling = NullValueHandling.Ignore)]
         public Pane Pane { get; set; }
 
+        [JsonProperty("colors", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Colors { get; set; }
+
         //public ChartObject()
         //{
 

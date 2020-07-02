@@ -13,6 +13,17 @@ window.renderHighchartChart = function (containerId, chartOptions) {
     Highcharts.chart(containerId, options);
 }
 
+window.redrawHighchartChart = function (containerId, seriesData) {
+    debugger;
+    let charts = Highcharts.charts;
+    for (var i = 0; i < charts.length; i++) {
+        if (charts[i].renderTo.id === containerId) {
+            charts[i].series[0].setData(seriesData);
+            break;
+        }
+    }
+}
+
 function reviver(key, value){
     if (typeof (value) === 'string' && value.includes('function()')) {
         let regEx = new RegExp("{([^}]*)}");

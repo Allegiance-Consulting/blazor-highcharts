@@ -7,6 +7,8 @@
 
 <figure class="highcharts-figure">
     <div id="piechart"></div>
+
+    <input @onclick="(() => RefreshData())" value="Refresh Data" type="button"/>
 </figure>
 
 <h4>Code Example</h4>
@@ -103,8 +105,26 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("piechart", PieChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        if (firstRender)
+        {
+            chartService.RenderChart("piechart", PieChart.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
+    }
+
+    private void RefreshData()
+    {
+        var random = new Random();
+        var Data = new List<object>()
+                {
+                    {new List<object>(){ "Chrome", random.Next(0, 100) } },
+                    {new List<object>(){ "Internet Explorer", random.Next(0, 100) } },
+                    {new List<object>(){ "Firefox", random.Next(0, 100) } },
+                    {new List<object>(){ "Edge", random.Next(0, 100) } },
+                    {new List<object>(){ "Safari", random.Next(0, 100) } },
+                    {new List<object>(){ "Other", random.Next(0, 100) } }
+                };
+        PieChart.ChangeSeriesAsync(jsRuntime, "piechart", Data);
     }
 
 }

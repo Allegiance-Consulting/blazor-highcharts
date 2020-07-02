@@ -1,8 +1,10 @@
 ﻿using Allegiance.Blazor.Highcharts.Constants;
 using Allegiance.Blazor.Highcharts.Options;
+using Microsoft.JSInterop;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Allegiance.Blazor.Highcharts.Charts
 {
@@ -77,6 +79,11 @@ namespace Allegiance.Blazor.Highcharts.Charts
         public string Generate()
         {
             return System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
+        }
+
+        public async Task ChangeSeriesAsync(IJSRuntime jsRuntime, string containerId, List<object> newData)
+        {
+            await jsRuntime.InvokeVoidAsync("redrawHighchartChart", containerId, newData);
         }
     }
 }

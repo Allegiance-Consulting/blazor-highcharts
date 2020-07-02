@@ -13,8 +13,7 @@ window.renderHighchartChart = function (containerId, chartOptions) {
     Highcharts.chart(containerId, options);
 }
 
-window.redrawHighchartChart = function (containerId, seriesData) {
-    debugger;
+window.updateSeriesHighchartChart = function (containerId, seriesData) {
     let charts = Highcharts.charts;
     for (var i = 0; i < charts.length; i++) {
         if (charts[i].renderTo.id === containerId) {

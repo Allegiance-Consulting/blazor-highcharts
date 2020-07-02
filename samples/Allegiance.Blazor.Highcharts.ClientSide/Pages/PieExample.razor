@@ -112,7 +112,7 @@
         }
     }
 
-    private void RefreshData()
+    private async Task RefreshData()
     {
         var random = new Random();
         var Data = new List<object>()
@@ -124,7 +124,7 @@
                     {new List<object>(){ "Safari", random.Next(0, 100) } },
                     {new List<object>(){ "Other", random.Next(0, 100) } }
                 };
-        PieChart.ChangeSeriesAsync(jsRuntime, "piechart", Data);
+        await PieChart.ChangeSeriesAsync(jsRuntime, "piechart", Data);
     }
 
 }

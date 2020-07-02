@@ -83,7 +83,7 @@ namespace Allegiance.Blazor.Highcharts.Charts
 
         public async Task ChangeSeriesAsync(IJSRuntime jsRuntime, string containerId, List<object> newData)
         {
-            await jsRuntime.InvokeVoidAsync("redrawHighchartChart", containerId, newData);
+            await jsRuntime.InvokeVoidAsync("updateSeriesHighchartChart", containerId, newData);
         }
     }
 }

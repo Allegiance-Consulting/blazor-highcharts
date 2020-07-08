@@ -22,6 +22,23 @@ window.updateSeriesHighchartChart = function (containerId, seriesData) {
         }
     }
 }
+window.updateTitleHighchartChart = function (containerId, titleText, titleColor) {
+    let charts = Highcharts.charts;
+    for (var i = 0; i < charts.length; i++) {
+        if (charts[i].renderTo.id === containerId) {
+            charts[i].update({
+                title: {
+                    text: titleText,
+                    style: {
+                        color: titleColor
+                    }
+                }
+
+            });
+            break;
+        }
+    }
+}
 
 function reviver(key, value){
     if (typeof (value) === 'string' && value.includes('function()')) {

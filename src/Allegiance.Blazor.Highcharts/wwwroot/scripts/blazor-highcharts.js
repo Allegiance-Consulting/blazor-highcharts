@@ -1,4 +1,4 @@
-﻿// This is the interop Javascript file that handles all interop between Blazor and Javascript
+// This is the interop Javascript file that handles all interop between Blazor and Javascript
 
 window.renderHighchartChart = function (containerId, chartOptions) {
     //debugger
@@ -16,7 +16,7 @@ window.renderHighchartChart = function (containerId, chartOptions) {
 window.updateSeriesHighchartChart = function (containerId, seriesData) {
     let charts = Highcharts.charts;
     for (var i = 0; i < charts.length; i++) {
-        if (charts[i].renderTo.id === containerId) {
+        if (charts[i].renderTo.id === containerId && document.getElementById(charts[i].container.id) != null) {
             charts[i].series[0].setData(seriesData);
             break;
         }
@@ -25,7 +25,7 @@ window.updateSeriesHighchartChart = function (containerId, seriesData) {
 window.updateTitleHighchartChart = function (containerId, titleText, titleColor) {
     let charts = Highcharts.charts;
     for (var i = 0; i < charts.length; i++) {
-        if (charts[i].renderTo.id === containerId) {
+        if (charts[i].renderTo.id === containerId && document.getElementById(charts[i].container.id) != null) {
             charts[i].update({
                 title: {
                     text: titleText,

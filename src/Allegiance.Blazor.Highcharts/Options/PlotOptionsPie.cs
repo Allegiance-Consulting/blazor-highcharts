@@ -16,6 +16,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("cursor", NullValueHandling = NullValueHandling.Ignore)]
         public string Cursor { get; set; }
+        [JsonProperty("depth", NullValueHandling = NullValueHandling.Ignore)]
+        public int Depth { get; set; }
         [JsonProperty("center", NullValueHandling = NullValueHandling.Ignore)]
         public string[] Center { get; set; }
 

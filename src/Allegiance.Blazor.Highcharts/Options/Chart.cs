@@ -31,7 +31,11 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("animation", NullValueHandling = NullValueHandling.Ignore)]
         public Animation Animation { get; set; }
 
-        public Chart(string type= null, bool? styledMode= null, string zoomType= null, int? width= null, int? height= null, List<long> spacing= null, List<long> margin= null, object backgroundColor= null, Animation animation = null)
+        [JsonProperty("options3d", NullValueHandling = NullValueHandling.Ignore)]
+        public Options3D Options3d { get; set; }
+
+
+        public Chart(string type= null, bool? styledMode= null, string zoomType= null, int? width= null, int? height= null, List<long> spacing= null, List<long> margin= null, object backgroundColor= null, Animation animation = null, Options3D options3d = null)
         {
             Type = type;
             StyledMode = styledMode;
@@ -42,6 +46,7 @@ namespace Allegiance.Blazor.Highcharts.Options
             Margin = margin;
             BackgroundColor = backgroundColor;
             Animation = animation;
+            Options3d = options3d;
         }
 
         public Chart()

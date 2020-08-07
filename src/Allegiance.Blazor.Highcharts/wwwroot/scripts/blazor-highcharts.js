@@ -22,6 +22,15 @@ window.updateSeriesHighchartChart = function (containerId, seriesData) {
         }
     }
 }
+window.updateSeriesAtIndexHighchartChart = function (containerId, seriesIndex, seriesData) {
+    let charts = Highcharts.charts;
+    for (var i = 0; i < charts.length; i++) {
+        if (charts[i].renderTo.id === containerId && document.getElementById(charts[i].container.id) != null) {
+            charts[i].series[seriesIndex].setData(seriesData);
+            break;
+        }
+    }
+}
 window.updateTitleHighchartChart = function (containerId, titleText, titleColor) {
     let charts = Highcharts.charts;
     for (var i = 0; i < charts.length; i++) {

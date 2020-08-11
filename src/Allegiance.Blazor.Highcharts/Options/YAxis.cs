@@ -9,7 +9,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Title Title { get; set; }
 
         [JsonProperty("min", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Min { get; set; }
+        public double? Min { get; set; }
 
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
         public Labels Labels { get; set; }
@@ -17,10 +17,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string ClassName { get; set; }
 
         [JsonProperty("max", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Max { get; set; }
+        public double? Max { get; set; }
 
         [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public long? LineWidth { get; set; }
+        public int? LineWidth { get; set; }
 
         [JsonProperty("tickPositions", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> TickPositions { get; set; }
@@ -38,7 +38,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string LineColor { get; set; }
 
         [JsonProperty("gridLineWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public long? GridLineWidth { get; set; }
+        public int? GridLineWidth { get; set; }
 
         public YAxis()
         {

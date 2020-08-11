@@ -9,7 +9,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]
-        public long? PointStart { get; set; }
+        public double? PointStart { get; set; }
         [JsonProperty("fillOpacity", NullValueHandling = NullValueHandling.Ignore)]
         public double? FillOpacity { get; set; }
         [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]
@@ -30,7 +30,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public PlotOptionsSeries(Label label = null, long? pointStart = null, int? pointwidth = null)
+        public PlotOptionsSeries(Label label = null, double? pointStart = null, int? pointwidth = null)
         {
             Label = label;
             PointStart = pointStart;

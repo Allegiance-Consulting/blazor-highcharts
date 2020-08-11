@@ -10,7 +10,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("dashStyle", NullValueHandling = NullValueHandling.Ignore)]
         public string DashStyle { get; set; } = Allegiance.Blazor.Highcharts.Constants.DashStyle.Longdashdot;
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Value { get; set; }
+        public double? Value { get; set; }
         [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
         public int? Width { get; set; } = 1;
         [JsonProperty("zIndex", NullValueHandling = NullValueHandling.Ignore)]

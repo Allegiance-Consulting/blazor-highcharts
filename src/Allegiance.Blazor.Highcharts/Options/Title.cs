@@ -23,9 +23,9 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Style Style { get; set; }
 
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Y { get; set; }
+        public double? Y { get; set; }
         [JsonProperty("x", NullValueHandling = NullValueHandling.Ignore)]
-        public long? X { get; set; }
+        public double? X { get; set; }
 
         public Title()
         {

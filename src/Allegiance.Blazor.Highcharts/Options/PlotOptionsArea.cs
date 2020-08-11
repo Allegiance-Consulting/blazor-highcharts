@@ -5,7 +5,7 @@ namespace Allegiance.Blazor.Highcharts.Options
     public partial class PlotOptionsArea
     {
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]
-        public long? PointStart { get; set; }
+        public double? PointStart { get; set; }
         [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]
         public string Stacking { get; set; }
         [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
@@ -24,7 +24,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public PlotOptionsArea(long? pointStart = null, Marker marker = null)
+        public PlotOptionsArea(double? pointStart = null, Marker marker = null)
         {
             PointStart = pointStart;
             Marker = marker;

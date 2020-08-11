@@ -17,7 +17,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string InnerRadius { get; set; }
 
         [JsonProperty("borderWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public long? BorderWidth { get; set; }
+        public int? BorderWidth { get; set; }
 
         //////////////////////////////////////////////////////
 

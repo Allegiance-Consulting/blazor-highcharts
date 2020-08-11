@@ -11,7 +11,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
 
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]
-        public long? PointStart { get; set; }
+        public double? PointStart { get; set; }
         [JsonProperty("fillOpacity", NullValueHandling = NullValueHandling.Ignore)]
         public double? FillOpacity { get; set; }
 

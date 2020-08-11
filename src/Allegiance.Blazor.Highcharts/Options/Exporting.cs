@@ -9,15 +9,15 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Buttons Buttons { get; set; }
 
         [JsonProperty("sourceWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public long? SourceWidth { get; set; }
+        public int? SourceWidth { get; set; }
 
         [JsonProperty("sourceHeight", NullValueHandling = NullValueHandling.Ignore)]
-        public long? SourceHeight { get; set; }
+        public int? SourceHeight { get; set; }
 
         [JsonProperty("chartOptions", NullValueHandling = NullValueHandling.Ignore)]
         public ChartOptions ChartOptions { get; set; }
 
-        public Exporting(Buttons buttons = null, long? sourceWidth = null, long? sourceHeight = null, ChartOptions chartOptions = null)
+        public Exporting(Buttons buttons = null, int? sourceWidth = null, int? sourceHeight = null, ChartOptions chartOptions = null)
         {
             Buttons = buttons;
             SourceWidth = sourceWidth;

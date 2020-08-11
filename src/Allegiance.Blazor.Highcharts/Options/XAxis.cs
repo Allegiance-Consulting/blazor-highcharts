@@ -17,7 +17,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("showLastLabel", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ShowLastLabel { get; set; }
         [JsonProperty("tickPositions", NullValueHandling = NullValueHandling.Ignore)]
-        public List<long?> TickPositions { get; set; }
+        public List<double?> TickPositions { get; set; }
         [JsonProperty("categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Categories { get; set; }
         [JsonProperty("minTickInterval", NullValueHandling = NullValueHandling.Ignore)]
@@ -43,10 +43,10 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string LineColor { get; set; }
 
         [JsonProperty("gridLineWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public long? GridLineWidth { get; set; }
+        public int? GridLineWidth { get; set; }
 
         [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
-        public long? LineWidth { get; set; }
+        public int? LineWidth { get; set; }
 
         public XAxis()
         {

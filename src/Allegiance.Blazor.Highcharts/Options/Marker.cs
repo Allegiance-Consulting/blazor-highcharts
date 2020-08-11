@@ -11,7 +11,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string Symbol { get; set; }
 
         [JsonProperty("radius", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Radius { get; set; }
+        public int? Radius { get; set; }
 
         [JsonProperty("states", NullValueHandling = NullValueHandling.Ignore)]
         public States States { get; set; }
@@ -28,7 +28,7 @@ namespace Allegiance.Blazor.Highcharts.Options
             
         }
 
-        public Marker(bool? enabled = null, string symbol = null, long? radius = null, States states = null)
+        public Marker(bool? enabled = null, string symbol = null, int? radius = null, States states = null)
         {
             Enabled = enabled;
             Symbol = symbol;

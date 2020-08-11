@@ -28,16 +28,16 @@ namespace Allegiance.Blazor.Highcharts.Options
         public States States { get; set; }
 
         [JsonProperty("startAngle", NullValueHandling = NullValueHandling.Ignore)]
-        public long? StartAngle { get; set; }
+        public int? StartAngle { get; set; }
         [JsonProperty("endAngle", NullValueHandling = NullValueHandling.Ignore)]
-        public long? EndAngle { get; set; }
+        public int? EndAngle { get; set; }
 
         public PlotOptionsPie()
         {
 
         }
 
-        public PlotOptionsPie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null,long? startangle = null, long? endangle = null)
+        public PlotOptionsPie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null,int? startangle = null, int? endangle = null)
         {
             AllowPointSelect = allowpointselect;
             ShowInLegend = showinlegend;

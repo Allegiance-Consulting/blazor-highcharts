@@ -14,38 +14,49 @@ window.renderHighchartChart = function (containerId, chartOptions) {
 }
 
 window.updateSeriesHighchartChart = function (containerId, seriesData) {
-    let charts = Highcharts.charts;
-    for (var i = 0; i < charts.length; i++) {
-        if (charts[i].renderTo.id === containerId && document.getElementById(charts[i].container.id) != null) {
-            charts[i].series[0].setData(seriesData);
+
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+            Highcharts.charts[i].series[0].setData(seriesData);
             break;
         }
     }
 }
 window.updateSeriesAtIndexHighchartChart = function (containerId, seriesIndex, seriesData) {
-    let charts = Highcharts.charts;
-    for (var i = 0; i < charts.length; i++) {
-        if (charts[i].renderTo.id === containerId && document.getElementById(charts[i].container.id) != null) {
-            charts[i].series[seriesIndex].setData(seriesData);
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+            Highcharts.charts[i].series[seriesIndex].setData(seriesData);
             break;
         }
     }
 }
 window.updateTitleHighchartChart = function (containerId, titleText, titleColor) {
-    let charts = Highcharts.charts;
-    for (var i = 0; i < charts.length; i++) {
-        if (charts[i].renderTo.id === containerId && document.getElementById(charts[i].container.id) != null) {
-            charts[i].update({
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+            Highcharts.charts[i].update({
                 title: {
                     text: titleText,
                     style: {
                         color: titleColor
                     }
                 }
-
             });
             break;
         }
+    }
+}
+
+window.destroyCharts = function (containerId) {
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i])
+        {
+            Highcharts.charts[i].destroy();
+        }
+    }    
+    const x = Number(Highcharts.chart.length);
+    for (var i = 0; i <= x; i++)  {
+        Highcharts.charts.pop(0);
+
     }
 }
 

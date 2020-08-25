@@ -117,7 +117,7 @@
         base.OnAfterRender(firstRender);
         if (firstRender)
         {
-            Console.WriteLine(PieChart3D.Generate());
+            //Console.WriteLine(PieChart3D.Generate());
             chartService.RenderChart("piechart3d", PieChart3D.Generate());
             jsRuntime.InvokeVoidAsync("prettyPrint");
         }

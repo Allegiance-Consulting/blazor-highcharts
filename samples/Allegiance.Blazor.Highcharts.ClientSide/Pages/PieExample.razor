@@ -18,13 +18,15 @@
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code {
-   {
+
+    private ChartObject PieChart = new ChartObject()
+    {
         Chart = new Chart(ChartType.Pie),
         Tooltip = new Tooltip(false),
         Legend = new Legend(true),
         PlotOptions = new PlotOptions()
         {
-            Pie = new Pie()
+            Pie = new PlotOptionsPie()
             {
                 AllowPointSelect = false,
                 ShowInLegend = true,
@@ -57,8 +59,31 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("piechart", PieChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        if (firstRender)
+        {
+            chartService.RenderChart("piechart", PieChart.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
+    }
+
+    private async Task Destroy()
+    {
+        await PieChart.DestroyAllChartsAsync(jsRuntime);
+    }
+
+    private async Task RefreshData()
+    {
+        var random = new Random();
+        var Data = new List&lt;object>()
+                {
+                    {new List&lt;object>(){ "Chrome", random.Next(0, 100) } },
+                    {new List&lt;object>(){ "Internet Explorer", random.Next(0, 100) } },
+                    {new List&lt;object>(){ "Firefox", random.Next(0, 100) } },
+                    {new List&lt;object>(){ "Edge", random.Next(0, 100) } },
+                    {new List&lt;object>(){ "Safari", random.Next(0, 100) } },
+                    {new List&lt;object>(){ "Other", random.Next(0, 100) } }
+                };
+        await PieChart.ChangeSeriesAsync(jsRuntime, "piechart", Data);
     }
 
 }
@@ -118,9 +143,7 @@
 
     private async Task Destroy()
     {
-        //await PieChart.DestroyChartAsync(jsRuntime, "basicLine");
-        await PieChart.DestroyChartAsync(jsRuntime, "piechart");
-
+        await PieChart.DestroyAllChartsAsync(jsRuntime);
     }
 
     private async Task RefreshData()

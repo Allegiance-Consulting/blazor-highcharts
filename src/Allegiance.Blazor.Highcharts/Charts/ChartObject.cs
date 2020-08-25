@@ -79,9 +79,9 @@ namespace Allegiance.Blazor.Highcharts.Charts
         {
             await jsRuntime.InvokeVoidAsync("updateSeriesHighchartChart", containerId, newData);
         }
-        public async Task DestroyChartAsync(IJSRuntime jsRuntime, string containerId)
+        public async Task DestroyAllChartsAsync(IJSRuntime jsRuntime)
         {
-            await jsRuntime.InvokeVoidAsync("destroyCharts", containerId);
+            await jsRuntime.InvokeVoidAsync("destroyCharts");
         }
         public async Task ChangeSeriesAtIndexAsync(IJSRuntime jsRuntime, string containerId, int index , List<object> newData)
         {

@@ -46,7 +46,7 @@ window.updateTitleHighchartChart = function (containerId, titleText, titleColor)
     }
 }
 
-window.destroyCharts = function (containerId) {
+window.destroyCharts = function () {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i])
         {

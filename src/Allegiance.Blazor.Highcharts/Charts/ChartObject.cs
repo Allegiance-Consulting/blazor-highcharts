@@ -52,12 +52,6 @@ namespace Allegiance.Blazor.Highcharts.Charts
         [JsonProperty("colors", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Colors { get; set; }
 
-        //public ChartObject()
-        //{
-
-        //}
-
-        //public ChartObject(Chart chart = null, Accessibility accessibility = null, Title title = null, Title subtitle = null, XAxis xAxis = null, YAxis yAxis = null, Tooltip tooltip = null, PlotOptions plotOptions = null, List<SeriesElement> series = null, Credits credits = null, Legend legend = null, Responsive responsive = null, Exporting exporting = null, Pane pane = null)
         public ChartObject()
         {
             Chart = new Chart();
@@ -84,6 +78,10 @@ namespace Allegiance.Blazor.Highcharts.Charts
         public async Task ChangeSeriesAsync(IJSRuntime jsRuntime, string containerId, List<object> newData)
         {
             await jsRuntime.InvokeVoidAsync("updateSeriesHighchartChart", containerId, newData);
+        }
+        public async Task DestroyChartAsync(IJSRuntime jsRuntime, string containerId)
+        {
+            await jsRuntime.InvokeVoidAsync("destroyCharts", containerId);
         }
         public async Task ChangeSeriesAtIndexAsync(IJSRuntime jsRuntime, string containerId, int index , List<object> newData)
         {

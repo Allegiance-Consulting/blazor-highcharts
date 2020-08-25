@@ -113,11 +113,16 @@
             )
     };
 
+
+
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("basicLine", BasicLineGraph.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        if (firstRender)
+        {
+            chartService.RenderChart("basicLine", BasicLineGraph.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
     }
 }
 

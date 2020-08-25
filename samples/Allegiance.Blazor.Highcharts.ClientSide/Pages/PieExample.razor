@@ -6,10 +6,14 @@
 <h3>Pie Chart</h3>
 
 <figure class="highcharts-figure">
-    <div id="piechart"></div>
-
-    <input @onclick="(() => RefreshData())" value="Refresh Data" type="button"/>
+    <div id="piechart"></div>    
 </figure>
+
+<div>
+    <button @onclick="RefreshData">Refresh Data</button>
+    <button @onclick="Destroy">Test Destroy</button>
+
+</div>
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
@@ -110,6 +114,13 @@
             chartService.RenderChart("piechart", PieChart.Generate());
             jsRuntime.InvokeVoidAsync("prettyPrint");
         }
+    }
+
+    private async Task Destroy()
+    {
+        //await PieChart.DestroyChartAsync(jsRuntime, "basicLine");
+        await PieChart.DestroyChartAsync(jsRuntime, "piechart");
+
     }
 
     private async Task RefreshData()

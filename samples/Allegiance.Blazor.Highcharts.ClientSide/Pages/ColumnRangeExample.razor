@@ -1,0 +1,71 @@
+﻿@page "/columnrange-chart"
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+<h3>Column Range Chart</h3>
+
+<figure class="highcharts-figure">
+    <div id="columnrangechart"></div>
+</figure>
+
+
+<h4>Code Example</h4>
+<pre class="prettyprint opacity-load">
+@@code {
+
+}
+
+</pre>
+
+
+@code {
+    private ChartObject ColumnChart = new ChartObject()
+    {
+        //Chart = new Chart(ChartType.Column, false),
+        Title = new Title("ASCII value of letters in 'COLUMN'"),
+        XAxis = new XAxis(AxisType.Category),
+        YAxis = new YAxis()
+        {
+            Title = new Title("Letter"),
+        },
+        Legend = new Legend(false),
+        PlotOptions = new PlotOptions()
+        {
+            ColumnRange = new PlotOptionsColumnRange()
+            {
+                BorderRadius = 5
+            },
+            Series = new PlotOptionsSeries()
+            {
+                PointWidth = 60
+            }
+
+        },
+        Series = new List<SeriesElement>()
+        {
+            new SeriesElement()
+            {
+                Name = "ASCII value",
+                Type = ChartType.ColumnRange,
+                ColorByPoint = true,
+                Data = new List<object>()
+                {
+                    new List<double>(){50,60},
+                    new List<double>(){50,60},
+                    new List<double>(){50,60},
+                    new List<double>(){50,60}
+                }
+
+                }
+            }
+
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("columnrangechart", ColumnChart.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+
+}

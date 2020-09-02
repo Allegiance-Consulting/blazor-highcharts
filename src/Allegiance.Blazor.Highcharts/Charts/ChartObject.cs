@@ -72,7 +72,8 @@ namespace Allegiance.Blazor.Highcharts.Charts
 
         public string Generate()
         {
-            return System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
+            var json = System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
+            return json.Replace("columnRange", "columnrange");
         }
 
         public async Task ChangeSeriesAsync(IJSRuntime jsRuntime, string containerId, List<object> newData)

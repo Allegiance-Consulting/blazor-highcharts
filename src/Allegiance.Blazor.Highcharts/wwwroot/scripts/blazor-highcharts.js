@@ -10,7 +10,7 @@ window.renderHighchartChart = function (containerId, chartOptions) {
         this.console.log(e.message);
         this.console.log(e.stack);
     }
-    disposeHighchartChart(containerId); // Will ensure disposal before re-rendering if Blazor method did not work.
+    //disposeHighchartChart(containerId); // Will ensure disposal before re-rendering if Blazor method did not work.
     Highcharts.chart(containerId, options);
 }
 

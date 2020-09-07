@@ -92,9 +92,10 @@ namespace Allegiance.Blazor.Highcharts.Charts
         {
             await jsRuntime.InvokeVoidAsync("updateTitleHighchartChart", containerId, titleText, titleColor);
         }
-        public async Task DisposeChart(IJSRuntime jsRuntime, string containerId)
+        public void DisposeChart(IJSRuntime jsRuntime, string containerId)
         {
-            await jsRuntime.InvokeVoidAsync("disposeHighchartChart", containerId);
+            // This is running synchronously, if not triggered it will get handled by JavaScript if the chart already exists.
+            jsRuntime.InvokeVoidAsync("disposeHighchartChart", containerId);
         }
     }
 }

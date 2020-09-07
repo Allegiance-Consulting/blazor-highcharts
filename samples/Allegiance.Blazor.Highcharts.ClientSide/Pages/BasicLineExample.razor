@@ -2,6 +2,7 @@
 @page "/"
 @inject IChartService chartService
 @inject IJSRuntime jsRuntime
+@implements IDisposable
 
 
 <h3>Basic Line Chart</h3>
@@ -123,6 +124,11 @@
             chartService.RenderChart("basicLine", BasicLineGraph.Generate());
             jsRuntime.InvokeVoidAsync("prettyPrint");
         }
+    }
+
+    public void Dispose()
+    {
+        BasicLineGraph.DisposeChart(jsRuntime, "basicLine");
     }
 }
 

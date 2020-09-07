@@ -1,6 +1,7 @@
 ﻿@page "/area-chart"
 @inject IChartService chartService
 @inject IJSRuntime jsRuntime
+@implements IDisposable
 
 <h3>Area Chart</h3>
 
@@ -147,6 +148,11 @@
         base.OnAfterRender(firstRender);
         chartService.RenderChart("area", AreaChart.Generate());
         jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
+
+    public void Dispose()
+    {
+        AreaChart.DisposeChart(jsRuntime, "area");
     }
 }
 

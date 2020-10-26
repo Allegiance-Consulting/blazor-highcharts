@@ -24,6 +24,8 @@ namespace Allegiance.Blazor.Highcharts.Options
         public int? LineWidth { get; set; }
         [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
         public string LineColor { get; set; }
+        [JsonProperty("dashStyle", NullValueHandling = NullValueHandling.Ignore)]
+        public string DashStyle { get; set; }
         [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
         public string Size { get; set; }
         [JsonProperty("innerSize", NullValueHandling = NullValueHandling.Ignore)]

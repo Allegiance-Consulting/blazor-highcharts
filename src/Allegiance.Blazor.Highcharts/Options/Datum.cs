@@ -22,17 +22,22 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
         public string Color { get; set; }
+        [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
+        public Marker Marker { get; set; }
 
         public Datum()
         {
 
         }
 
-        public Datum(string name = null, double? y = null, string color = null)
+        public Datum(string name, double? y, string radius = null, string innerRadius =null, string color = null, Marker marker = null)
         {
             Name = name;
             Y = y;
+            Radius = radius;
+            InnerRadius = innerRadius;
             Color = color;
+            Marker = marker;
         }
     }
 }

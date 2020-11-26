@@ -92,6 +92,10 @@ namespace Allegiance.Blazor.Highcharts.Charts
         {
             await jsRuntime.InvokeVoidAsync("updateTitleHighchartChart", containerId, titleText, titleColor);
         }
+        public async Task ChangePlotlineValAsync(IJSRuntime jsRuntime, string containerId, double plotlineVal, int plotlineIndex = 0)
+        {
+            await jsRuntime.InvokeVoidAsync("updatePlotLineValue", containerId, plotlineVal, plotlineIndex);
+        }
         public void DisposeChart(IJSRuntime jsRuntime, string containerId)
         {
             // This is running synchronously, if not triggered it will get handled by JavaScript if the chart already exists.

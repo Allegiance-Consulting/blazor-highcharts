@@ -6,7 +6,9 @@
 <h3>Area Chart</h3>
 
 <div id="area"></div>
-
+<div>
+    <button @onclick="RandomisePlotline">Randomise Plotline</button>
+</div>
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
 @@code{
@@ -133,7 +135,11 @@
         {
             Accessibility = new Accessibility("Range: 1940 to 2017."),
             Labels = new Labels("function() {return this.value;}"),
-            AllowDecimals = false
+            AllowDecimals = false,
+            PlotLines = new List<PlotLine>() { new PlotLine() {
+                Value = 2000,
+                DashStyle = DashStyle.DashDot
+            } }
         },
         YAxis = new YAxis(
             new Title("Nuclear weapon states"),
@@ -145,9 +151,20 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        base.OnAfterRender(firstRender);
-        chartService.RenderChart("area", AreaChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        if (firstRender)
+        {
+
+            base.OnAfterRender(firstRender);
+            chartService.RenderChart("area", AreaChart.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
+    }
+
+    private async Task RandomisePlotline()
+    {
+        var random = new Random();
+
+        await AreaChart.ChangePlotlineValAsync(jsRuntime, "area", random.Next(1950,2000));
     }
 
     public void Dispose()

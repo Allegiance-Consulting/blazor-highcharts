@@ -46,7 +46,16 @@ window.updateTitleHighchartChart = function (containerId, titleText, titleColor)
         }
     }
 }
-
+window.updatePlotLineValue = function (containerId, plotlineVal, plotlineIndex) {
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+            Highcharts.charts[i].xAxis[0].options.plotLines[plotlineIndex].value = plotlineVal;
+            Highcharts.charts[i].xAxis[0].update();
+            console.log(containerId);
+            break;
+        }
+    }
+}
 window.destroyCharts = function () {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i]) {

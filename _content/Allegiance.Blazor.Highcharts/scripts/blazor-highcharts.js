@@ -50,12 +50,20 @@ window.updatePlotLineValue = function (containerId, plotlineVal, plotlineIndex) 
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].xAxis[0].options.plotLines[plotlineIndex].value = plotlineVal;
-            Highcharts.charts[i].xAxis[0].update();
-            console.log(containerId);
+            Highcharts.charts[i].xAxis[0].update();            
             break;
         }
     }
 }
+window.updateXAxisCategories = function (containerId, categories) {
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+            Highcharts.charts[i].xAxis[0].setCategories(categories);                        
+            break;
+        }
+    }
+}
+
 window.destroyCharts = function () {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i]) {

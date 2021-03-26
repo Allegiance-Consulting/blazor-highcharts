@@ -14,9 +14,9 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("fillColor", NullValueHandling = NullValueHandling.Ignore)]
         public string FillColor { get; set; }
         [JsonProperty("fillOpacity", NullValueHandling = NullValueHandling.Ignore)]
-        public string FillOpacity { get; set; }
+        public double FillOpacity { get; set; }
         [JsonProperty("opacity", NullValueHandling = NullValueHandling.Ignore)]
-        public string Opacity { get; set; }
+        public double Opacity { get; set; }
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]

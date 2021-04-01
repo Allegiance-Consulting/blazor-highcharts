@@ -36,7 +36,8 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
         public string LineColor { get; set; }
-
+        [JsonProperty("plotLines", NullValueHandling = NullValueHandling.Ignore)]
+        public List<PlotLine> PlotLines { get; set; }
         [JsonProperty("gridLineWidth", NullValueHandling = NullValueHandling.Ignore)]
         public int? GridLineWidth { get; set; }
 

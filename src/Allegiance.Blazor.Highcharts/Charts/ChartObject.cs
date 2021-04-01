@@ -92,9 +92,13 @@ namespace Allegiance.Blazor.Highcharts.Charts
         {
             await jsRuntime.InvokeVoidAsync("updateTitleHighchartChart", containerId, titleText, titleColor);
         }
-        public async Task ChangePlotlineValAsync(IJSRuntime jsRuntime, string containerId, double plotlineVal, int plotlineIndex = 0)
+        public async Task ChangeXAxisPlotlineValAsync(IJSRuntime jsRuntime, string containerId, double plotlineVal, int plotlineIndex = 0)
         {
-            await jsRuntime.InvokeVoidAsync("updatePlotLineValue", containerId, plotlineVal, plotlineIndex);
+            await jsRuntime.InvokeVoidAsync("updateXAxisPlotLineValue", containerId, plotlineVal, plotlineIndex);
+        }
+        public async Task ChangeYAxisPlotlineValAsync(IJSRuntime jsRuntime, string containerId, double plotlineVal, int plotlineIndex = 0)
+        {
+            await jsRuntime.InvokeVoidAsync("updateYAxisPlotLineValue", containerId, plotlineVal, plotlineIndex);
         }
         public async Task ChangeXAxisCategoriesAsync(IJSRuntime jsRuntime, string containerId, List<double> newCategories)
         {

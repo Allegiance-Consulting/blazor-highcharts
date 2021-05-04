@@ -6,6 +6,8 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
         public Label Label { get; set; }
+        [JsonProperty("dataLabels", NullValueHandling = NullValueHandling.Ignore)]
+        public Labels DataLabels { get; set; }
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]

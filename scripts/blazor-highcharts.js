@@ -17,7 +17,7 @@ window.renderHighchartChart = function (containerId, chartOptions) {
 window.updateSeriesHighchartChart = function (containerId, seriesData) {
 
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].series[0].setData(seriesData);
             break;
         }
@@ -25,7 +25,7 @@ window.updateSeriesHighchartChart = function (containerId, seriesData) {
 }
 window.updateSeriesAtIndexHighchartChart = function (containerId, seriesIndex, seriesData) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].series[seriesIndex].setData(seriesData);
             break;
         }
@@ -33,7 +33,7 @@ window.updateSeriesAtIndexHighchartChart = function (containerId, seriesIndex, s
 }
 window.updateTitleHighchartChart = function (containerId, titleText, titleColor) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].update({
                 title: {
                     text: titleText,
@@ -48,7 +48,7 @@ window.updateTitleHighchartChart = function (containerId, titleText, titleColor)
 }
 window.updateXAxisPlotLineValue = function (containerId, plotlineVal, plotlineIndex) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].xAxis[0].options.plotLines[plotlineIndex].value = plotlineVal;
             Highcharts.charts[i].xAxis[0].update();            
             break;
@@ -57,7 +57,7 @@ window.updateXAxisPlotLineValue = function (containerId, plotlineVal, plotlineIn
 }
 window.updateYAxisPlotLineValue = function (containerId, plotlineVal, plotlineIndex) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].yAxis[0].options.plotLines[plotlineIndex].value = plotlineVal;
             Highcharts.charts[i].yAxis[0].update();            
             break;
@@ -66,7 +66,7 @@ window.updateYAxisPlotLineValue = function (containerId, plotlineVal, plotlineIn
 }
 window.updateXAxisCategories = function (containerId, categories) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].xAxis[0].setCategories(categories);                        
             break;
         }
@@ -90,7 +90,7 @@ window.disposeHighchartChart = function (containerId) {
     let count = -1;
     let shouldPop = false;
     for (var i = 0; i < Highcharts.charts.length; i++) {
-        if (Highcharts.charts[i].renderTo.id === containerId) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId) {
             Highcharts.charts[i].destroy();
             shouldPop = true;
             break;

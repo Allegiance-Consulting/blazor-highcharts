@@ -6,6 +6,8 @@ namespace Allegiance.Blazor.Highcharts.Options
     {
         [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
         public int? Duration { get; set; }
+        [JsonProperty("defer", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Defer { get; set; }
         public Animation()
         {
 

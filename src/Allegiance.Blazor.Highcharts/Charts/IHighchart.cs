@@ -7,7 +7,7 @@ namespace Allegiance.Blazor.Highcharts.Charts
 {
     public interface IHighchart
     {
-        string Generate()
+        string Generate()//change
         {
             return JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
         }

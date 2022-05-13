@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Allegiance.Blazor.Highcharts.Core\Allegiance.Blazor.Highcharts.csproj" />
+    <ProjectReference Include="..\..\src\Allegiance.Blazor.Highcharts\Allegiance.Blazor.Highcharts.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Allegiance.Blazor.Highcharts.Core", "src\Allegiance.Blazor.Highcharts.Core\Allegiance.Blazor.Highcharts.Core.csproj", "{F3715DA4-4E5D-4A99-ADAF-C9A8DD16B01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Allegiance.Blazor.Highcharts", "src\Allegiance.Blazor.Highcharts.Core\Allegiance.Blazor.Highcharts.csproj", "{F3715DA4-4E5D-4A99-ADAF-C9A8DD16B01F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Allegiance.Blazor.Highcharts.ClientSide", "samples\Allegiance.Blazor.Highcharts.ClientSide\Allegiance.Blazor.Highcharts.ClientSide.csproj", "{1967FA42-D265-46EB-B2AA-CA1509104D46}"
 EndProject

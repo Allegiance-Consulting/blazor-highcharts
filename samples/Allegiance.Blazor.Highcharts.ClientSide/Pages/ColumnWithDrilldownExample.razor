@@ -1,0 +1,33 @@
+﻿@page "/columnwithdrilldown-chart"
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+
+<h3>Column With Drilldown Chart</h3>
+
+<figure class="highcharts-figure">
+    <div id="columnwithdrillchart"></div>
+</figure>
+
+@code {
+    private ChartObject ColumnWithDrilldown = new ChartObject()
+    {
+        Title = new Title("Browser market shares. January, 2022"),
+        Subtitle = new Title("Click the columns to view versions."),
+        XAxis = new XAxis(){
+
+        },
+        YAxis = new YAxis(){
+                Title = new Title("Total percent market share"),
+        },
+        Series = new List<SeriesElement>(){
+            new SeriesElement(){
+                Name = "Browsers",
+                Type = ChartType.ColumnWithDrilldown,
+                ColorByPoint = true,
+                Data = new List<object>(){
+                }
+            }
+        }
+    };
+
+}

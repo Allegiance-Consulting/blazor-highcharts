@@ -5,29 +5,100 @@
 <h3>Column With Drilldown Chart</h3>
 
 <figure class="highcharts-figure">
-    <div id="columnwithdrillchart"></div>
+    <div id="columnwithdrilldownchart"></div>
 </figure>
 
+<h4>Code Example</h4>
+<pre class="prettyprint opacity-load">
+@@code {
+        private ChartObject ColumnWithDrilldown = new ChartObject() {
+            Chart = new Chart(ChartType.Column, false),
+            Title = new Title("Browser market shares. January, 2022"),
+            Subtitle = new Title("Click the columns to view versions."),
+            XAxis = new XAxis(AxisType.Category),
+            YAxis = new YAxis() {
+                Title = new Title("Total percent market share"),
+            },
+            Legend = new Legend(false), 
+            PlotOptions = new PlotOptions() {
+                Column = new PlotOptionsColumn(5),
+                Series = new PlotOptionsSeries() {
+                    PointWidth = 60,
+                    DataLabels = new DataLabels() {
+                        Enabled = true,
+                        Format = '{point.y:.1f}%'
+                    }
+                }
+            },
+            Series = new List&lt;SeriesElement>(){
+            new SeriesElement(){
+                Name = "Browsers",
+                //Type = ChartType.ColumnWithDrilldown,
+                ColorByPoint = true,
+                Data = new List&lt;object>(){
+                    {new Datum("Chrome", 63.06) },
+                    {new Datum("Safari", 19.84) },
+                    {new Datum("Firefox", 4.18) },
+                    {new Datum("Edge", 4.12) },
+                    {new Datum("Opera", 2.33) },
+                    {new Datum("Internet Explorer", 0.45) },
+                    {new Datum("Other", 1.582) },
+                }
+            }
+        }
+        };
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            chartService.RenderChart("columnwithdrilldown", ColumnWithDrilldown.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
+}
+</pre>
+
 @code {
-    private ChartObject ColumnWithDrilldown = new ChartObject()
-    {
+    private ChartObject ColumnWithDrilldown = new ChartObject() {
+        Chart = new Chart(ChartType.Column, false),
         Title = new Title("Browser market shares. January, 2022"),
         Subtitle = new Title("Click the columns to view versions."),
-        XAxis = new XAxis(){
-
+        XAxis = new XAxis(AxisType.Category),
+        YAxis = new YAxis() {
+            Title = new Title("Total percent market share"),
         },
-        YAxis = new YAxis(){
-                Title = new Title("Total percent market share"),
+        Legend = new Legend(false),
+        PlotOptions = new PlotOptions(){
+            Column = new PlotOptionsColumn(5),
+            Series = new PlotOptionsSeries(){
+                PointWidth = 60,
+                DataLabels = new DataLabels(){
+                    Enabled = true,
+                        Format = "{point.y:.1f}%"
+                }  
+            }
         },
         Series = new List<SeriesElement>(){
             new SeriesElement(){
                 Name = "Browsers",
-                Type = ChartType.ColumnWithDrilldown,
+                //Type = ChartType.ColumnWithDrilldown,
                 ColorByPoint = true,
                 Data = new List<object>(){
+                    {new Datum("Chrome", 63.06) },
+                    {new Datum("Safari", 19.84) },
+                    {new Datum("Firefox", 4.18) },
+                    {new Datum("Edge", 4.12) },
+                    {new Datum("Opera", 2.33) },
+                    {new Datum("Internet Explorer", 0.45) },
+                    {new Datum("Other", 1.582) },
                 }
             }
         }
     };
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart("columnwithdrilldownchart", ColumnWithDrilldown.Generate());
+        jsRuntime.InvokeVoidAsync("prettyPrint");
+    }
 }

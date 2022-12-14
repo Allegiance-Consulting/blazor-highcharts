@@ -20,6 +20,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Constants
         public static string ColumnRange { get; } = "columnrange";
         public static string ColumnWithDrilldown { get; } = "columnwithdrilldown";
         public static string Cylinder { get; } = "cylinder";
+        public static string Drilldown { get; } = "drilldown";
         public static string Bar { get; } = "bar";
         public static string Scatter { get; } = "scatter";
         public static string SolidGauge { get; } = "solidgauge";

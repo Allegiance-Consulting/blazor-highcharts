@@ -48,6 +48,9 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
 
         [JsonProperty("pane", NullValueHandling = NullValueHandling.Ignore)]
         public Pane Pane { get; set; }
+        
+        [JsonProperty("drilldown", NullValueHandling = NullValueHandling.Ignore)]
+        public Drilldown Drilldown { get; set; }
 
         [JsonProperty("colors", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Colors { get; set; }
@@ -68,6 +71,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
             Responsive = new Responsive();
             Exporting = new Exporting();
             Pane = new Pane();
+            Drilldown = new Drilldown();
         }
 
         public string Generate()

@@ -32,7 +32,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public Tooltip Tooltip { get; set; }
 
         [JsonProperty("plotOptions", NullValueHandling = NullValueHandling.Ignore)]
-        public PlotOptions PlotOptions { get; set; }
+        public PlotOptions PlotOptions { get;set; }
 
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
         public List<SeriesElement> Series { get; set; }

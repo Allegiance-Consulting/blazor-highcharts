@@ -5,6 +5,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class SeriesElement
     {
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
@@ -45,8 +47,9 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
 
         }
 
-        public SeriesElement(string name = null, List<object> data = null, string type = null, bool? colorbypoint = null)
+        public SeriesElement(string id = null, string name = null, List<object> data = null, string type = null, bool? colorbypoint = null)
         {
+            Id = id;
             Name = name;
             Data = data;
             Type = type;

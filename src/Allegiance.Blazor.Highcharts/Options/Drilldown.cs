@@ -11,7 +11,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
     {
 
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
-        public List<DrilldownSeries> Series { get; set; }
+        public List<SeriesElement> Series { get; set; }
         public Drilldown(){
             Series = null;
         }

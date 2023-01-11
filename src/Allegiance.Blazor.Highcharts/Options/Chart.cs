@@ -21,6 +21,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
 
         [JsonProperty("spacing", NullValueHandling = NullValueHandling.Ignore)]
         public List<int?> Spacing { get; set; }
+        [JsonProperty("polar", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Polar { get; set; }
 
         [JsonProperty("margin", NullValueHandling = NullValueHandling.Ignore)]
         public List<int?> Margin { get; set; }

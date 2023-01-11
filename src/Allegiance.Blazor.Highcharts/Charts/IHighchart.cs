@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
-namespace Allegiance.Blazor.Highcharts.Charts
+namespace Allegiance.Blazor.Highcharts.Core.Charts
 {
     public interface IHighchart
     {

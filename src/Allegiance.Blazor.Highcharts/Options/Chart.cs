@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class Chart
     {
@@ -14,7 +14,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public string ZoomType { get; set; }
 
         [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
-        public int?  Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("height", NullValueHandling = NullValueHandling.Ignore)]
         public int? Height { get; set; }
@@ -35,7 +35,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         public Options3D Options3d { get; set; }
 
 
-        public Chart(string type= null, bool? styledMode= null, string zoomType= null, int? width= null, int? height= null, List<int?> spacing= null, List<int?> margin= null, object backgroundColor= null, Animation animation = null, Options3D options3d = null)
+        public Chart(string type = null, bool? styledMode = null, string zoomType = null, int? width = null, int? height = null, List<int?> spacing = null, List<int?> margin = null, object backgroundColor = null, Animation animation = null, Options3D options3d = null)
         {
             Type = type;
             StyledMode = styledMode;

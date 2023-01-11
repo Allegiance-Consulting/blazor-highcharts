@@ -1,12 +1,12 @@
-﻿using Allegiance.Blazor.Highcharts.Constants;
-using Allegiance.Blazor.Highcharts.Options;
+﻿using Allegiance.Blazor.Highcharts.Core.Constants;
+using Allegiance.Blazor.Highcharts.Core.Options;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Allegiance.Blazor.Highcharts.Charts
+namespace Allegiance.Blazor.Highcharts.Core.Charts
 {
     public partial class ChartObject : IHighchart
     {
@@ -45,7 +45,7 @@ namespace Allegiance.Blazor.Highcharts.Charts
         public Responsive Responsive { get; set; }
         [JsonProperty("exporting", NullValueHandling = NullValueHandling.Ignore)]
         public Exporting Exporting { get; set; }
-      
+
         [JsonProperty("pane", NullValueHandling = NullValueHandling.Ignore)]
         public Pane Pane { get; set; }
 
@@ -84,7 +84,7 @@ namespace Allegiance.Blazor.Highcharts.Charts
         {
             await jsRuntime.InvokeVoidAsync("destroyCharts");
         }
-        public async Task ChangeSeriesAtIndexAsync(IJSRuntime jsRuntime, string containerId, int index , List<object> newData)
+        public async Task ChangeSeriesAtIndexAsync(IJSRuntime jsRuntime, string containerId, int index, List<object> newData)
         {
             await jsRuntime.InvokeVoidAsync("updateSeriesAtIndexHighchartChart", containerId, index, newData);
         }

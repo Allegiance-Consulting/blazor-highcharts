@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class Title
     {
@@ -31,7 +31,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         {
 
         }
-        public Title( bool? enabled = null)
+        public Title(bool? enabled = null)
         {
             Enabled = enabled;
         }

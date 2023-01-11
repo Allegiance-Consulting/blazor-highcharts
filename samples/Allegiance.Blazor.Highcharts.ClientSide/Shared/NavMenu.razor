@@ -1,69 +1,71 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Blazor Highcharts</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Allegiance.Blazor.Highcharts.ClientSide</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="basic-line-chart" Match="NavLinkMatch.All">
-                <span class="oi oi-plus" aria-hidden="true"></span> Basic Line Chart
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Basic Line Chart
             </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="column-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Column Chart
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="columnrange-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Column Range Chart
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="bar-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Bar Chart
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="scatter-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Scatter Chart
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
+        </div>
+        <div class="nav-item px-3">
             <NavLink class="nav-link" href="area-chart">
                 <span class="oi oi-plus" aria-hidden="true"></span> Area Chart
             </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="pie-chart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Pie Chart
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="bar-chart">
+                <span class="oi oi-plus" aria-hidden="true"></span> Bar Chart
             </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="pie-chart-3d">
-                <span class="oi oi-plus" aria-hidden="true"></span> 3D Pie Chart
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="column-chart">
+                <span class="oi oi-plus" aria-hidden="true"></span> Column Chart
             </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="doughnut-gauge">
-                <span class="oi oi-plus" aria-hidden="true"></span> Solid Gauge
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="columnrange-chart">
+                <span class="oi oi-plus" aria-hidden="true"></span> Column Range Chart
             </NavLink>
-        </li>
-        <li class="nav-item px-3">
+        </div>
+        <div class="nav-item px-3">
             <NavLink class="nav-link" href="combo-chart">
                 <span class="oi oi-plus" aria-hidden="true"></span> Combo Chart
             </NavLink>
-        </li>
-    </ul>
+        </div>
+                <div class="nav-item px-3">
+            <NavLink class="nav-link" href="pie-chart-3d">
+                <span class="oi oi-plus" aria-hidden="true"></span> Pie Chart 3D
+            </NavLink>
+        </div>
+                <div class="nav-item px-3">
+            <NavLink class="nav-link" href="pie-chart">
+                <span class="oi oi-plus" aria-hidden="true"></span> Pie Chart
+            </NavLink>
+        </div>
+                <div class="nav-item px-3">
+            <NavLink class="nav-link" href="scatter-chart">
+                <span class="oi oi-plus" aria-hidden="true"></span> Scatter Chart
+            </NavLink>
+        </div>
+                <div class="nav-item px-3">
+            <NavLink class="nav-link" href="doughnut-gauge">
+                <span class="oi oi-plus" aria-hidden="true"></span> Doughnut Gauge
+            </NavLink>
+        </div>
+    </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {

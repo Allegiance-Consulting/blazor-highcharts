@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class Hover
     {
@@ -11,7 +11,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("lineColor", NullValueHandling = NullValueHandling.Ignore)]
         public string LineColor { get; set; }
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
-        public Marker Marker  { get; set; }
+        public Marker Marker { get; set; }
 
         public Hover()
         {

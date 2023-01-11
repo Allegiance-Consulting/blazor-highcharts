@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class PlotOptions
     {
@@ -51,7 +51,7 @@ namespace Allegiance.Blazor.Highcharts.Options
             Pie = pie;
         }
 
-        public PlotOptions(PlotOptionsSeries series = null , PlotOptionsColumn column = null)
+        public PlotOptions(PlotOptionsSeries series = null, PlotOptionsColumn column = null)
         {
             Series = series;
             Column = column;

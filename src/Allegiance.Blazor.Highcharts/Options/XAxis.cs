@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class XAxis
     {
@@ -13,7 +13,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("startOnTick", NullValueHandling = NullValueHandling.Ignore)]
         public bool? StartOnTick { get; set; }
         [JsonProperty("endOnTick", NullValueHandling = NullValueHandling.Ignore)]
-        public bool?EendOnTick { get; set; }
+        public bool? EendOnTick { get; set; }
         [JsonProperty("showLastLabel", NullValueHandling = NullValueHandling.Ignore)]
         public bool? ShowLastLabel { get; set; }
         [JsonProperty("tickPositions", NullValueHandling = NullValueHandling.Ignore)]
@@ -53,7 +53,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public XAxis(Accessibility accessibility=null, bool? allowDecimals=null, bool? startOnTick=null, bool? eendOnTick=null, bool? showLastLabel=null, Labels labels=null, string type=null, Title title = null)
+        public XAxis(Accessibility accessibility = null, bool? allowDecimals = null, bool? startOnTick = null, bool? eendOnTick = null, bool? showLastLabel = null, Labels labels = null, string type = null, Title title = null)
         {
             Accessibility = accessibility;
             AllowDecimals = allowDecimals;
@@ -65,7 +65,7 @@ namespace Allegiance.Blazor.Highcharts.Options
             Title = title;
         }
 
-        public XAxis(string type =null)
+        public XAxis(string type = null)
         {
             Type = type;
         }

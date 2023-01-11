@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class Marker
     {
@@ -25,7 +25,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         public Marker()
         {
-            
+
         }
 
         public Marker(bool? enabled = null, string symbol = null, int? radius = null, States states = null)

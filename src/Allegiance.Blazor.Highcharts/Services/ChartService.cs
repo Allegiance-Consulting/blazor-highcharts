@@ -1,4 +1,5 @@
-﻿using Allegiance.Blazor.Highcharts.Charts;
+﻿using Allegiance.Blazor.Highcharts.Core.Charts;
+using Allegiance.Blazor.Highcharts.Core.Services.Interfaces;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Allegiance.Blazor.Highcharts.Services
+namespace Allegiance.Blazor.Highcharts.Core.Services
 {
     public class ChartService : IChartService
     {

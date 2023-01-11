@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class Legend
     {
@@ -67,7 +67,7 @@ namespace Allegiance.Blazor.Highcharts.Options
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
         public int? Y { get; set; }
 
-        public Legend(bool? enabled= null, string layout= null, string align= null, string verticalAlign= null, bool? floating = null, int? x= null, int? y= null, int? borderWidth = null)
+        public Legend(bool? enabled = null, string layout = null, string align = null, string verticalAlign = null, bool? floating = null, int? x = null, int? y = null, int? borderWidth = null)
         {
             Enabled = enabled;
             Floating = floating;

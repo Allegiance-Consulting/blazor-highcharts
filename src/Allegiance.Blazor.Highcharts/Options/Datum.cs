@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class Datum
     {
@@ -30,7 +30,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public Datum(string name, double? y, string color = null, string radius = null, string innerRadius =null, Marker marker = null)
+        public Datum(string name, double? y, string color = null, string radius = null, string innerRadius = null, Marker marker = null)
         {
             Name = name;
             Y = y;

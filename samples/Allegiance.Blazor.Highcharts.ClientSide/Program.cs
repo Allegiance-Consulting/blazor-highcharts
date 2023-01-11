@@ -1,22 +1,14 @@
-using System.Threading.Tasks;
+using Allegiance.Blazor.Highcharts.ClientSide;
+using Allegiance.Blazor.Highcharts.Core.Services;
+using Allegiance.Blazor.Highcharts.Core.Services.Interfaces;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Allegiance.Blazor.Highcharts.Services;
-using System;
-using System.Net.Http;
-namespace Allegiance.Blazor.Highcharts.ClientSide
-{
-    public class Program
-    {
-        public static async Task Main(string[] args)
-        {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
-            builder.Services.AddTransient<IChartService, ChartService>();
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<HeadOutlet>("head::after");
+builder.Services.AddTransient<IChartService, ChartService>();
 
-            await builder.Build().RunAsync();
-        }
-    }
-}
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+await builder.Build().RunAsync();

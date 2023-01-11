@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Allegiance.Blazor.Highcharts.Services
+namespace Allegiance.Blazor.Highcharts.Core.Services.Interfaces
 {
     public interface IChartService
     {

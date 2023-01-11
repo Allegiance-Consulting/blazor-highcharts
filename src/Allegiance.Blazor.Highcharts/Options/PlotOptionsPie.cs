@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Allegiance.Blazor.Highcharts.Options
+namespace Allegiance.Blazor.Highcharts.Core.Options
 {
     public partial class PlotOptionsPie
     {
@@ -37,7 +37,7 @@ namespace Allegiance.Blazor.Highcharts.Options
 
         }
 
-        public PlotOptionsPie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null,int? startangle = null, int? endangle = null)
+        public PlotOptionsPie(bool? allowpointselect = null, bool? showinlegend = null, string cursor = null, Labels datalabels = null, States states = null, int? startangle = null, int? endangle = null)
         {
             AllowPointSelect = allowpointselect;
             ShowInLegend = showinlegend;

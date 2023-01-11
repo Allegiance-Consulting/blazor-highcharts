@@ -10,6 +10,9 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
 
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
         public double? Y { get; set; }
+        
+        [JsonProperty("drilldown", NullValueHandling = NullValueHandling.Ignore)]
+        public string Drilldown { get; set; }
 
         [JsonProperty("radius", NullValueHandling = NullValueHandling.Ignore)]
         public string Radius { get; set; }
@@ -30,10 +33,11 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
 
         }
 
-        public Datum(string name, double? y, string color = null, string radius = null, string innerRadius = null, Marker marker = null)
+        public Datum(string name, double? y, string drilldown = null, string color = null, string radius = null, string innerRadius = null, Marker marker = null)
         {
             Name = name;
             Y = y;
+            Drilldown = drilldown;
             Radius = radius;
             InnerRadius = innerRadius;
             Color = color;

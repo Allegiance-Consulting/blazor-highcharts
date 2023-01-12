@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Allegiance.Blazor.Highcharts.ClientSide.dll": "sha256-iiQ0EE8kOcxJgIXNeKDRecJfUxnHLjjXpxkaRdq6d3Y=",
-      "Allegiance.Blazor.Highcharts.dll": "sha256-s0C27B4GiYlXezvaUjj8P67xQueWsBZD9u867WMIasU=",
+      "Allegiance.Blazor.Highcharts.ClientSide.dll": "sha256-2Dhj6+P0nJcPMCfeSw4q4ckOTEs7TU22LtNw0yekioY=",
+      "Allegiance.Blazor.Highcharts.dll": "sha256-5lc9yC+mButdVODU9nolDKjO2s+jEOl2CPqdCJ\/CS9U=",
       "Microsoft.AspNetCore.Components.dll": "sha256-nSjMKH8+Quu1FgpYTC4OYKF4TRT+KBNqL97NX42qKpI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-4uR\/ZmF\/RZ73Mo8mWlSwHKdQdxP8\/fE3yxM4H9rMitc=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-OfawION\/UfFO75U4pMPDVhHt71EbKuF3qxDeiPFGqKo=",

@@ -45,6 +45,14 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public SeriesElement()
         {
 
-        }
+        } 
+ 
+        public SeriesElement(string name = null, List<object> data = null, string type = null, bool? colorbypoint = null) 
+        { 
+            Name = name; 
+            Data = data; 
+            Type = type; 
+            ColorByPoint = colorbypoint; 
+        } 
     }
 }

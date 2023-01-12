@@ -34,6 +34,17 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public Datum()
         {
 
-        }
+        } 
+ 
+        public Datum(string name, double? y, string color = null, string radius = null, string innerRadius = null, Marker marker = null) 
+        { 
+            Name = name; 
+            Y = y; 
+            Radius = radius; 
+            InnerRadius = innerRadius; 
+            Color = color; 
+            Marker = marker; 
+        } 
+        
     }
 }

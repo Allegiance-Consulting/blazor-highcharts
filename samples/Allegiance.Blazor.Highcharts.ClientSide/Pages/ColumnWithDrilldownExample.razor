@@ -39,13 +39,41 @@
                 Name = "Browsers",
                 ColorByPoint = true,
                 Data = new List&lt;object>(){
-                    {new Datum("Chrome", 63.06, "Chrome") },
-                    {new Datum("Safari", 19.84, "Safari") },
-                    {new Datum("Firefox", 4.18, "Firefox") },
-                    {new Datum("Edge", 4.12, "Edge") },
-                    {new Datum("Opera", 2.33, "Opera") },
-                    {new Datum("Internet Explorer", 0.45, "Internet Explorer") },
-                    {new Datum("Other", 1.582, null) },
+                    {new Datum(){
+                        Name = "Chrome",
+                        Y = 63.06,
+                        Drilldown = "Chrome"
+                    }},
+                    {new Datum(){
+                        Name = "Safari",
+                        Y = 19.84,
+                        Drilldown = "Safari"
+                    }},
+                    {new Datum(){
+                        Name = "Firefox",
+                        Y = 4.18,
+                        Drilldown = "Firefox"
+                    }},
+                    {new Datum(){
+                        Name = "Edge",
+                        Y = 4.12,
+                        Drilldown = "Edge"
+                    }},
+                    {new Datum(){
+                        Name = "Opera",
+                        Y = 2.33,
+                        Drilldown = "Opera"
+                    }},
+                    {new Datum(){
+                        Name = "Internet Explorer",
+                        Y = 0.45,
+                        Drilldown = "Internet Explorer"
+                    }},
+                    {new Datum(){
+                        Name = "Other",
+                        Y = 1.582,
+                        Drilldown = null 
+                    }},
                 }
             }
         },
@@ -59,24 +87,78 @@
                     Id = "Chrome",
                     Data = new List&lt;object>
                     {
-                        {new Datum("v65.0", 0.1) },
-                        {new Datum("v64.0", 1.3) },
-                        {new Datum("v63.0", 53.02) },
-                        {new Datum("v62.0", 1.4) },
-                        {new Datum("v61.0", 0.88) },
-                        {new Datum("v60.0", 0.56) },
-                        {new Datum("v59.0", 0.45) },
-                        {new Datum("v58.0", 0.49) },
-                        {new Datum("v57.0", 0.32) },
-                        {new Datum("v56.0", 0.29) },
-                        {new Datum("v55.0", 0.79) },
-                        {new Datum("v54.0", 0.18) },
-                        {new Datum("v51.0", 0.13) },
-                        {new Datum("v49.0", 2.16) },
-                        {new Datum("v48.0", 0.13) },
-                        {new Datum("v47.0", 0.11) },
-                        {new Datum("v43.0", 0.17) },
-                        {new Datum("v29.0", 0.26) },
+                        {new Datum(){
+                            Name = "v65.0", 
+                            Y = 0.1
+                        }},
+                        {new Datum(){
+                            Name = "v64.0", 
+                            Y = 1.3
+                        }},
+                        {new Datum(){
+                            Name = "v63.0", 
+                            Y = 53.02
+                        }},
+                        {new Datum(){
+                            Name = "v62.0", 
+                            Y = 1.4
+                        }},
+                        {new Datum(){
+                            Name = "v61.0", 
+                            Y = 0.88
+                        }},
+                        {new Datum(){
+                            Name = "v60.0", 
+                            Y= 0.56
+                        }},
+                        {new Datum(){
+                            Name = "v59.0", 
+                            Y = 0.45
+                        }},
+                        {new Datum(){
+                            Name = "v58.0", 
+                            Y = 0.49
+                        }},
+                        {new Datum(){
+                            Name = "v57.0", 
+                            Y = 0.32
+                        }},
+                        {new Datum(){
+                            Name = "v56.0", 
+                            Y = 0.29
+                        }},
+                        {new Datum(){
+                            Name = "v55.0", 
+                            Y = 0.79
+                        }},
+                        {new Datum(){
+                            Name = "v54.0", 
+                            Y = 0.18
+                        }},
+                        {new Datum(){
+                            Name = "v51.0", 
+                            Y = 0.13
+                        }},
+                        {new Datum(){
+                            Name = "v49.0", 
+                            Y = 2.16
+                        }},
+                        {new Datum(){
+                            Name = "v48.0", 
+                            Y = 0.13
+                        }},
+                        {new Datum(){
+                            Name = "v47.0", 
+                            Y = 0.11
+                        }},
+                        {new Datum(){
+                            Name = "v43.0", 
+                            Y = 0.17
+                        }},
+                        {new Datum(){
+                            Name = "v29.0", 
+                            Y = 0.26
+                        }},
                     }
                 },
                 new SeriesElement
@@ -85,16 +167,46 @@
                     Id = "Firefox",
                     Data = new List&lt;object>
                     {
-                        {new Datum("v58.0", 1.02) },
-                        {new Datum("v57.0", 7.36) },
-                        {new Datum("v56.0", 0.35) },
-                        {new Datum("v55.0", 0.11) },
-                        {new Datum("v54.0", 0.1) },
-                        {new Datum("v52.0", 0.95) },
-                        {new Datum("v51.0", 0.15) },
-                        {new Datum("v50.0", 0.1) },
-                        {new Datum("v48.0", 0.31) },
-                        {new Datum("v47.0", 0.12) },
+                        {new Datum(){
+                            Name = "v58.0", 
+                            Y = 1.02 
+                        }},
+                        {new Datum(){
+                            Name = "v57.0", 
+                            Y = 7.36
+                        }},
+                        {new Datum(){
+                            Name = "v56.0", 
+                            Y = 0.35
+                        }},
+                        {new Datum(){
+                            Name = "v55.0", 
+                            Y = 0.11
+                        }},
+                        {new Datum(){
+                            Name = "v54.0", 
+                            Y = 0.1
+                        }},
+                        {new Datum(){
+                            Name = "v52.0", 
+                            Y = 0.95
+                        }},
+                        {new Datum(){
+                            Name = "v51.0", 
+                            Y = 0.15
+                        }},
+                        {new Datum(){
+                            Name = "v50.0", 
+                            Y = 0.1
+                        }},
+                        {new Datum(){
+                            Name = "v48.0", 
+                            Y = 0.31
+                        }},
+                        {new Datum(){
+                            Name = "v47.0", 
+                            Y = 0.12
+                        }},
                     }
                 },
                 new SeriesElement
@@ -103,10 +215,22 @@
                     Id = "Internet explorer",
                     Data = new List&lt;object>
                     {
-                        {new Datum("v11.0", 6.2) },
-                        {new Datum("v10.0", 0.29) },
-                        {new Datum("v9.0", 0.27) },
-                        {new Datum("v8.0", 0.47) },
+                        {new Datum(){
+                            Name = "v11.0", 
+                            Y = 6.2
+                        }},
+                        {new Datum(){
+                            Name = "v10.0", 
+                            Y = 0.29
+                        }},
+                        {new Datum(){
+                            Name = "v9.0", 
+                            Y = 0.27
+                        }},
+                        {new Datum(){
+                            Name = "v8.0", 
+                            Y = 0.47
+                        }},
                     }
                 },
                 new SeriesElement
@@ -115,12 +239,30 @@
                     Id = "Safari",
                     Data = new List&lt;object>
                     {
-                        {new Datum("v11.0", 3.39) },
-                        {new Datum("v10.1", 0.96) },
-                        {new Datum("v10.0", 0.36) },
-                        {new Datum("v9.1", 0.54) },
-                        {new Datum("v9.0", 0.13) },
-                        {new Datum("v5.1", 0.2) },
+                        {new Datum(){
+                            Name = "v11.0", 
+                            Y = 3.39
+                        }},
+                        {new Datum(){
+                            Name = "v10.1", 
+                            Y = 0.96
+                        }},
+                        {new Datum(){
+                            Name = "v10.0", 
+                            Y = 0.36
+                        }},
+                        {new Datum(){
+                            Name = "v9.1", 
+                            Y = 0.54
+                        }},
+                        {new Datum(){
+                            Name = "v9.0", 
+                            Y = 0.13
+                        }},
+                        {new Datum(){
+                            Name = "v5.1", 
+                            Y = 0.2
+                        }},
                     }
                 },
                 new SeriesElement
@@ -129,10 +271,22 @@
                     Id = "Edge",
                     Data = new List&lt;object>
                     {
-                        {new Datum("v16.0", 2.6) },
-                        {new Datum("v15.0", 0.92) },
-                        {new Datum("v14.0", 0.4) },
-                        {new Datum("v13.0", 0.1) },
+                        {new Datum(){
+                            Name = "v16.0", 
+                            Y = 2.6
+                        }},
+                        {new Datum(){
+                            Name = "v15.0", 
+                            Y = 0.92
+                        }},
+                        {new Datum(){
+                            Name = "v14.0", 
+                            Y = 0.4
+                        }},
+                        {new Datum(){
+                            Name = "v13.0", 
+                            Y = 0.1
+                        }},
                     }
                 },
                 new SeriesElement
@@ -141,9 +295,18 @@
                     Id = "Opera",
                     Data = new List&lt;object>
                     {
-                        {new Datum("v50.0", 0.96) },
-                        {new Datum("v49.0", 0.82) },
-                        {new Datum("v12.1", 0.14) },
+                        {new Datum(){
+                            Name = "v50.0", 
+                            Y = 0.96
+                        }},
+                        {new Datum(){
+                            Name = "v49.0", 
+                            Y = 0.82
+                        }},
+                        {new Datum(){
+                            Name = "v12.1", 
+                            Y = 0.14
+                        }},
                     }
                 }
             }
@@ -169,32 +332,60 @@
             Title = new Title("Total percent market share"),
         },
         Legend = new Legend(false),
-        PlotOptions = new PlotOptions(){
+        PlotOptions = new PlotOptions() {
             Column = new PlotOptionsColumn(5),
-            Series = new PlotOptionsSeries(){
+            Series = new PlotOptionsSeries() {
                 PointWidth = 60,
-                DataLabels = new DataLabels(){
+                DataLabels = new DataLabels() {
                     Enabled = true,
-                        Format = "{point.y:.1f}%"
-                }  
+                    Format = "{point.y:.1f}%"
+                }
             }
         },
-        Tooltip = new Tooltip(){
-                HeaderFormat = "<span style='font - size:11px'>{series.name}</span><br>",
-                PointFormat = "<span style='color:{point.color}''>{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>"
+        Tooltip = new Tooltip() {
+            HeaderFormat = "<span style='font - size:11px'>{series.name}</span><br>",
+            PointFormat = "<span style='color:{point.color}''>{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>"
         },
         Series = new List<SeriesElement>(){
             new SeriesElement(){
                 Name = "Browsers",
                 ColorByPoint = true,
                 Data = new List<object>(){
-                    {new Datum("Chrome", 63.06, "Chrome") },
-                    {new Datum("Safari", 19.84, "Safari") },
-                    {new Datum("Firefox", 4.18, "Firefox") },
-                    {new Datum("Edge", 4.12, "Edge") },
-                    {new Datum("Opera", 2.33, "Opera") },
-                    {new Datum("Internet Explorer", 0.45, "Internet Explorer") },
-                    {new Datum("Other", 1.582, null) },
+                    {new Datum(){
+                        Name = "Chrome",
+                        Y = 63.06,
+                        Drilldown = "Chrome"
+                    }},
+                    {new Datum(){
+                        Name = "Safari",
+                        Y = 19.84,
+                        Drilldown = "Safari"
+                    }},
+                    {new Datum(){
+                        Name = "Firefox",
+                        Y = 4.18,
+                        Drilldown = "Firefox"
+                    }},
+                    {new Datum(){
+                        Name = "Edge",
+                        Y = 4.12,
+                        Drilldown = "Edge"
+                    }},
+                    {new Datum(){
+                        Name = "Opera",
+                        Y = 2.33,
+                        Drilldown = "Opera"
+                    }},
+                    {new Datum(){
+                        Name = "Internet Explorer",
+                        Y = 0.45,
+                        Drilldown = "Internet Explorer"
+                    }},
+                    {new Datum(){
+                        Name = "Other",
+                        Y = 1.582,
+                        Drilldown = null 
+                    }},
                 }
             }
         },
@@ -208,24 +399,78 @@
                     Id = "Chrome",
                     Data = new List<object>
                     {
-                        {new Datum("v65.0", 0.1) },
-                        {new Datum("v64.0", 1.3) },
-                        {new Datum("v63.0", 53.02) },
-                        {new Datum("v62.0", 1.4) },
-                        {new Datum("v61.0", 0.88) },
-                        {new Datum("v60.0", 0.56) },
-                        {new Datum("v59.0", 0.45) },
-                        {new Datum("v58.0", 0.49) },
-                        {new Datum("v57.0", 0.32) },
-                        {new Datum("v56.0", 0.29) },
-                        {new Datum("v55.0", 0.79) },
-                        {new Datum("v54.0", 0.18) },
-                        {new Datum("v51.0", 0.13) },
-                        {new Datum("v49.0", 2.16) },
-                        {new Datum("v48.0", 0.13) },
-                        {new Datum("v47.0", 0.11) },
-                        {new Datum("v43.0", 0.17) },
-                        {new Datum("v29.0", 0.26) },
+                        {new Datum(){
+                            Name = "v65.0", 
+                            Y = 0.1
+                        }},
+                        {new Datum(){
+                            Name = "v64.0", 
+                            Y = 1.3
+                        }},
+                        {new Datum(){
+                            Name = "v63.0", 
+                            Y = 53.02
+                        }},
+                        {new Datum(){
+                            Name = "v62.0", 
+                            Y = 1.4
+                        }},
+                        {new Datum(){
+                            Name = "v61.0", 
+                            Y = 0.88
+                        }},
+                        {new Datum(){
+                            Name = "v60.0", 
+                            Y= 0.56
+                        }},
+                        {new Datum(){
+                            Name = "v59.0", 
+                            Y = 0.45
+                        }},
+                        {new Datum(){
+                            Name = "v58.0", 
+                            Y = 0.49
+                        }},
+                        {new Datum(){
+                            Name = "v57.0", 
+                            Y = 0.32
+                        }},
+                        {new Datum(){
+                            Name = "v56.0", 
+                            Y = 0.29
+                        }},
+                        {new Datum(){
+                            Name = "v55.0", 
+                            Y = 0.79
+                        }},
+                        {new Datum(){
+                            Name = "v54.0", 
+                            Y = 0.18
+                        }},
+                        {new Datum(){
+                            Name = "v51.0", 
+                            Y = 0.13
+                        }},
+                        {new Datum(){
+                            Name = "v49.0", 
+                            Y = 2.16
+                        }},
+                        {new Datum(){
+                            Name = "v48.0", 
+                            Y = 0.13
+                        }},
+                        {new Datum(){
+                            Name = "v47.0", 
+                            Y = 0.11
+                        }},
+                        {new Datum(){
+                            Name = "v43.0", 
+                            Y = 0.17
+                        }},
+                        {new Datum(){
+                            Name = "v29.0", 
+                            Y = 0.26
+                        }},
                     }
                 },
                 new SeriesElement
@@ -234,28 +479,70 @@
                     Id = "Firefox",
                     Data = new List<object>
                     {
-                        {new Datum("v58.0", 1.02) },
-                        {new Datum("v57.0", 7.36) },
-                        {new Datum("v56.0", 0.35) },
-                        {new Datum("v55.0", 0.11) },
-                        {new Datum("v54.0", 0.1) },
-                        {new Datum("v52.0", 0.95) },
-                        {new Datum("v51.0", 0.15) },
-                        {new Datum("v50.0", 0.1) },
-                        {new Datum("v48.0", 0.31) },
-                        {new Datum("v47.0", 0.12) },
+                        {new Datum(){
+                            Name = "v58.0", 
+                            Y = 1.02 
+                        }},
+                        {new Datum(){
+                            Name = "v57.0", 
+                            Y = 7.36
+                        }},
+                        {new Datum(){
+                            Name = "v56.0", 
+                            Y = 0.35
+                        }},
+                        {new Datum(){
+                            Name = "v55.0", 
+                            Y = 0.11
+                        }},
+                        {new Datum(){
+                            Name = "v54.0", 
+                            Y = 0.1
+                        }},
+                        {new Datum(){
+                            Name = "v52.0", 
+                            Y = 0.95
+                        }},
+                        {new Datum(){
+                            Name = "v51.0", 
+                            Y = 0.15
+                        }},
+                        {new Datum(){
+                            Name = "v50.0", 
+                            Y = 0.1
+                        }},
+                        {new Datum(){
+                            Name = "v48.0", 
+                            Y = 0.31
+                        }},
+                        {new Datum(){
+                            Name = "v47.0", 
+                            Y = 0.12
+                        }},
                     }
                 },
                 new SeriesElement
                 {
-                    Name = "Internet explorer",
-                    Id = "Internet explorer",
+                    Name = "Internet Explorer",
+                    Id = "Internet Explorer",
                     Data = new List<object>
                     {
-                        {new Datum("v11.0", 6.2) },
-                        {new Datum("v10.0", 0.29) },
-                        {new Datum("v9.0", 0.27) },
-                        {new Datum("v8.0", 0.47) },
+                        {new Datum(){
+                            Name = "v11.0", 
+                            Y = 6.2
+                        }},
+                        {new Datum(){
+                            Name = "v10.0", 
+                            Y = 0.29
+                        }},
+                        {new Datum(){
+                            Name = "v9.0", 
+                            Y = 0.27
+                        }},
+                        {new Datum(){
+                            Name = "v8.0", 
+                            Y = 0.47
+                        }},
                     }
                 },
                 new SeriesElement
@@ -264,12 +551,30 @@
                     Id = "Safari",
                     Data = new List<object>
                     {
-                        {new Datum("v11.0", 3.39) },
-                        {new Datum("v10.1", 0.96) },
-                        {new Datum("v10.0", 0.36) },
-                        {new Datum("v9.1", 0.54) },
-                        {new Datum("v9.0", 0.13) },
-                        {new Datum("v5.1", 0.2) },
+                        {new Datum(){
+                            Name = "v11.0", 
+                            Y = 3.39
+                        }},
+                        {new Datum(){
+                            Name = "v10.1", 
+                            Y = 0.96
+                        }},
+                        {new Datum(){
+                            Name = "v10.0", 
+                            Y = 0.36
+                        }},
+                        {new Datum(){
+                            Name = "v9.1", 
+                            Y = 0.54
+                        }},
+                        {new Datum(){
+                            Name = "v9.0", 
+                            Y = 0.13
+                        }},
+                        {new Datum(){
+                            Name = "v5.1", 
+                            Y = 0.2
+                        }},
                     }
                 },
                 new SeriesElement
@@ -278,10 +583,22 @@
                     Id = "Edge",
                     Data = new List<object>
                     {
-                        {new Datum("v16.0", 2.6) },
-                        {new Datum("v15.0", 0.92) },
-                        {new Datum("v14.0", 0.4) },
-                        {new Datum("v13.0", 0.1) },
+                        {new Datum(){
+                            Name = "v16.0", 
+                            Y = 2.6
+                        }},
+                        {new Datum(){
+                            Name = "v15.0", 
+                            Y = 0.92
+                        }},
+                        {new Datum(){
+                            Name = "v14.0", 
+                            Y = 0.4
+                        }},
+                        {new Datum(){
+                            Name = "v13.0", 
+                            Y = 0.1
+                        }},
                     }
                 },
                 new SeriesElement
@@ -290,9 +607,18 @@
                     Id = "Opera",
                     Data = new List<object>
                     {
-                        {new Datum("v50.0", 0.96) },
-                        {new Datum("v49.0", 0.82) },
-                        {new Datum("v12.1", 0.14) },
+                        {new Datum(){
+                            Name = "v50.0", 
+                            Y = 0.96
+                        }},
+                        {new Datum(){
+                            Name = "v49.0", 
+                            Y = 0.82
+                        }},
+                        {new Datum(){
+                            Name = "v12.1", 
+                            Y = 0.14
+                        }},
                     }
                 }
             }

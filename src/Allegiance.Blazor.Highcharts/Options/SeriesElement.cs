@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Allegiance.Blazor.Highcharts.Core.Options
@@ -45,15 +45,6 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public SeriesElement()
         {
 
-        }
-
-        public SeriesElement(string id = null, string name = null, List<object> data = null, string type = null, bool? colorbypoint = null)
-        {
-            Id = id;
-            Name = name;
-            Data = data;
-            Type = type;
-            ColorByPoint = colorbypoint;
         }
     }
 }

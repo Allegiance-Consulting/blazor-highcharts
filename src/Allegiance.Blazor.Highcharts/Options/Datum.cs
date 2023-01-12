@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Allegiance.Blazor.Highcharts.Core.Options
@@ -10,6 +10,9 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
 
         [JsonProperty("y", NullValueHandling = NullValueHandling.Ignore)]
         public double? Y { get; set; }
+        
+        [JsonProperty("x", NullValueHandling = NullValueHandling.Ignore)]
+        public double? X { get; set; }
         
         [JsonProperty("drilldown", NullValueHandling = NullValueHandling.Ignore)]
         public string Drilldown { get; set; }
@@ -31,17 +34,6 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public Datum()
         {
 
-        }
-
-        public Datum(string name, double? y, string drilldown = null, string color = null, string radius = null, string innerRadius = null, Marker marker = null)
-        {
-            Name = name;
-            Y = y;
-            Drilldown = drilldown;
-            Radius = radius;
-            InnerRadius = innerRadius;
-            Color = color;
-            Marker = marker;
         }
     }
 }

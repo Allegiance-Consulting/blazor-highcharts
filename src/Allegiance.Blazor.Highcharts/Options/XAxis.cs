@@ -23,9 +23,13 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         [JsonProperty("minTickInterval", NullValueHandling = NullValueHandling.Ignore)]
         public int? MinTickInterval { get; set; }
         [JsonProperty("tickInterval", NullValueHandling = NullValueHandling.Ignore)]
-        public int? TickInterval { get; set; }
+        public double? TickInterval { get; set; }
         [JsonProperty("minRange", NullValueHandling = NullValueHandling.Ignore)]
         public int? MinRange { get; set; }
+        [JsonProperty("min", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Min { get; set; }
+        [JsonProperty("max", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Max { get; set; }
         [JsonProperty("tickmarkPlacement", NullValueHandling = NullValueHandling.Ignore)]
         public string TickmarkPlacement { get; set; }
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]

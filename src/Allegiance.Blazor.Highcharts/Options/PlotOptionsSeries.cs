@@ -12,6 +12,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public Marker Marker { get; set; }
         [JsonProperty("pointStart", NullValueHandling = NullValueHandling.Ignore)]
         public double? PointStart { get; set; }
+        [JsonProperty("pointInterval", NullValueHandling = NullValueHandling.Ignore)]
+        public double? PointInterval { get; set; }
         [JsonProperty("fillOpacity", NullValueHandling = NullValueHandling.Ignore)]
         public double? FillOpacity { get; set; }
         [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]

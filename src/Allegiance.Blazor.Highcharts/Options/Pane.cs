@@ -17,10 +17,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
         public string Size { get; set; }
 
-        /////
-
-
-
-
+        [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
+        public string Color { get; set; }
     }
 }

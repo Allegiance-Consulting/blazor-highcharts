@@ -7,6 +7,10 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
     {
         [JsonProperty("borderRadius", NullValueHandling = NullValueHandling.Ignore)]
         public int? BorderRadius { get; set; }
+        [JsonProperty("pointPadding", NullValueHandling = NullValueHandling.Ignore)]
+        public int? PointPadding { get; set; }
+        [JsonProperty("groupPadding", NullValueHandling = NullValueHandling.Ignore)]
+        public int? GroupPadding { get; set; }
 
         [JsonProperty("stacking", NullValueHandling = NullValueHandling.Ignore)]
         public string Stacking { get; set; }

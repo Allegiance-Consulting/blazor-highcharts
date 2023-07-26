@@ -12,6 +12,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public string LineColor { get; set; }
         [JsonProperty("marker", NullValueHandling = NullValueHandling.Ignore)]
         public Marker Marker { get; set; }
+        [JsonProperty("lineWidth", NullValueHandling = NullValueHandling.Ignore)]
+        public int? LineWidth { get; set; }
 
         public Hover()
         {

@@ -1,0 +1,223 @@
+﻿@page "/polar-gradiant-chart"
+@using Allegiance.Blazor.Highcharts.Options;
+@inject IChartService chartService
+@inject IJSRuntime jsRuntime
+@implements IDisposable
+
+<h3>Polar chart with custom fill</h3>
+
+<div id="polar-area"></div>
+
+<h4>Code Example</h4>
+<pre class="prettyprint opacity-load">
+@@code{
+ private static List&lt;object> data = new List&lt;object>()
+                    {
+                        new Datum(){ Y = 6 },
+                        new Datum(){ Y = 4},
+                        new Datum(){ Y = 6},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 4},
+                        new Datum(){ Y = 3},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 6},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 4},
+                        new Datum(){ Y = 6},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 5},
+                    };
+
+    private ChartObject PolarAreaChart = new ChartObject()
+        {
+            Chart = new Chart() { Polar = true, Height = 400, Width = 400 },
+
+            PlotOptions = new PlotOptions()
+            {
+                Series = new PlotOptionsSeries() { PointStart = 0, PointInterval = (double)360 / data.Count },
+                Column = new PlotOptionsColumn()
+                {
+                    PointPadding = 0,
+                    GroupPadding = 0
+                },
+                Area = new PlotOptionsArea()
+                {
+                    LineWidth = 0,
+                    LineColor = "white",
+                    States = new States()
+                    {
+                        Hover = new Hover() { LineWidth = 0 }
+                    }
+                }
+            },
+
+            Pane = new Pane()
+            {
+                Color = "grey",
+                StartAngle = 0,
+                EndAngle = 360,
+                Background = new List&lt;Background>() { new Background() { BackgroundColor = "#f8f9fa", BorderWidth = 0 } },
+            },
+
+            Legend = new Legend()
+            {
+                Enabled = false
+            },
+
+
+            Title = new Title(""),
+
+            XAxis = new XAxis()
+            {
+                TickInterval = (double)360 / data.Count,
+                LineWidth = 0,
+                Min = 0,
+                Max = 360,
+                Labels = new Labels() { Enabled = false }
+            },
+            YAxis = new YAxis()
+            {
+                Min = 0,
+                Max = 6,
+                GridLineWidth = 0,
+                Labels = new Labels() { Enabled = false }
+            },
+
+            Series = new List&lt;SeriesElement>()
+            {
+                new SeriesElement()
+                {
+                    Type = ChartType.Area,
+                    Name = "PolarArea",
+                    Data = data,
+                    FillColor = new FillColorObject() { 
+                        Pattern = new PatternOptionsObject() { 
+                            Image = "_content/Allegiance.Blazor.Highcharts/plaid-kariert.png" , // background from https://www.publicdomainpictures.net/en/view-image.php?image=491160&picture=plaid-checkered-pattern-background
+                            Width = 400, Height =400, X = -10.0, Y = -11.0, Opacity = 0.7 
+                        } }
+                }
+        },
+
+        };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            chartService.RenderChart("polar-area", PolarAreaChart.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
+    }
+
+    public void Dispose()
+    {
+        PolarAreaChart.DisposeChart(jsRuntime, "polar-area");
+    }
+</pre>
+
+
+@code {
+    private static List<object> data = new List<object>()
+                    {
+                        new Datum(){ Y = 6 },
+                        new Datum(){ Y = 4},
+                        new Datum(){ Y = 6},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 4},
+                        new Datum(){ Y = 3},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 6},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 4},
+                        new Datum(){ Y = 6},
+                        new Datum(){ Y = 5},
+                        new Datum(){ Y = 5},
+                    };
+
+    private ChartObject PolarAreaChart = new ChartObject()
+        {
+            Chart = new Chart() { Polar = true, Height = 400, Width = 400 },
+
+            PlotOptions = new PlotOptions()
+            {
+                Series = new PlotOptionsSeries() { PointStart = 0, PointInterval = (double)360 / data.Count },
+                Column = new PlotOptionsColumn()
+                {
+                    PointPadding = 0,
+                    GroupPadding = 0
+                },
+                Area = new PlotOptionsArea()
+                {
+                    LineWidth = 0,
+                    LineColor = "white",
+                    States = new States()
+                    {
+                        Hover = new Hover() { LineWidth = 0 }
+                    }
+                }
+            },
+
+            Pane = new Pane()
+            {
+                Color = "grey",
+                StartAngle = 0,
+                EndAngle = 360,
+                Background = new List<Background>() { new Background() { BackgroundColor = "#f8f9fa", BorderWidth = 0 } },
+            },
+
+            Legend = new Legend()
+            {
+                Enabled = false
+            },
+
+
+            Title = new Title(""),
+
+            XAxis = new XAxis()
+            {
+                TickInterval = (double)360 / data.Count,
+                LineWidth = 0,
+                Min = 0,
+                Max = 360,
+                Labels = new Labels() { Enabled = false }
+            },
+            YAxis = new YAxis()
+            {
+                Min = 0,
+                Max = 6,
+                GridLineWidth = 0,
+                Labels = new Labels() { Enabled = false }
+            },
+
+            Series = new List<SeriesElement>()
+            {
+                new SeriesElement()
+                {
+                    Type = ChartType.Area,
+                    Name = "PolarArea",
+                    Data = data,
+                    FillColor = new FillColorObject() { Pattern = new PatternOptionsObject() { Image = "_content/Allegiance.Blazor.Highcharts/plaid-kariert.png" , Width = 400, Height =400, X = -10.0, Y = -11.0, Opacity = 0.7 } }
+                }
+        },
+
+        };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            chartService.RenderChart("polar-area", PolarAreaChart.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
+    }
+
+    public void Dispose()
+    {
+        PolarAreaChart.DisposeChart(jsRuntime, "polar-area");
+    }
+}
+

@@ -12,9 +12,9 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
         [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
-        public string Color { get; set; }
+        public object Color { get; set; }
         [JsonProperty("fillColor", NullValueHandling = NullValueHandling.Ignore)]
-        public string FillColor { get; set; }
+        public object FillColor { get; set; }
         [JsonProperty("fillOpacity", NullValueHandling = NullValueHandling.Ignore)]
         public double? FillOpacity { get; set; }
         [JsonProperty("opacity", NullValueHandling = NullValueHandling.Ignore)]

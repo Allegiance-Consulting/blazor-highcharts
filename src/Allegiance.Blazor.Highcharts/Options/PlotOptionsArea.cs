@@ -18,7 +18,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public DataLabels DataLabels { get; set; }
         [JsonProperty("enableMouseTracking", NullValueHandling = NullValueHandling.Ignore)]
         public bool? EnableMouseTracking { get; set; }
-
+        [JsonProperty("states", NullValueHandling = NullValueHandling.Ignore)]
+        public States States { get; set; }
         public PlotOptionsArea()
         {
 

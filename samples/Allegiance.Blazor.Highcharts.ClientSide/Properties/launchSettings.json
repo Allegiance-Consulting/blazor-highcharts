@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61763",
+      "applicationUrl": "http://localhost:61763/blazor-highcharts",
       "sslPort": 44393
     }
   },

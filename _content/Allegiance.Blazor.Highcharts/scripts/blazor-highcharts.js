@@ -72,7 +72,14 @@ window.updateXAxisCategories = function (containerId, categories) {
         }
     }
 }
-
+window.updateChart = function (containerId, newChart) {
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+        if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
+            Highcharts.charts[i].update(JSON.parse(newChart));
+            break;
+        }
+    }
+}
 window.destroyCharts = function () {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i]) {

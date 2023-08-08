@@ -6,7 +6,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
     public partial class Labels
     {
         [JsonProperty("formatter", NullValueHandling = NullValueHandling.Ignore)]
-        public string Formatter { get; set; }
+        public object Formatter { get; set; }
         [JsonProperty("format", NullValueHandling = NullValueHandling.Ignore)]
         public string Format { get; set; }
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]

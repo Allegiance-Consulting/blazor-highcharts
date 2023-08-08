@@ -32,7 +32,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public Tooltip Tooltip { get; set; }
 
         [JsonProperty("plotOptions", NullValueHandling = NullValueHandling.Ignore)]
-        public PlotOptions PlotOptions { get;set; }
+        public PlotOptions PlotOptions { get; set; }
 
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
         public List<SeriesElement> Series { get; set; }
@@ -48,7 +48,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
 
         [JsonProperty("pane", NullValueHandling = NullValueHandling.Ignore)]
         public Pane Pane { get; set; }
-        
+
         [JsonProperty("drilldown", NullValueHandling = NullValueHandling.Ignore)]
         public Drilldown Drilldown { get; set; }
 
@@ -107,6 +107,10 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public async Task ChangeXAxisCategoriesAsync(IJSRuntime jsRuntime, string containerId, List<double> newCategories)
         {
             await jsRuntime.InvokeVoidAsync("updateXAxisCategories", containerId, newCategories);
+        }
+        public async Task UpdateChart(IJSRuntime jsRuntime, string containerId, ChartObject newChart)
+        {
+            await jsRuntime.InvokeVoidAsync("updateChart", containerId, newChart.Generate());
         }
         public void DisposeChart(IJSRuntime jsRuntime, string containerId)
         {

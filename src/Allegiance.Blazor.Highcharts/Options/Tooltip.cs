@@ -26,6 +26,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public int? Padding { get; set; }
         [JsonProperty("valueSuffix", NullValueHandling = NullValueHandling.Ignore)]
         public string ValueSuffix { get; set; }
+        [JsonProperty("outside", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Outside { get; set; }
 
         public Tooltip()
         {

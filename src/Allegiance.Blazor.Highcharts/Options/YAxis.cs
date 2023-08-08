@@ -12,7 +12,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public double? Min { get; set; }
 
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
-        public Labels Labels { get; set; }
+        public Labels? Labels { get; set; }
         [JsonProperty("className", NullValueHandling = NullValueHandling.Ignore)]
         public string ClassName { get; set; }
 

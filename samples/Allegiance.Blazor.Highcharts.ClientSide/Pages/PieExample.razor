@@ -16,8 +16,24 @@
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
-@@code {
 
+@@page &quot;/pie-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+
+&lt;h3>Pie Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+&lt;div id=&quot;piechart&quot;>&lt;/div>    
+&lt;/figure>
+
+&lt;div>
+&lt;button @@onclick=&quot;RefreshData&quot;>Refresh Data&lt;/button>
+&lt;button @@onclick=&quot;Destroy&quot;>Test Destroy&lt;/button>
+
+&lt;/div>
+
+@@code {
     private ChartObject PieChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Pie),
@@ -35,20 +51,20 @@
             },
             Series = null
         },
-        Title = new Title("Browser market shares in January, 2018"),
+        Title = new Title(&quot;Browser market shares in January, 2018&quot;),
         Series = new List&lt;SeriesElement>()
         {
             new SeriesElement()
             {
-                Name = "Brands",
+                Name = &quot;Brands&quot;,
                 Data = new List&lt;object>()
                 {
-                    {new List&lt;object>(){ "Chrome", 61.4 } },
-                    {new List&lt;object>(){ "Internet Explorer", 11.84 } },
-                    {new List&lt;object>(){ "Firefox", 10.85 } },
-                    {new List&lt;object>(){ "Edge", 4.67 } },
-                    {new List&lt;object>(){ "Safari", 4.18 } },
-                    {new List&lt;object>(){ "Other", 7.05 } }
+                    {new List&lt;object>(){ &quot;Chrome&quot;, 61.4 } },
+                    {new List&lt;object>(){ &quot;Internet Explorer&quot;, 11.84 } },
+                    {new List&lt;object>(){ &quot;Firefox&quot;, 10.85 } },
+                    {new List&lt;object>(){ &quot;Edge&quot;, 4.67 } },
+                    {new List&lt;object>(){ &quot;Safari&quot;, 4.18 } },
+                    {new List&lt;object>(){ &quot;Other&quot;, 7.05 } }
                 }
 
             }
@@ -60,8 +76,7 @@
         base.OnAfterRender(firstRender);
         if (firstRender)
         {
-            chartService.RenderChart("piechart", PieChart.Generate());
-            jsRuntime.InvokeVoidAsync("prettyPrint");
+            chartService.RenderChart(&quot;piechart&quot;, PieChart.Generate());
         }
     }
 
@@ -75,14 +90,14 @@
         var random = new Random();
         var Data = new List&lt;object>()
                 {
-                    {new List&lt;object>(){ "Chrome", random.Next(0, 100) } },
-                    {new List&lt;object>(){ "Internet Explorer", random.Next(0, 100) } },
-                    {new List&lt;object>(){ "Firefox", random.Next(0, 100) } },
-                    {new List&lt;object>(){ "Edge", random.Next(0, 100) } },
-                    {new List&lt;object>(){ "Safari", random.Next(0, 100) } },
-                    {new List&lt;object>(){ "Other", random.Next(0, 100) } }
+                    {new List&lt;object>(){ &quot;Chrome&quot;, random.Next(0, 100) } },
+                    {new List&lt;object>(){ &quot;Internet Explorer&quot;, random.Next(0, 100) } },
+                    {new List&lt;object>(){ &quot;Firefox&quot;, random.Next(0, 100) } },
+                    {new List&lt;object>(){ &quot;Edge&quot;, random.Next(0, 100) } },
+                    {new List&lt;object>(){ &quot;Safari&quot;, random.Next(0, 100) } },
+                    {new List&lt;object>(){ &quot;Other&quot;, random.Next(0, 100) } }
                 };
-        await PieChart.ChangeSeriesAsync(jsRuntime, "piechart", Data);
+        await PieChart.ChangeSeriesAsync(jsRuntime, &quot;piechart&quot;, Data);
     }
 
 }
@@ -116,7 +131,7 @@
             new SeriesElement()
             {
                 Name = "Brands",
-                Data = new List<object>()
+                Data = new List<object?>()
                 {
                     {new List<object>(){ "Chrome", 61.4 } },
                     {new List<object>(){ "Internet Explorer", 11.84 } },

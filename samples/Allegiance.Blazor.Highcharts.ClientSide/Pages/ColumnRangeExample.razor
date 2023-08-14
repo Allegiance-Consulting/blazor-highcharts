@@ -10,22 +10,31 @@
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
+@@page &quot;/columnrange-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+&lt;h3>Column Range Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+&lt;div id=&quot;columnrangechart&quot;>&lt;/div>
+&lt;/figure>
+
 @@code {
     private ChartObject ColumnChart = new ChartObject()
     {
 
-        Title = new Title("Temperature variation by month"),
-        Subtitle = new Title("Observed in Vik i Sogn, Norway, 2017"),
+        Title = new Title(&quot;Temperature variation by month&quot;),
+        Subtitle = new Title(&quot;Observed in Vik i Sogn, Norway, 2017&quot;),
         XAxis = new XAxis()
         {
             Categories = new List&lt;object>()
-        {
-                "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            {
+                &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;,&quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;
             }
         },
         YAxis = new YAxis()
         {
-            Title = new Title("Temperature ( °C )"),
+            Title = new Title(&quot;Temperature ( °C )&quot;),
         },
 
         PlotOptions = new PlotOptions()
@@ -39,10 +48,10 @@
 
         },
         Series = new List&lt;SeriesElement>()
-    {
+        {
             new SeriesElement()
             {
-                Name = "Temperatures",
+                Name = &quot;Temperatures&quot;,
                 Type = ChartType.ColumnRange,
                 ColorByPoint = false,
                 Data = new List&lt;object>()
@@ -69,11 +78,8 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("columnrangechart", ColumnChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        chartService.RenderChart(&quot;columnrangechart&quot;, ColumnChart.Generate());        
     }
-
-
 }
 
 </pre>
@@ -114,7 +120,7 @@
                 Name = "Temperatures",
                 Type = ChartType.ColumnRange,
                 ColorByPoint = false,
-                Data = new List<object>()
+                Data = new List<object?>()
             {
             new List<double>(){-9.9, 10.3},
             new List<double>(){-8.6, 8.5},

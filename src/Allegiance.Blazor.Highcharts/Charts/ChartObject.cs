@@ -1,4 +1,4 @@
-﻿using Allegiance.Blazor.Highcharts.Core.Constants;
+using Allegiance.Blazor.Highcharts.Core.Constants;
 using Allegiance.Blazor.Highcharts.Core.Options;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
@@ -35,7 +35,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public PlotOptions PlotOptions { get; set; }
 
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
-        public List<SeriesElement> Series { get; set; }
+        public List<SeriesElement>? Series { get; set; }
         [JsonProperty("credits", NullValueHandling = NullValueHandling.Ignore)]
         public Credits Credits { get; set; }
 
@@ -53,7 +53,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public Drilldown Drilldown { get; set; }
 
         [JsonProperty("colors", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Colors { get; set; }
+        public List<string>? Colors { get; set; }
 
         public ChartObject()
         {
@@ -73,24 +73,27 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
             Pane = new Pane();
             Drilldown = new Drilldown();
         }
-
-        public string Generate()
+        private static string JsonSerialize<TValue>(TValue value)
         {
-            var json = System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
+            var json = System.Text.Json.JsonSerializer.Serialize(value, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
             return json.Replace("columnRange", "columnrange");
         }
-
+        public string Generate()
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(this, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return json.Replace("columnRange", "columnrange");
+        }
         public async Task ChangeSeriesAsync(IJSRuntime jsRuntime, string containerId, List<object> newData)
         {
-            await jsRuntime.InvokeVoidAsync("updateSeriesHighchartChart", containerId, newData);
+            await jsRuntime.InvokeVoidAsync("updateSeriesHighchartChart", containerId, JsonSerialize(newData));
+        }
+        public async Task ChangeSeriesAtIndexAsync(IJSRuntime jsRuntime, string containerId, int index, List<object> newData)
+        {
+            await jsRuntime.InvokeVoidAsync("updateSeriesAtIndexHighchartChart", containerId, index, JsonSerialize(newData));
         }
         public async Task DestroyAllChartsAsync(IJSRuntime jsRuntime)
         {
             await jsRuntime.InvokeVoidAsync("destroyCharts");
-        }
-        public async Task ChangeSeriesAtIndexAsync(IJSRuntime jsRuntime, string containerId, int index, List<object> newData)
-        {
-            await jsRuntime.InvokeVoidAsync("updateSeriesAtIndexHighchartChart", containerId, index, newData);
         }
         public async Task ChangeTitleAsync(IJSRuntime jsRuntime, string containerId, string titleText, string titleColor)
         {
@@ -108,9 +111,9 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         {
             await jsRuntime.InvokeVoidAsync("updateXAxisCategories", containerId, newCategories);
         }
-        public async Task UpdateChart(IJSRuntime jsRuntime, string containerId, ChartObject newChart)
+        public async Task UpdateChart(IJSRuntime jsRuntime, string containerId)
         {
-            await jsRuntime.InvokeVoidAsync("updateChart", containerId, newChart.Generate());
+            await jsRuntime.InvokeVoidAsync("updateChart", containerId, this.Generate());
         }
         public void DisposeChart(IJSRuntime jsRuntime, string containerId)
         {

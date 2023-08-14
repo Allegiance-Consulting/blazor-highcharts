@@ -10,20 +10,30 @@
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
+
+@@page &quot;/column-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+&lt;h3>Column Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+&lt;div id=&quot;columnchart&quot;>&lt;/div>
+&lt;/figure>
+
 @@code {
- private ChartObject ColumnChart = new ChartObject()
+  private ChartObject ColumnChart = new ChartObject()
     {
         Chart = new Chart(ChartType.Column, false),
-        Title = new Title("ASCII value of letters in 'COLUMN'"),
+        Title = new Title(&quot;ASCII value of letters in 'COLUMN'&quot;),
         XAxis = new XAxis(AxisType.Category),
         YAxis = new YAxis()
         {
-            Title = new Title("Letter"),
+            Title = new Title(&quot;Letter&quot;),
         },
         Legend = new Legend(false),
         PlotOptions = new PlotOptions()
         {
-            Column = new Column(5),
+            Column = new PlotOptionsColumn(5),
             Series = new PlotOptionsSeries()
             {
                 PointWidth = 60
@@ -31,35 +41,35 @@
 
         },
         Series = new List&lt;SeriesElement>()
-		{
+        {
             new SeriesElement()
             {
-                Name = "ASCII value",
+                Name = &quot;ASCII value&quot;,
                 ColorByPoint = true,
                 Data = new List&lt;object>()
                 {
                     {new Datum(){
-                        Name = "C", 
+                        Name = &quot;C&quot;, 
                         Y = 67
                     }},
                     {new Datum(){
-                        Name = "O", 
+                        Name = &quot;O&quot;, 
                         Y = 79
                     }},
                     {new Datum(){
-                        Name = "L", 
+                        Name = &quot;L&quot;, 
                         Y = 76
                     }},
                     {new Datum(){
-                        Name = "U", 
+                        Name = &quot;U&quot;, 
                         Y = 85
                     }},
                     {new Datum(){
-                        Name = "M", 
+                        Name = &quot;M&quot;, 
                         Y = 77
                     }},
                     {new Datum(){
-                        Name = "N", 
+                        Name = &quot;N&quot;, 
                         Y = 78
                     }}
                 }
@@ -70,11 +80,8 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("columnchart", ColumnChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        chartService.RenderChart(&quot;columnchart&quot;, ColumnChart.Generate());        
     }
-
-
 }
 
 </pre>
@@ -106,7 +113,7 @@
             {
                 Name = "ASCII value",
                 ColorByPoint = true,
-                Data = new List<object>()
+                Data = new List<object?>()
                 {
                     {new Datum(){
                         Name = "C", 

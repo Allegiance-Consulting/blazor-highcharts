@@ -1,7 +1,6 @@
 // This is the interop Javascript file that handles all interop between Blazor and Javascript
 
 window.renderHighchartChart = function (containerId, chartOptions) {
-    //debugger
     let options = '';
     try {
         options = JSON.parse(chartOptions, this.reviver);
@@ -10,7 +9,6 @@ window.renderHighchartChart = function (containerId, chartOptions) {
         this.console.log(e.message);
         this.console.log(e.stack);
     }
-    //disposeHighchartChart(containerId); // Will ensure disposal before re-rendering if Blazor method did not work.
     Highcharts.chart(containerId, options);
 }
 
@@ -18,7 +16,14 @@ window.updateSeriesHighchartChart = function (containerId, seriesData) {
 
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
-            Highcharts.charts[i].series[0].setData(seriesData);
+            let jsonData = "";
+            try {
+                jsonData = JSON.parse(seriesData, this.reviver)
+            } catch (e) {
+                this.console.log(e.message);
+                this.console.log(e.stack);
+            }
+            Highcharts.charts[i].series[0].setData(jsonData);
             break;
         }
     }
@@ -26,7 +31,14 @@ window.updateSeriesHighchartChart = function (containerId, seriesData) {
 window.updateSeriesAtIndexHighchartChart = function (containerId, seriesIndex, seriesData) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
-            Highcharts.charts[i].series[seriesIndex].setData(seriesData);
+            let jsonData = "";
+            try {
+                jsonData = JSON.parse(seriesData, this.reviver)
+            } catch (e) {
+                this.console.log(e.message);
+                this.console.log(e.stack);
+            }
+            Highcharts.charts[i].series[seriesIndex].setData(jsonData);
             break;
         }
     }
@@ -50,7 +62,7 @@ window.updateXAxisPlotLineValue = function (containerId, plotlineVal, plotlineIn
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].xAxis[0].options.plotLines[plotlineIndex].value = plotlineVal;
-            Highcharts.charts[i].xAxis[0].update();            
+            Highcharts.charts[i].xAxis[0].update();
             break;
         }
     }
@@ -59,7 +71,7 @@ window.updateYAxisPlotLineValue = function (containerId, plotlineVal, plotlineIn
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
             Highcharts.charts[i].yAxis[0].options.plotLines[plotlineIndex].value = plotlineVal;
-            Highcharts.charts[i].yAxis[0].update();            
+            Highcharts.charts[i].yAxis[0].update();
             break;
         }
     }
@@ -67,7 +79,7 @@ window.updateYAxisPlotLineValue = function (containerId, plotlineVal, plotlineIn
 window.updateXAxisCategories = function (containerId, categories) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
-            Highcharts.charts[i].xAxis[0].setCategories(categories);                        
+            Highcharts.charts[i].xAxis[0].setCategories(categories);
             break;
         }
     }
@@ -75,7 +87,7 @@ window.updateXAxisCategories = function (containerId, categories) {
 window.updateChart = function (containerId, newChart) {
     for (var i = 0; i < Highcharts.charts.length; i++) {
         if (Highcharts.charts[i] && Highcharts.charts[i].renderTo.id === containerId && document.getElementById(Highcharts.charts[i].container.id) != null) {
-            Highcharts.charts[i].update(JSON.parse(newChart));
+            Highcharts.charts[i].update(JSON.parse(newChart, this.reviver));
             break;
         }
     }
@@ -111,8 +123,7 @@ window.disposeHighchartChart = function (containerId) {
 
 
 function reviver(key, value) {
-    if (typeof (value) === 'string' && value.includes('function()')) {
-        let regEx = new RegExp("{([^}]*)}");
+    if (typeof (value) === 'string' && value.includes('function()')) {      
         let func = new Function(value.split("function()")[1]);
         return func;
     }

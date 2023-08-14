@@ -35,7 +35,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public PlotOptions PlotOptions { get; set; }
 
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
-        public List<SeriesElement> Series { get; set; }
+        public List<SeriesElement>? Series { get; set; }
         [JsonProperty("credits", NullValueHandling = NullValueHandling.Ignore)]
         public Credits Credits { get; set; }
 
@@ -53,7 +53,7 @@ namespace Allegiance.Blazor.Highcharts.Core.Charts
         public Drilldown Drilldown { get; set; }
 
         [JsonProperty("colors", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Colors { get; set; }
+        public List<string>? Colors { get; set; }
 
         public ChartObject()
         {

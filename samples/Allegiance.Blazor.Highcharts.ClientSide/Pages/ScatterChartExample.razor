@@ -8,73 +8,85 @@
 <figure class="highcharts-figure">
     <div id="scatterchart"></div>
 </figure>
-
+<button @onclick="RandomiseAndUpdateData">Randomise Data</button>
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
+
+@@page &quot;/scatter-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+
+&lt;h3>Scatter Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+&lt;div id=&quot;scatterchart&quot;>&lt;/div>
+&lt;/figure>
+&lt;button @@onclick=&quot;RandomiseAndUpdateData&quot;>Randomise Data&lt;/button>
+
 @@code{
-    private ChartObject ScatterChart = new ChartObject()
-    {
-        Chart = new Chart()
+      private ChartObject ScatterChart = new ChartObject()
         {
-            Type = ChartType.Scatter,
-            ZoomType = ZoomType.XY
-        },
-        Title = new Title("Height Versus Weight of 507 Individuals by Gender"),
-        Subtitle = new Title("Source: Heinz  2003"),
-        XAxis = new XAxis()
-        {
-            Title = new Title("Height (cm)"),
-            StartOnTick = true,
-            EendOnTick = true,
-            ShowLastLabel = true,
-        },
-        YAxis = new YAxis()
-        {
-            Title = new Title("Weight (kg)")
-        },
-        Legend = new Legend()
-        {
-            Layout = Layout.Vertical,
-            Align = Align.Left,
-            VerticalAlign = Align.Top,
-            X = 100,
-            Y = 70,
-            Floating = true,
-            BorderWidth = 1
-        },
-        PlotOptions = new PlotOptions()
-        {
-            Scatter = new Scatter()
+            Chart = new Chart()
             {
-                Marker = new Marker()
+                Type = ChartType.Scatter,
+                ZoomType = ZoomType.XY
+            },
+            Title = new Title("Height Versus Weight of 507 Individuals by Gender"),
+            Subtitle = new Title("Source: Heinz  2003"),
+            XAxis = new XAxis()
+            {
+                Title = new Title("Height (cm)"),
+                StartOnTick = true,
+                EendOnTick = true,
+                ShowLastLabel = true,
+            },
+            YAxis = new YAxis()
+            {
+                Title = new Title("Weight (kg)")
+            },
+            Legend = new Legend()
+            {
+                Layout = Layout.Vertical,
+                Align = Align.Left,
+                VerticalAlign = Align.Top,
+                X = 100,
+                Y = 70,
+                Floating = true,
+                BorderWidth = 1
+            },
+            PlotOptions = new PlotOptions()
+            {
+                Scatter = new PlotOptionsScatter()
                 {
-                    Radius = 5,
+                    Marker = new Marker()
+                    {
+                        Radius = 5,
+                        States = new States()
+                        {
+                            Hover = new Hover()
+                            {
+                                Enabled = true,
+                                LineColor = "rgb(100,100,100)"
+                            },
+                        }
+                    },
                     States = new States()
                     {
                         Hover = new Hover()
                         {
-                            Enabled = true,
-                            LineColor = "rgb(100,100,100)"
-                        },
-                    }
-                },
-                States = new States()
-                {
-                    Hover = new Hover()
+                            Marker = new Marker(false)
+                        }
+                    },
+                    Tooltip = new Tooltip()
                     {
-                        Marker = new Marker(false)
+                        HeaderFormat = "&lt;b>{series.name}&lt;/b>&lt;br>",
+                        PointFormat = "{point.x} cm, {point.y} kg"
                     }
-                },
-                Tooltip = new Tooltip()
-                {
-                    HeaderFormat = "&lt;b>{series.name}&lt;/b>&lt;br>",
-                    PointFormat = "{point.x} cm, {point.y} kg"
+
+
                 }
-
-
-            }
-        },
-        Series = new List&lt;SeriesElement>()
+            },
+            Series = new List&lt;SeriesElement>()
         {
             new SeriesElement()
             {
@@ -139,81 +151,144 @@
                 }
             }
         }
-    };
+        };
+
+    private async Task RandomiseAndUpdateData()
+    {
+        var random = new Random();
+
+        var femaleData = new List&lt;object>()
+                {
+                    {new Datum(){X = 174.0 + random.Next(-50,50), Y = 65.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.3 + random.Next(-50,50), Y = 71.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 193.5 + random.Next(-50,50), Y = 80.7 + random.Next(-10, 10)}},
+                    {new Datum(){X = 186.5 + random.Next(-50,50), Y = 72.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 187.2 + random.Next(-50,50), Y = 78.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 181.5 + random.Next(-50,50), Y = 74.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.0 + random.Next(-50,50), Y = 86.4 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.5 + random.Next(-50,50), Y = 78.4 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.0 + random.Next(-50,50), Y = 62.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.0 + random.Next(-50,50), Y = 81.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 180.0 + random.Next(-50,50), Y = 76.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 177.8 + random.Next(-50,50), Y = 83.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 192.0 + random.Next(-50,50), Y = 90.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.0 + random.Next(-50,50), Y = 74.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 174.0 + random.Next(-50,50), Y = 71.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.0 + random.Next(-50,50), Y = 79.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 192.7 + random.Next(-50,50), Y = 93.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 171.5 + random.Next(-50,50), Y = 70.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 173.0 + random.Next(-50,50), Y = 72.4 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.0 + random.Next(-50,50), Y = 85.9 + random.Next(-10, 10)}}
+                };
+        var maleData = new List&lt;object>()
+                {
+                    {new Datum(){X = 161.2 + random.Next(-50,50), Y = 51.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 167.5 + random.Next(-50,50), Y = 59.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 159.5 + random.Next(-50,50), Y = 49.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 157.0 + random.Next(-50,50), Y = 63.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 155.8 + random.Next(-50,50), Y = 53.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 170.0 + random.Next(-50,50), Y = 59.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 159.1 + random.Next(-50,50), Y = 47.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 166.0 + random.Next(-50,50), Y = 69.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.2 + random.Next(-50,50), Y = 66.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 160.2 + random.Next(-50,50), Y = 75.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 172.5 + random.Next(-50,50), Y = 55.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 170.9 + random.Next(-50,50), Y = 54.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 172.9 + random.Next(-50,50), Y = 62.5 + random.Next(-10, 10)}},
+                    {new Datum(){X = 153.4 + random.Next(-50,50), Y = 42.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 160.0 + random.Next(-50,50), Y = 50.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 147.2 + random.Next(-50,50), Y = 49.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 168.2 + random.Next(-50,50), Y = 49.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.0 + random.Next(-50,50), Y = 73.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 157.0 + random.Next(-50,50), Y = 47.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 167.6 + random.Next(-50,50), Y = 68.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 159.5 + random.Next(-50,50), Y = 50.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.0 + random.Next(-50,50), Y = 82.5 + random.Next(-10, 10)}},
+                    {new Datum(){X = 166.8 + random.Next(-50,50), Y = 57.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.5 + random.Next(-50,50), Y = 87.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 170.2 + random.Next(-50,50), Y = 72.8 + random.Next(-10, 10)}}
+                };
+        ScatterChart.Subtitle.Text = "Source: randomly generated data";
+        ScatterChart.Series[0].Data = femaleData;
+        ScatterChart.Series[1].Data = maleData;
+        await ScatterChart.UpdateChart(jsRuntime, "scatterchart");
+    }
 
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("scatterchart", ScatterChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        if (firstRender)
+        {
+            chartService.RenderChart("scatterchart", ScatterChart.Generate());            
+        }
     }
 }
 </pre>
 
-@code{
+@code {
     private ChartObject ScatterChart = new ChartObject()
-    {
-        Chart = new Chart()
         {
-            Type = ChartType.Scatter,
-            ZoomType = ZoomType.XY
-        },
-        Title = new Title("Height Versus Weight of 507 Individuals by Gender"),
-        Subtitle = new Title("Source: Heinz  2003"),
-        XAxis = new XAxis()
-        {
-            Title = new Title("Height (cm)"),
-            StartOnTick = true,
-            EendOnTick = true,
-            ShowLastLabel = true,
-        },
-        YAxis = new YAxis()
-        {
-            Title = new Title("Weight (kg)")
-        },
-        Legend = new Legend()
-        {
-            Layout = Layout.Vertical,
-            Align = Align.Left,
-            VerticalAlign = Align.Top,
-            X = 100,
-            Y = 70,
-            Floating = true,
-            BorderWidth = 1
-        },
-        PlotOptions = new PlotOptions()
-        {
-            Scatter = new PlotOptionsScatter()
+            Chart = new Chart()
             {
-                Marker = new Marker()
+                Type = ChartType.Scatter,
+                ZoomType = ZoomType.XY
+            },
+            Title = new Title("Height Versus Weight of 507 Individuals by Gender"),
+            Subtitle = new Title("Source: Heinz  2003"),
+            XAxis = new XAxis()
+            {
+                Title = new Title("Height (cm)"),
+                StartOnTick = true,
+                EendOnTick = true,
+                ShowLastLabel = true,
+            },
+            YAxis = new YAxis()
+            {
+                Title = new Title("Weight (kg)")
+            },
+            Legend = new Legend()
+            {
+                Layout = Layout.Vertical,
+                Align = Align.Left,
+                VerticalAlign = Align.Top,
+                X = 100,
+                Y = 70,
+                Floating = true,
+                BorderWidth = 1
+            },
+            PlotOptions = new PlotOptions()
+            {
+                Scatter = new PlotOptionsScatter()
                 {
-                    Radius = 5,
+                    Marker = new Marker()
+                    {
+                        Radius = 5,
+                        States = new States()
+                        {
+                            Hover = new Hover()
+                            {
+                                Enabled = true,
+                                LineColor = "rgb(100,100,100)"
+                            },
+                        }
+                    },
                     States = new States()
                     {
                         Hover = new Hover()
                         {
-                            Enabled = true,
-                            LineColor = "rgb(100,100,100)"
-                        },
-                    }
-                },
-                States = new States()
-                {
-                    Hover = new Hover()
+                            Marker = new Marker(false)
+                        }
+                    },
+                    Tooltip = new Tooltip()
                     {
-                        Marker = new Marker(false)
+                        HeaderFormat = "<b>{series.name}</b><br>",
+                        PointFormat = "{point.x} cm, {point.y} kg"
                     }
-                },
-                Tooltip = new Tooltip()
-                {
-                    HeaderFormat = "<b>{series.name}</b><br>",
-                    PointFormat = "{point.x} cm, {point.y} kg"
+
+
                 }
-
-
-            }
-        },
-        Series = new List<SeriesElement>()
+            },
+            Series = new List<SeriesElement>()
         {
             new SeriesElement()
             {
@@ -278,12 +353,76 @@
                 }
             }
         }
-    };
+        };
+
+    private async Task RandomiseAndUpdateData()
+    {
+        var random = new Random();
+
+        var femaleData = new List<object>()
+                {
+                    {new Datum(){X = 174.0 + random.Next(-50,50), Y = 65.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.3 + random.Next(-50,50), Y = 71.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 193.5 + random.Next(-50,50), Y = 80.7 + random.Next(-10, 10)}},
+                    {new Datum(){X = 186.5 + random.Next(-50,50), Y = 72.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 187.2 + random.Next(-50,50), Y = 78.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 181.5 + random.Next(-50,50), Y = 74.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.0 + random.Next(-50,50), Y = 86.4 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.5 + random.Next(-50,50), Y = 78.4 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.0 + random.Next(-50,50), Y = 62.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.0 + random.Next(-50,50), Y = 81.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 180.0 + random.Next(-50,50), Y = 76.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 177.8 + random.Next(-50,50), Y = 83.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 192.0 + random.Next(-50,50), Y = 90.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.0 + random.Next(-50,50), Y = 74.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 174.0 + random.Next(-50,50), Y = 71.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 184.0 + random.Next(-50,50), Y = 79.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 192.7 + random.Next(-50,50), Y = 93.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 171.5 + random.Next(-50,50), Y = 70.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 173.0 + random.Next(-50,50), Y = 72.4 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.0 + random.Next(-50,50), Y = 85.9 + random.Next(-10, 10)}}
+                };
+        var maleData = new List<object>()
+                {
+                    {new Datum(){X = 161.2 + random.Next(-50,50), Y = 51.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 167.5 + random.Next(-50,50), Y = 59.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 159.5 + random.Next(-50,50), Y = 49.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 157.0 + random.Next(-50,50), Y = 63.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 155.8 + random.Next(-50,50), Y = 53.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 170.0 + random.Next(-50,50), Y = 59.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 159.1 + random.Next(-50,50), Y = 47.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 166.0 + random.Next(-50,50), Y = 69.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.2 + random.Next(-50,50), Y = 66.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 160.2 + random.Next(-50,50), Y = 75.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 172.5 + random.Next(-50,50), Y = 55.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 170.9 + random.Next(-50,50), Y = 54.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 172.9 + random.Next(-50,50), Y = 62.5 + random.Next(-10, 10)}},
+                    {new Datum(){X = 153.4 + random.Next(-50,50), Y = 42.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 160.0 + random.Next(-50,50), Y = 50.0 + random.Next(-10, 10)}},
+                    {new Datum(){X = 147.2 + random.Next(-50,50), Y = 49.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 168.2 + random.Next(-50,50), Y = 49.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.0 + random.Next(-50,50), Y = 73.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 157.0 + random.Next(-50,50), Y = 47.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 167.6 + random.Next(-50,50), Y = 68.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 159.5 + random.Next(-50,50), Y = 50.6 + random.Next(-10, 10)}},
+                    {new Datum(){X = 175.0 + random.Next(-50,50), Y = 82.5 + random.Next(-10, 10)}},
+                    {new Datum(){X = 166.8 + random.Next(-50,50), Y = 57.2 + random.Next(-10, 10)}},
+                    {new Datum(){X = 176.5 + random.Next(-50,50), Y = 87.8 + random.Next(-10, 10)}},
+                    {new Datum(){X = 170.2 + random.Next(-50,50), Y = 72.8 + random.Next(-10, 10)}}
+                };
+        ScatterChart.Subtitle.Text = "Source: randomly generated data";
+        ScatterChart.Series[0].Data = femaleData;
+        ScatterChart.Series[1].Data = maleData;
+        await ScatterChart.UpdateChart(jsRuntime, "scatterchart");
+    }
 
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("scatterchart", ScatterChart.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        if (firstRender)
+        {
+            chartService.RenderChart("scatterchart", ScatterChart.Generate());
+            jsRuntime.InvokeVoidAsync("prettyPrint");
+        }
     }
 }

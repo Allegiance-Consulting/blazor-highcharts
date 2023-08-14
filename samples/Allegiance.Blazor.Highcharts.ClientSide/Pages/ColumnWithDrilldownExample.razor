@@ -10,16 +10,27 @@
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
+
+@@page &quot;/columnwithdrilldown-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+
+&lt;h3>Column With Drilldown Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+&lt;div id=&quot;columnwithdrilldownchart&quot;>&lt;/div>
+&lt;/figure>
+
 @@code {
- private ChartObject ColumnWithDrilldown = new ChartObject()
+    private ChartObject ColumnWithDrilldown = new ChartObject()
         {
             Chart = new Chart(ChartType.Column, false),
-            Title = new Title("Browser market shares. January, 2022"),
-            Subtitle = new Title("Click the columns to view versions."),
+            Title = new Title(&quot;Browser market shares. January, 2022&quot;),
+            Subtitle = new Title(&quot;Click the columns to view versions.&quot;),
             XAxis = new XAxis(AxisType.Category),
             YAxis = new YAxis()
             {
-                Title = new Title("Total percent market share"),
+                Title = new Title(&quot;Total percent market share&quot;),
             },
             Legend = new Legend(false),
             PlotOptions = new PlotOptions()
@@ -33,7 +44,7 @@
                     DataLabels = new Labels()
                     {
                         Enabled = true,
-                        Format = "{point.name} : {point.y}%"
+                        Format = &quot;{point.name} : {point.y}%&quot;
                     }
                 },
                 Series = new PlotOptionsSeries()
@@ -42,27 +53,27 @@
                     DataLabels = new DataLabels()
                     {
                         Enabled = true,
-                        Format = "{point.y:.1f}%"
+                        Format = &quot;{point.y:.1f}%&quot;
                     }
                 }
             },
             Tooltip = new Tooltip()
             {
-                HeaderFormat = "&lt;span style='font - size:11px'>{series.name}&lt;/span>&lt;br>",
-                PointFormat = "&lt;span style='color:{point.color}''>{point.name}&lt;/span>: &lt;b>{point.y:.2f}%&lt;/b> of total&lt;br/>"
+                HeaderFormat = &quot;&lt;span style='font - size:11px'>{series.name}&lt;/span>&lt;br>&quot;,
+                PointFormat = &quot;&lt;span style='color:{point.color}''>{point.name}&lt;/span>: &lt;b>{point.y:.2f}%&lt;/b> of total&lt;br/>&quot;
             },
             Series = new List&lt;SeriesElement>(){
             new SeriesElement(){
-                Name = "Browsers",
+                Name = &quot;Browsers&quot;,
                 ColorByPoint = true,
                 Data = new List&lt;object>(){
-                    {new Datum(){ Name = "Chrome", Y = 63.06, Drilldown = "Chrome" }},
-                    {new Datum(){ Name = "Safari", Y = 19.84, Drilldown = "Safari" }},
-                    {new Datum(){ Name = "Firefox", Y = 4.18, Drilldown = "Firefox" }},
-                    {new Datum(){ Name = "Edge", Y = 4.12, Drilldown = "Edge" }},
-                    {new Datum(){ Name = "Opera", Y = 2.33, Drilldown = "Opera" }},
-                    {new Datum(){ Name = "Internet Explorer", Y = 0.45, Drilldown = "Internet Explorer" }},
-                    {new Datum(){ Name = "Other", Y = 1.582, Drilldown = null }},
+                    {new Datum(){ Name = &quot;Chrome&quot;, Y = 63.06, Drilldown = &quot;Chrome&quot; }},
+                    {new Datum(){ Name = &quot;Safari&quot;, Y = 19.84, Drilldown = &quot;Safari&quot; }},
+                    {new Datum(){ Name = &quot;Firefox&quot;, Y = 4.18, Drilldown = &quot;Firefox&quot; }},
+                    {new Datum(){ Name = &quot;Edge&quot;, Y = 4.12, Drilldown = &quot;Edge&quot; }},
+                    {new Datum(){ Name = &quot;Opera&quot;, Y = 2.33, Drilldown = &quot;Opera&quot; }},
+                    {new Datum(){ Name = &quot;Internet Explorer&quot;, Y = 0.45, Drilldown = &quot;Internet Explorer&quot; }},
+                    {new Datum(){ Name = &quot;Other&quot;, Y = 1.582, Drilldown = null }},
                 }
             }
         },
@@ -73,100 +84,100 @@
                 new SeriesElement
                 {
                     Type = ChartType.Pie,
-                    Name = "Chrome",
-                    Id = "Chrome",                    
+                    Name = &quot;Chrome&quot;,
+                    Id = &quot;Chrome&quot;,                    
                     Data = new List&lt;object>
                     {
-                        {new Datum(){ Name = "v65.0", Y = 0.1 }},
-                        {new Datum(){ Name = "v64.0", Y = 1.3 }},
-                        {new Datum(){ Name = "v63.0", Y = 53.02 }},
-                        {new Datum(){ Name = "v62.0", Y = 1.4 }},
-                        {new Datum(){ Name = "v61.0", Y = 0.88 }},
-                        {new Datum(){ Name = "v60.0", Y= 0.56 }},
-                        {new Datum(){ Name = "v59.0", Y = 0.45 }},
-                        {new Datum(){ Name = "v58.0", Y = 0.49 }},
-                        {new Datum(){ Name = "v57.0", Y = 0.32 }},
-                        {new Datum(){ Name = "v56.0", Y = 0.29 }},
-                        {new Datum(){ Name = "v55.0", Y = 0.79 }},
-                        {new Datum(){ Name = "v54.0", Y = 0.18 }},
-                        {new Datum(){ Name = "v51.0", Y = 0.13 }},
-                        {new Datum(){ Name = "v49.0", Y = 2.16 }},
-                        {new Datum(){ Name = "v48.0", Y = 0.13 }},
-                        {new Datum(){ Name = "v47.0", Y = 0.11 }},
-                        {new Datum(){ Name = "v43.0", Y = 0.17 }},
-                        {new Datum(){ Name = "v29.0", Y = 0.26 }},
+                        {new Datum(){ Name = &quot;v65.0&quot;, Y = 0.1 }},
+                        {new Datum(){ Name = &quot;v64.0&quot;, Y = 1.3 }},
+                        {new Datum(){ Name = &quot;v63.0&quot;, Y = 53.02 }},
+                        {new Datum(){ Name = &quot;v62.0&quot;, Y = 1.4 }},
+                        {new Datum(){ Name = &quot;v61.0&quot;, Y = 0.88 }},
+                        {new Datum(){ Name = &quot;v60.0&quot;, Y= 0.56 }},
+                        {new Datum(){ Name = &quot;v59.0&quot;, Y = 0.45 }},
+                        {new Datum(){ Name = &quot;v58.0&quot;, Y = 0.49 }},
+                        {new Datum(){ Name = &quot;v57.0&quot;, Y = 0.32 }},
+                        {new Datum(){ Name = &quot;v56.0&quot;, Y = 0.29 }},
+                        {new Datum(){ Name = &quot;v55.0&quot;, Y = 0.79 }},
+                        {new Datum(){ Name = &quot;v54.0&quot;, Y = 0.18 }},
+                        {new Datum(){ Name = &quot;v51.0&quot;, Y = 0.13 }},
+                        {new Datum(){ Name = &quot;v49.0&quot;, Y = 2.16 }},
+                        {new Datum(){ Name = &quot;v48.0&quot;, Y = 0.13 }},
+                        {new Datum(){ Name = &quot;v47.0&quot;, Y = 0.11 }},
+                        {new Datum(){ Name = &quot;v43.0&quot;, Y = 0.17 }},
+                        {new Datum(){ Name = &quot;v29.0&quot;, Y = 0.26 }},
                     }
                 },
                 new SeriesElement
                 {
                     Type = ChartType.Pie,
-                    Name = "Firefox",
-                    Id = "Firefox",
+                    Name = &quot;Firefox&quot;,
+                    Id = &quot;Firefox&quot;,
                     Data = new List&lt;object>
                     {
-                        {new Datum(){ Name = "v58.0", Y = 1.02 }},
-                        {new Datum(){ Name = "v57.0", Y = 7.36 }},
-                        {new Datum(){ Name = "v56.0", Y = 0.35 }},
-                        {new Datum(){ Name = "v55.0", Y = 0.11 }},
-                        {new Datum(){ Name = "v54.0", Y = 0.1 }},
-                        {new Datum(){ Name = "v52.0", Y = 0.95 }},
-                        {new Datum(){ Name = "v51.0", Y = 0.15 }},
-                        {new Datum(){ Name = "v50.0", Y = 0.1 }},
-                        {new Datum(){ Name = "v48.0", Y = 0.31 }},
-                        {new Datum(){ Name = "v47.0", Y = 0.12 }},
+                        {new Datum(){ Name = &quot;v58.0&quot;, Y = 1.02 }},
+                        {new Datum(){ Name = &quot;v57.0&quot;, Y = 7.36 }},
+                        {new Datum(){ Name = &quot;v56.0&quot;, Y = 0.35 }},
+                        {new Datum(){ Name = &quot;v55.0&quot;, Y = 0.11 }},
+                        {new Datum(){ Name = &quot;v54.0&quot;, Y = 0.1 }},
+                        {new Datum(){ Name = &quot;v52.0&quot;, Y = 0.95 }},
+                        {new Datum(){ Name = &quot;v51.0&quot;, Y = 0.15 }},
+                        {new Datum(){ Name = &quot;v50.0&quot;, Y = 0.1 }},
+                        {new Datum(){ Name = &quot;v48.0&quot;, Y = 0.31 }},
+                        {new Datum(){ Name = &quot;v47.0&quot;, Y = 0.12 }},
                     }
                 },
                 new SeriesElement
                 {
                     Type = ChartType.Pie,
-                    Name = "Internet Explorer",
-                    Id = "Internet Explorer",
+                    Name = &quot;Internet Explorer&quot;,
+                    Id = &quot;Internet Explorer&quot;,
                     Data = new List&lt;object>
                     {
-                        {new Datum(){ Name = "v11.0", Y = 6.2 }},
-                        {new Datum(){ Name = "v10.0", Y = 0.29 }},
-                        {new Datum(){ Name = "v9.0", Y = 0.27 }},
-                        {new Datum(){ Name = "v8.0", Y = 0.47 }},
+                        {new Datum(){ Name = &quot;v11.0&quot;, Y = 6.2 }},
+                        {new Datum(){ Name = &quot;v10.0&quot;, Y = 0.29 }},
+                        {new Datum(){ Name = &quot;v9.0&quot;, Y = 0.27 }},
+                        {new Datum(){ Name = &quot;v8.0&quot;, Y = 0.47 }},
                     }
                 },
                 new SeriesElement
                 {
                     Type = ChartType.Pie,
-                    Name = "Safari",
-                    Id = "Safari",
+                    Name = &quot;Safari&quot;,
+                    Id = &quot;Safari&quot;,
                     Data = new List&lt;object>
                     {
-                        {new Datum(){ Name = "v11.0", Y = 3.39 }},
-                        {new Datum(){ Name = "v10.1", Y = 0.96 }},
-                        {new Datum(){ Name = "v10.0", Y = 0.36 }},
-                        {new Datum(){ Name = "v9.1", Y = 0.54 }},
-                        {new Datum(){ Name = "v9.0", Y = 0.13 }},
-                        {new Datum(){ Name = "v5.1", Y = 0.2 }},
+                        {new Datum(){ Name = &quot;v11.0&quot;, Y = 3.39 }},
+                        {new Datum(){ Name = &quot;v10.1&quot;, Y = 0.96 }},
+                        {new Datum(){ Name = &quot;v10.0&quot;, Y = 0.36 }},
+                        {new Datum(){ Name = &quot;v9.1&quot;, Y = 0.54 }},
+                        {new Datum(){ Name = &quot;v9.0&quot;, Y = 0.13 }},
+                        {new Datum(){ Name = &quot;v5.1&quot;, Y = 0.2 }},
                     }
                 },
                 new SeriesElement
                 {
                     Type = ChartType.Pie,
-                    Name = "Edge",
-                    Id = "Edge",
+                    Name = &quot;Edge&quot;,
+                    Id = &quot;Edge&quot;,
                     Data = new List&lt;object>
                     {
-                        {new Datum(){ Name = "v16.0", Y = 2.6 }},
-                        {new Datum(){ Name = "v15.0", Y = 0.92 }},
-                        {new Datum(){ Name = "v14.0", Y = 0.4 }},
-                        {new Datum(){ Name = "v13.0", Y = 0.1 }},
+                        {new Datum(){ Name = &quot;v16.0&quot;, Y = 2.6 }},
+                        {new Datum(){ Name = &quot;v15.0&quot;, Y = 0.92 }},
+                        {new Datum(){ Name = &quot;v14.0&quot;, Y = 0.4 }},
+                        {new Datum(){ Name = &quot;v13.0&quot;, Y = 0.1 }},
                     }
                 },
                 new SeriesElement
                 {
                     Type = ChartType.Pie,
-                    Name = "Opera",
-                    Id = "Opera",
+                    Name = &quot;Opera&quot;,
+                    Id = &quot;Opera&quot;,
                     Data = new List&lt;object>
                     {
-                        {new Datum(){ Name = "v50.0", Y = 0.96 }},
-                        {new Datum(){ Name = "v49.0", Y = 0.82 }},
-                        {new Datum(){ Name = "v12.1", Y = 0.14 }},
+                        {new Datum(){ Name = &quot;v50.0&quot;, Y = 0.96 }},
+                        {new Datum(){ Name = &quot;v49.0&quot;, Y = 0.82 }},
+                        {new Datum(){ Name = &quot;v12.1&quot;, Y = 0.14 }},
                     }
                 }
             }
@@ -176,8 +187,7 @@
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        chartService.RenderChart("columnwithdrilldownchart", ColumnWithDrilldown.Generate());
-        jsRuntime.InvokeVoidAsync("prettyPrint");
+        chartService.RenderChart(&quot;columnwithdrilldownchart&quot;, ColumnWithDrilldown.Generate());
     }
 }
 </pre>

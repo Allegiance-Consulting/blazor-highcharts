@@ -10,13 +10,27 @@
 </figure>
 
 <h4>Code Example</h4>
+
+
 <pre class="prettyprint opacity-load">
+
+@@page &quot;/3d-pie-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+
+
+&lt;h3>Pie Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+    &lt;div id=&quot;piechart3d&quot;>&lt;/div>
+&lt;/figure>
+
 @@code {
 
     private ChartObject PieChart3D = new ChartObject()
     {
         Chart = new Chart(ChartType.Pie, null,null, null,null,null,null,null,null, new Options3D(true, 45, 0)),
-        Tooltip = new Tooltip(true, "{series.name}: <b>{point.percentage:.1f}%</b>"),
+        Tooltip = new Tooltip(true, &quot;{series.name}: &lt;b>{point.percentage:.1f}%&lt;/b>&quot;),
         Legend = new Legend(true),
         PlotOptions = new PlotOptions()
         {
@@ -28,25 +42,25 @@
                 DataLabels = new Labels()
                 {
                     Enabled = true,
-                    Format = "{point.name}"
+                    Format = &quot;{point.name}&quot;
                 }
             }
         },
-        Title = new Title("Browser market shares at a specific website, 2014"),
+        Title = new Title(&quot;Browser market shares at a specific website, 2014&quot;),
         Series = new List&lt;SeriesElement>()
         {
             new SeriesElement()
             {
-                Name = "Browser share",
-                Type = "pie",
+                Name = &quot;Browser share&quot;,
+                Type = &quot;pie&quot;,
                 Data = new List&lt;object>()
                 {
-                    {new List&lt;object>(){ "Chrome", 61.4 } },
-                    {new List&lt;object>(){ "Internet Explorer", 11.84 } },
-                    {new List&lt;object>(){ "Firefox", 10.85 } },
-                    {new List&lt;object>(){ "Edge", 4.67 } },
-                    {new List&lt;object>(){ "Safari", 4.18 } },
-                    {new List&lt;object>(){ "Other", 7.05 } }
+                    {new List&lt;object>(){ &quot;Chrome&quot;, 61.4 } },
+                    {new List&lt;object>(){ &quot;Internet Explorer&quot;, 11.84 } },
+                    {new List&lt;object>(){ &quot;Firefox&quot;, 10.85 } },
+                    {new List&lt;object>(){ &quot;Edge&quot;, 4.67 } },
+                    {new List&lt;object>(){ &quot;Safari&quot;, 4.18 } },
+                    {new List&lt;object>(){ &quot;Other&quot;, 7.05 } }
                 }
 
             }
@@ -57,14 +71,10 @@
     {
         base.OnAfterRender(firstRender);
         if (firstRender)
-        {
-            Console.WriteLine(PieChart3D.Generate());
-            chartService.RenderChart("piechart3d", PieChart3D.Generate());
-            jsRuntime.InvokeVoidAsync("prettyPrint");
+        {            
+            chartService.RenderChart(&quot;piechart3d&quot;, PieChart3D.Generate());
         }
     }
-
-}
 
 
 </pre>

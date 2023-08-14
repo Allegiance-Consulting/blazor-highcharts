@@ -10,8 +10,19 @@
 
 <h4>Code Example</h4>
 <pre class="prettyprint opacity-load">
+@@page &quot;/bar-chart&quot;
+@@inject IChartService chartService
+@@inject IJSRuntime jsRuntime
+
+&lt;h3>Bar Chart&lt;/h3>
+
+&lt;figure class=&quot;highcharts-figure&quot;>
+&lt;div id=&quot;bar-chart&quot;>&lt;/div>
+&lt;/figure>
+
 @@code {
 
+  
     private ChartObject BarChart = new ChartObject()
     {
         Chart = new Chart()
@@ -19,11 +30,11 @@
             Type = ChartType.Bar,
         },
         Credits = new Credits(false),
-        Title = new Title("Bar Chart"),
-        Subtitle = new Title("Summary"),
+        Title = new Title(&quot;Bar Chart&quot;),
+        Subtitle = new Title(&quot;Summary&quot;),
         XAxis = new XAxis()
         {
-            Categories = new List&lt;object>() { "In", "Out" },
+            Categories = new List&lt;object>() { &quot;In&quot;, &quot;Out&quot; },
             Title = new Title(false)
         },
         YAxis = new YAxis()
@@ -31,7 +42,7 @@
             Min = 0,
             Title = new Title()
             {
-                Text = "Amount",
+                Text = &quot;Amount&quot;,
                 Align = Align.High
             },
             Labels = new Labels()
@@ -41,7 +52,7 @@
 
         },
         Tooltip = new Tooltip()
-        { ValuePrefix = "R" },
+        { ValuePrefix = &quot;R&quot; },
         PlotOptions = new PlotOptions()
         {
             Bar = new PlotOptionsBar()
@@ -60,25 +71,34 @@
     {
             new SeriesElement()
             {
-                Name = "Amount",
+                Name = &quot;Amount&quot;,
+                Type = ChartType.Bar,
                 ShowInLegend = false,
                 Data = new List&lt;object>
-            {
+                {
                     new Datum()
                     {
                         Y = 100000,
-                        Color = "black"
+                        Color = &quot;black&quot;
                     },
                     new Datum()
                     {
                         Y = 50000,
-                        Color = "yellow"
+                        Color = &quot;yellow&quot;
                     }
                 }
             }
         }
 
 
+    };
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        chartService.RenderChart(&quot;bar-chart&quot;, BarChart.Generate());        
+    }
     };
 
 
@@ -90,10 +110,10 @@
 
     private ChartObject BarChart = new ChartObject()
     {
-        //Chart = new Chart()
-        //{
-        //    Type = ChartType.Bar,
-        //},
+        Chart = new Chart()
+        {
+            Type = ChartType.Bar,
+        },
         Credits = new Credits(false),
         Title = new Title("Bar Chart"),
         Subtitle = new Title("Summary"),

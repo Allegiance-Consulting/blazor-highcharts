@@ -26,6 +26,8 @@ namespace Allegiance.Blazor.Highcharts.Core.Options
         public double? Y { get; set; }
         [JsonProperty("x", NullValueHandling = NullValueHandling.Ignore)]
         public double? X { get; set; }
+        [JsonProperty("widthAdjust", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WidthAdjust { get; set; }
 
         public Title()
         {
